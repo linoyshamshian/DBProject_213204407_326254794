@@ -65,28 +65,16 @@ Provide the following SQL scripts:
 ![image](DBProject/partA/MockData/mock_1.png)
 ![image](DBProject/partA/MockData/mock_2.png)
 ![image](DBProject/partA/MockData/mock_3.png)
-results for  the command `SELECT COUNT(*) FROM Apotropus;`:
+results for  the command `SELECT COUNT(*) FROM securityPerson;`:
 ![image](DBProject/partA/MockData/mock_4.png)
 
 ####  Second tool: using [generatedata](https://generatedata.com/generator). to create csv file 
 #####  Entering a data to shift table
 📜[View `shiftGenerateDat.csv`](DBProject/partA/GenerateData/gen_1.png)
 📜[View `shiftGenerateDat.csv`](DBProject/partA/GenerateData/gen_2.png)
-results for  the command `SELECT COUNT(*) FROM BabyGroup;`:
+results for  the command `SELECT COUNT(*) FROM shift;`:
 <br>
-![image](DBProject/partA/GenerateData/gen_2.png)
-
-#####  Entering a data to baby table
--  Bayby id scope 801-1200
--  Group Number  range 1-400
-
-📜[View `babyGenerateDat.csv`](Phase1/generateData/babyGenerateData.csv)
-![image](https://github.com/user-attachments/assets/f9395c30-c300-4f11-9f22-9397bf6e02bf)
-
-![image](https://github.com/user-attachments/assets/a0073b25-4b9c-43ce-a6c1-e0d961ae70d8)
-results for  the command `SELECT COUNT(*) FROM Baby;`:
-<br>
-![image](https://github.com/user-attachments/assets/3572a931-0f33-4e31-aced-371117e109db)
+![image](DBProject/partA/GenerateData/gen_3.png)
 
 
 ####  Third tool: using python to create csv file
