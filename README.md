@@ -69,19 +69,12 @@ results for  the command `SELECT COUNT(*) FROM Apotropus;`:
 ![image](DBProject/partA/MockData/mock_4.png)
 
 ####  Second tool: using [generatedata](https://generatedata.com/generator). to create csv file 
-#####  Entering a data to babyGroup table
--  Group Number  scope 1-400 
-📜[View `babyGroupGenerateDat.csv`](Phase1/generateData/babyGroupGenerateData.csv)
-
-![image](https://github.com/user-attachments/assets/9cf296ca-5ccf-46a2-a484-18bd5a5bef4d)
-
-![image](https://github.com/user-attachments/assets/046ee01c-599b-4858-886f-7c9809c60bfa)
-
-![image](https://github.com/user-attachments/assets/b2045ef2-ca93-4829-af5f-843e792afdfd)
-
+#####  Entering a data to shift table
+📜[View `shiftGenerateDat.csv`](DBProject/partA/GenerateData/gen_1.png)
+📜[View `shiftGenerateDat.csv`](DBProject/partA/GenerateData/gen_2.png)
 results for  the command `SELECT COUNT(*) FROM BabyGroup;`:
 <br>
-![image](https://github.com/user-attachments/assets/3572a931-0f33-4e31-aced-371117e109db)
+![image](DBProject/partA/GenerateData/gen_2.png)
 
 #####  Entering a data to baby table
 -  Bayby id scope 801-1200
