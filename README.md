@@ -66,7 +66,7 @@ Provide the following SQL scripts:
 ![image](DBProject/partA/MockData/mock_2.png)
 ![image](DBProject/partA/MockData/mock_3.png)
 results for  the command `SELECT COUNT(*) FROM Apotropus;`:
-<br>
+![image](DBProject/partA/MockData/mock_4.png)
 ![image](DBProject/partA/MockData/mock_4.png)
 
 ####  Second tool: using [generatedata](https://generatedata.com/generator). to create csv file 
