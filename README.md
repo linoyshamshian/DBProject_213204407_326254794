@@ -42,19 +42,19 @@ This structured database helps streamline security operations, improving organiz
 ###  SQL Scripts  
 Provide the following SQL scripts:  
 - **Create Tables Script** - The SQL script for creating the database tables is available in the repository:  
-📜 **[View `create_tables.sql`](DBProject/partA/SecurityPerson.csv)**  
+📜 **[View `create_tables.sql`](DBProject/partA/Scripts/SecurityCreateTable.sql)**  
 
 - **Insert Data Script** - The SQL script for insert data to the database tables is available in the repository:  
 
-📜 **[View `insert_tables.sql`](Phase1/scripts/NurserySchoolInserts.sql)**  
+📜 **[View `insert_tables.sql`](DBProject/partA/Scripts/SecurityInserts)**  
  
 - **Drop Tables Script** - The SQL script for droping all tables is available in the repository:  
 
-📜 **[View `drop_tables.sql`](Phase1/scripts/NurserySchoolDropTable.sql)**  
+📜 **[View `drop_tables.sql`](DBProject/partA/Scripts/SecurityDropTable.sql)**  
 
 - **Select All Data Script**  - The SQL script for selectAll tables is available in the repository:  
 
-📜 **[View `selectAll_tables.sql`](Phase1/scripts/NurserySchoolSelectAll.sql)**  
+📜 **[View `selectAll_tables.sql`](DBProject/partA/Scripts/SecuritySelectAll)**  
   
 ###  Data  
 ####  First tool: using [mockaro](https://www.mockaroo.com/) to create csv file
