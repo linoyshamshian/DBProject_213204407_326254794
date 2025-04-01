@@ -94,9 +94,13 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 - Assigment Data:
   <br>
     📌 [View `assigment_data_code`](DBProject/partA/PythonData/assignmentPython.py)
+  <br>
+    📌 [View `assigment_data.csv`](DBProject/partA/PythonData/assignment.csv)
 - IncidentHasSecurityPerson Data:
     <br>
    📌 [View `incidentHasSecurityPerson_code`](DBProject/partA/PythonData/Incident_Has_SecurityPerson.py)
+  <br>
+   📌 [View `incidentHasSecurityPerson.csv`](DBProject/partA/PythonData/Incident_Has_SecurityPerson.csv)
  - Flights Data:
     <br>
    📌 [View `flights_code`](DBProject/partA/PythonData/flightPython.py)
