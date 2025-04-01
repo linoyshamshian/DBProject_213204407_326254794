@@ -45,7 +45,8 @@ This structured database helps streamline security operations, improving organiz
 ###  SQL Scripts  
 Provide the following SQL scripts:  
 - **Create Tables Script** - The SQL script for creating the database tables is available in the repository:  
-📜 **[View `create_tables.sql`](DBProject/partA/Scripts/SecurityCreateTable.sql)**  
+![image](https://github.com/user-attachments/assets/b30980ea-1f26-4b66-b0ff-a828b080aca2)
+ **[View `create_tables.sql`](DBProject/partA/Scripts/SecurityCreateTable.sql)**  
 
 - **Insert Data Script** - The SQL script for insert data to the database tables is available in the repository:  
 
