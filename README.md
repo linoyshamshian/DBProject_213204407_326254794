@@ -45,25 +45,25 @@ This structured database helps streamline security operations, improving organiz
 ###  SQL Scripts  
 Provide the following SQL scripts:  
 - **Create Tables Script** - The SQL script for creating the database tables is available in the repository:  
-![image](https://github.com/user-attachments/assets/b30980ea-1f26-4b66-b0ff-a828b080aca2)
- **[View `create_tables.sql`](DBProject/partA/Scripts/SecurityCreateTable.sql)**  
+
+ 📌**[View `create_tables.sql`](DBProject/partA/Scripts/SecurityCreateTable.sql)**  
 
 - **Insert Data Script** - The SQL script for insert data to the database tables is available in the repository:  
 
-📜 **[View `insert_tables.sql`](DBProject/partA/Scripts/SecurityInserts.sql)**  
+📌 **[View `insert_tables.sql`](DBProject/partA/Scripts/SecurityInserts.sql)**  
  
 - **Drop Tables Script** - The SQL script for droping all tables is available in the repository:  
 
-📜 **[View `drop_tables.sql`](DBProject/partA/Scripts/SecurityDropTable.sql)**  
+📌 **[View `drop_tables.sql`](DBProject/partA/Scripts/SecurityDropTable.sql)**  
 
 - **Select All Data Script**  - The SQL script for selectAll tables is available in the repository:  
 
-📜 **[View `selectAll_tables.sql`](DBProject/partA/Scripts/SecuritySelectAll.sql)**  
+📌 **[View `selectAll_tables.sql`](DBProject/partA/Scripts/SecuritySelectAll.sql)**  
   
 ###  Data  
 ####  First tool: using [mockaro](https://www.mockaroo.com/) to create csv file
 #####  Entering a data to securityPerson table
-📜[View `securityPerson_data.csv`](DBProject/partA/MockData/SecurityPerson.csv)
+📌[View `securityPerson_data.csv`](DBProject/partA/MockData/SecurityPerson.csv)
 - formula of securityPersonID: \d{9}
 - formula of ContactInfo : concat("05", random(10000000, 99999999))
 ![image](DBProject/partA/MockData/mock_1.png)
@@ -88,9 +88,9 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 - **Area Data:**
   <br>
-    [View `area_data_code`](DBProject/partA/PythonData/area_data_python.py)
+   📌 [View `area_data_code`](DBProject/partA/PythonData/area_data_python.py)
   <br>
-    [View `area_data.csv`](DBProject/partA/PythonData/area.csv)
+   📌 [View `area_data.csv`](DBProject/partA/PythonData/area.csv)
 
 
 
