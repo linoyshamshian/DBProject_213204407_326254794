@@ -114,7 +114,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ### Backup 
 -   backups files are kept with the date and hour of the backup:  
 
-[עבור לתיקיית הגיבויים](Phase1/Backup)
+[go to backups](DBProject/partA/Backup)
 
 
 
