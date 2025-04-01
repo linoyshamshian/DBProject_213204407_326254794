@@ -1,0 +1,401 @@
+﻿IncidentType,IncidentDate,IncidentDescription,AreaID
+Vandalism,25/01/2020,Vandalism occurred in the designated area.,365
+Medical Emergency,10/11/2021,Medical Emergency occurred in the designated area.,209
+Vandalism,04/06/2023,Vandalism occurred in the designated area.,7
+Lost Property,26/07/2024,Lost Property occurred in the designated area.,56
+Medical Emergency,27/02/2022,Medical Emergency occurred in the designated area.,70
+Employee Injury,23/02/2022,Employee Injury occurred in the designated area.,126
+Workplace Harassment,07/08/2023,Workplace Harassment occurred in the designated area.,309
+Theft Reported,22/03/2024,Theft Reported occurred in the designated area.,30
+Cyber Attack Detected,02/03/2023,Cyber Attack Detected occurred in the designated area.,329
+System Malfunction,22/02/2022,System Malfunction occurred in the designated area.,309
+Equipment Failure,15/02/2024,Equipment Failure occurred in the designated area.,293
+Hazardous Material Exposure,28/05/2020,Hazardous Material Exposure occurred in the designated area.,92
+Equipment Failure,15/10/2023,Equipment Failure occurred in the designated area.,119
+Gas Leak,19/06/2020,Gas Leak occurred in the designated area.,186
+Equipment Failure,13/08/2023,Equipment Failure occurred in the designated area.,331
+Theft Reported,24/04/2022,Theft Reported occurred in the designated area.,66
+Chemical Spill,11/12/2020,Chemical Spill occurred in the designated area.,354
+System Malfunction,08/07/2021,System Malfunction occurred in the designated area.,104
+Employee Injury,18/11/2023,Employee Injury occurred in the designated area.,373
+Suspicious Activity,16/08/2024,Suspicious Activity occurred in the designated area.,251
+Intruder Alert,08/07/2024,Intruder Alert occurred in the designated area.,170
+Employee Injury,18/06/2022,Employee Injury occurred in the designated area.,34
+Gas Leak,21/07/2020,Gas Leak occurred in the designated area.,124
+Lost Property,05/05/2020,Lost Property occurred in the designated area.,391
+Bomb Threat,20/11/2023,Bomb Threat occurred in the designated area.,272
+Unauthorized Access,22/03/2024,Unauthorized Access occurred in the designated area.,327
+Employee Injury,25/04/2023,Employee Injury occurred in the designated area.,234
+Cyber Attack Detected,30/01/2020,Cyber Attack Detected occurred in the designated area.,194
+Lost Property,20/03/2023,Lost Property occurred in the designated area.,24
+Medical Emergency,26/08/2024,Medical Emergency occurred in the designated area.,348
+Theft Reported,24/09/2022,Theft Reported occurred in the designated area.,218
+Gas Leak,13/08/2023,Gas Leak occurred in the designated area.,157
+Hazardous Material Exposure,04/09/2022,Hazardous Material Exposure occurred in the designated area.,49
+Fire Alarm Triggered,24/05/2023,Fire Alarm Triggered occurred in the designated area.,252
+Bomb Threat,10/03/2020,Bomb Threat occurred in the designated area.,165
+Lost Property,25/07/2023,Lost Property occurred in the designated area.,356
+Theft Reported,29/03/2022,Theft Reported occurred in the designated area.,273
+Hazardous Material Exposure,11/07/2024,Hazardous Material Exposure occurred in the designated area.,214
+System Malfunction,14/10/2020,System Malfunction occurred in the designated area.,101
+Vandalism,25/02/2021,Vandalism occurred in the designated area.,81
+Security Breach,30/08/2022,Security Breach occurred in the designated area.,119
+Cyber Attack Detected,17/11/2023,Cyber Attack Detected occurred in the designated area.,208
+System Malfunction,21/01/2021,System Malfunction occurred in the designated area.,132
+Unauthorized Access,08/12/2024,Unauthorized Access occurred in the designated area.,235
+Power Outage,19/07/2023,Power Outage occurred in the designated area.,243
+Medical Emergency,18/10/2024,Medical Emergency occurred in the designated area.,351
+Vandalism,08/11/2024,Vandalism occurred in the designated area.,61
+Hazardous Material Exposure,26/06/2022,Hazardous Material Exposure occurred in the designated area.,70
+Equipment Failure,15/03/2022,Equipment Failure occurred in the designated area.,350
+Cyber Attack Detected,12/07/2021,Cyber Attack Detected occurred in the designated area.,250
+Workplace Harassment,11/11/2023,Workplace Harassment occurred in the designated area.,50
+Chemical Spill,12/10/2024,Chemical Spill occurred in the designated area.,250
+Cyber Attack Detected,08/05/2023,Cyber Attack Detected occurred in the designated area.,361
+Lost Property,06/11/2022,Lost Property occurred in the designated area.,142
+Vandalism,08/12/2020,Vandalism occurred in the designated area.,266
+Fire Alarm Triggered,01/03/2020,Fire Alarm Triggered occurred in the designated area.,51
+Unauthorized Access,29/12/2021,Unauthorized Access occurred in the designated area.,210
+Employee Injury,14/08/2021,Employee Injury occurred in the designated area.,357
+Unauthorized Access,23/07/2024,Unauthorized Access occurred in the designated area.,394
+Lost Property,02/10/2024,Lost Property occurred in the designated area.,395
+Workplace Harassment,03/05/2024,Workplace Harassment occurred in the designated area.,46
+Fire Alarm Triggered,20/10/2021,Fire Alarm Triggered occurred in the designated area.,69
+Power Outage,23/07/2024,Power Outage occurred in the designated area.,151
+Employee Injury,14/11/2021,Employee Injury occurred in the designated area.,267
+Chemical Spill,13/07/2024,Chemical Spill occurred in the designated area.,46
+Data Breach,14/01/2021,Data Breach occurred in the designated area.,385
+Equipment Failure,28/10/2020,Equipment Failure occurred in the designated area.,358
+Employee Injury,21/09/2021,Employee Injury occurred in the designated area.,326
+Equipment Failure,25/07/2022,Equipment Failure occurred in the designated area.,235
+Vandalism,14/04/2024,Vandalism occurred in the designated area.,144
+Medical Emergency,14/06/2023,Medical Emergency occurred in the designated area.,345
+Unauthorized Access,04/05/2022,Unauthorized Access occurred in the designated area.,354
+Hazardous Material Exposure,24/10/2024,Hazardous Material Exposure occurred in the designated area.,172
+Power Outage,22/10/2024,Power Outage occurred in the designated area.,370
+Employee Injury,16/12/2023,Employee Injury occurred in the designated area.,190
+Vandalism,28/09/2022,Vandalism occurred in the designated area.,302
+Vandalism,01/12/2021,Vandalism occurred in the designated area.,290
+Hazardous Material Exposure,08/07/2024,Hazardous Material Exposure occurred in the designated area.,295
+Cyber Attack Detected,17/12/2024,Cyber Attack Detected occurred in the designated area.,160
+Lost Property,27/03/2022,Lost Property occurred in the designated area.,294
+Data Breach,12/03/2023,Data Breach occurred in the designated area.,101
+Hazardous Material Exposure,17/06/2020,Hazardous Material Exposure occurred in the designated area.,153
+Employee Injury,11/04/2021,Employee Injury occurred in the designated area.,87
+Workplace Harassment,06/09/2021,Workplace Harassment occurred in the designated area.,163
+Gas Leak,22/08/2023,Gas Leak occurred in the designated area.,245
+Security Breach,24/11/2021,Security Breach occurred in the designated area.,185
+Vandalism,30/01/2024,Vandalism occurred in the designated area.,217
+Unauthorized Access,09/12/2021,Unauthorized Access occurred in the designated area.,336
+Gas Leak,29/07/2023,Gas Leak occurred in the designated area.,4
+Vandalism,16/10/2024,Vandalism occurred in the designated area.,178
+Workplace Harassment,09/10/2023,Workplace Harassment occurred in the designated area.,398
+Intruder Alert,02/06/2021,Intruder Alert occurred in the designated area.,111
+Unauthorized Access,18/10/2024,Unauthorized Access occurred in the designated area.,78
+Suspicious Activity,08/01/2021,Suspicious Activity occurred in the designated area.,134
+Power Outage,10/04/2023,Power Outage occurred in the designated area.,390
+Intruder Alert,21/06/2022,Intruder Alert occurred in the designated area.,248
+Suspicious Activity,02/08/2023,Suspicious Activity occurred in the designated area.,84
+Security Breach,21/02/2022,Security Breach occurred in the designated area.,281
+System Malfunction,08/09/2022,System Malfunction occurred in the designated area.,292
+System Malfunction,04/06/2020,System Malfunction occurred in the designated area.,127
+Chemical Spill,09/12/2021,Chemical Spill occurred in the designated area.,343
+System Malfunction,23/03/2020,System Malfunction occurred in the designated area.,267
+Bomb Threat,26/12/2022,Bomb Threat occurred in the designated area.,238
+System Malfunction,30/04/2023,System Malfunction occurred in the designated area.,192
+Theft Reported,30/11/2022,Theft Reported occurred in the designated area.,281
+Data Breach,20/07/2023,Data Breach occurred in the designated area.,24
+Power Outage,08/03/2021,Power Outage occurred in the designated area.,65
+Lost Property,27/05/2020,Lost Property occurred in the designated area.,40
+Medical Emergency,15/03/2024,Medical Emergency occurred in the designated area.,118
+Equipment Failure,01/11/2021,Equipment Failure occurred in the designated area.,390
+Equipment Failure,14/05/2020,Equipment Failure occurred in the designated area.,245
+Medical Emergency,10/01/2023,Medical Emergency occurred in the designated area.,260
+Chemical Spill,28/09/2021,Chemical Spill occurred in the designated area.,292
+System Malfunction,09/09/2023,System Malfunction occurred in the designated area.,375
+Theft Reported,27/12/2021,Theft Reported occurred in the designated area.,135
+Suspicious Activity,19/12/2024,Suspicious Activity occurred in the designated area.,330
+Vandalism,10/12/2024,Vandalism occurred in the designated area.,68
+Employee Injury,24/11/2022,Employee Injury occurred in the designated area.,341
+Vandalism,25/03/2024,Vandalism occurred in the designated area.,353
+Unauthorized Access,22/02/2023,Unauthorized Access occurred in the designated area.,224
+Gas Leak,16/04/2023,Gas Leak occurred in the designated area.,118
+Fire Alarm Triggered,24/10/2024,Fire Alarm Triggered occurred in the designated area.,341
+Lost Property,17/06/2024,Lost Property occurred in the designated area.,328
+Chemical Spill,21/09/2023,Chemical Spill occurred in the designated area.,385
+Gas Leak,19/03/2022,Gas Leak occurred in the designated area.,297
+Vandalism,01/08/2021,Vandalism occurred in the designated area.,188
+Vandalism,26/10/2024,Vandalism occurred in the designated area.,35
+Fire Alarm Triggered,12/08/2024,Fire Alarm Triggered occurred in the designated area.,285
+Bomb Threat,21/10/2021,Bomb Threat occurred in the designated area.,40
+Hazardous Material Exposure,06/12/2024,Hazardous Material Exposure occurred in the designated area.,245
+Suspicious Activity,20/04/2023,Suspicious Activity occurred in the designated area.,316
+System Malfunction,19/08/2022,System Malfunction occurred in the designated area.,249
+Hazardous Material Exposure,06/12/2024,Hazardous Material Exposure occurred in the designated area.,251
+Gas Leak,27/10/2021,Gas Leak occurred in the designated area.,139
+Fire Alarm Triggered,23/10/2020,Fire Alarm Triggered occurred in the designated area.,278
+Lost Property,26/01/2021,Lost Property occurred in the designated area.,321
+Lost Property,17/06/2022,Lost Property occurred in the designated area.,130
+System Malfunction,04/07/2020,System Malfunction occurred in the designated area.,370
+Hazardous Material Exposure,14/12/2022,Hazardous Material Exposure occurred in the designated area.,32
+Medical Emergency,21/09/2024,Medical Emergency occurred in the designated area.,133
+Gas Leak,03/07/2023,Gas Leak occurred in the designated area.,241
+Suspicious Activity,18/03/2022,Suspicious Activity occurred in the designated area.,277
+Bomb Threat,09/07/2021,Bomb Threat occurred in the designated area.,279
+System Malfunction,26/07/2024,System Malfunction occurred in the designated area.,272
+Security Breach,13/05/2021,Security Breach occurred in the designated area.,242
+Workplace Harassment,12/05/2022,Workplace Harassment occurred in the designated area.,140
+Bomb Threat,18/12/2021,Bomb Threat occurred in the designated area.,42
+Security Breach,20/08/2021,Security Breach occurred in the designated area.,316
+Hazardous Material Exposure,18/05/2021,Hazardous Material Exposure occurred in the designated area.,300
+Lost Property,01/06/2021,Lost Property occurred in the designated area.,346
+Suspicious Activity,25/05/2022,Suspicious Activity occurred in the designated area.,175
+Lost Property,01/05/2021,Lost Property occurred in the designated area.,328
+Workplace Harassment,04/12/2023,Workplace Harassment occurred in the designated area.,293
+Chemical Spill,21/10/2024,Chemical Spill occurred in the designated area.,252
+System Malfunction,05/09/2022,System Malfunction occurred in the designated area.,120
+Unauthorized Access,23/10/2022,Unauthorized Access occurred in the designated area.,312
+Chemical Spill,16/11/2023,Chemical Spill occurred in the designated area.,178
+Vandalism,21/01/2024,Vandalism occurred in the designated area.,40
+Data Breach,10/02/2020,Data Breach occurred in the designated area.,150
+Cyber Attack Detected,01/08/2021,Cyber Attack Detected occurred in the designated area.,274
+Lost Property,26/06/2022,Lost Property occurred in the designated area.,228
+Employee Injury,23/05/2022,Employee Injury occurred in the designated area.,8
+Lost Property,31/01/2021,Lost Property occurred in the designated area.,61
+Cyber Attack Detected,25/10/2023,Cyber Attack Detected occurred in the designated area.,137
+Employee Injury,23/05/2023,Employee Injury occurred in the designated area.,204
+Security Breach,15/12/2020,Security Breach occurred in the designated area.,226
+Unauthorized Access,27/02/2021,Unauthorized Access occurred in the designated area.,43
+Theft Reported,18/01/2024,Theft Reported occurred in the designated area.,252
+Workplace Harassment,04/01/2024,Workplace Harassment occurred in the designated area.,39
+Unauthorized Access,04/07/2024,Unauthorized Access occurred in the designated area.,133
+Bomb Threat,04/12/2024,Bomb Threat occurred in the designated area.,30
+System Malfunction,10/11/2021,System Malfunction occurred in the designated area.,371
+Theft Reported,26/02/2022,Theft Reported occurred in the designated area.,114
+Hazardous Material Exposure,12/12/2024,Hazardous Material Exposure occurred in the designated area.,70
+Security Breach,23/11/2021,Security Breach occurred in the designated area.,68
+Intruder Alert,26/12/2022,Intruder Alert occurred in the designated area.,216
+Security Breach,06/01/2021,Security Breach occurred in the designated area.,367
+Security Breach,09/04/2020,Security Breach occurred in the designated area.,284
+Hazardous Material Exposure,02/06/2023,Hazardous Material Exposure occurred in the designated area.,263
+Power Outage,01/04/2021,Power Outage occurred in the designated area.,50
+Employee Injury,02/10/2020,Employee Injury occurred in the designated area.,117
+Medical Emergency,01/11/2023,Medical Emergency occurred in the designated area.,247
+Intruder Alert,24/06/2022,Intruder Alert occurred in the designated area.,57
+Chemical Spill,22/03/2020,Chemical Spill occurred in the designated area.,386
+Suspicious Activity,29/10/2021,Suspicious Activity occurred in the designated area.,241
+Workplace Harassment,21/12/2024,Workplace Harassment occurred in the designated area.,228
+Gas Leak,17/10/2022,Gas Leak occurred in the designated area.,155
+Equipment Failure,07/06/2020,Equipment Failure occurred in the designated area.,57
+Gas Leak,07/01/2023,Gas Leak occurred in the designated area.,177
+Medical Emergency,27/05/2023,Medical Emergency occurred in the designated area.,213
+Fire Alarm Triggered,30/09/2020,Fire Alarm Triggered occurred in the designated area.,42
+Bomb Threat,06/01/2022,Bomb Threat occurred in the designated area.,323
+Chemical Spill,24/10/2022,Chemical Spill occurred in the designated area.,193
+Fire Alarm Triggered,10/02/2024,Fire Alarm Triggered occurred in the designated area.,248
+Equipment Failure,29/07/2021,Equipment Failure occurred in the designated area.,11
+Suspicious Activity,21/04/2022,Suspicious Activity occurred in the designated area.,137
+Theft Reported,02/11/2023,Theft Reported occurred in the designated area.,96
+Intruder Alert,06/04/2020,Intruder Alert occurred in the designated area.,148
+Lost Property,01/11/2021,Lost Property occurred in the designated area.,338
+Workplace Harassment,17/05/2020,Workplace Harassment occurred in the designated area.,234
+Intruder Alert,08/01/2023,Intruder Alert occurred in the designated area.,309
+Employee Injury,30/11/2023,Employee Injury occurred in the designated area.,301
+Medical Emergency,26/03/2020,Medical Emergency occurred in the designated area.,319
+Bomb Threat,13/04/2022,Bomb Threat occurred in the designated area.,123
+Gas Leak,26/03/2022,Gas Leak occurred in the designated area.,245
+Security Breach,06/08/2022,Security Breach occurred in the designated area.,218
+Medical Emergency,18/11/2022,Medical Emergency occurred in the designated area.,319
+Suspicious Activity,19/09/2024,Suspicious Activity occurred in the designated area.,319
+Vandalism,14/12/2022,Vandalism occurred in the designated area.,311
+Fire Alarm Triggered,24/02/2020,Fire Alarm Triggered occurred in the designated area.,62
+Lost Property,19/02/2020,Lost Property occurred in the designated area.,159
+Equipment Failure,15/09/2021,Equipment Failure occurred in the designated area.,165
+Hazardous Material Exposure,19/06/2024,Hazardous Material Exposure occurred in the designated area.,61
+Fire Alarm Triggered,27/06/2020,Fire Alarm Triggered occurred in the designated area.,248
+System Malfunction,14/02/2024,System Malfunction occurred in the designated area.,276
+Gas Leak,22/01/2024,Gas Leak occurred in the designated area.,111
+Cyber Attack Detected,23/09/2020,Cyber Attack Detected occurred in the designated area.,59
+Theft Reported,22/12/2021,Theft Reported occurred in the designated area.,245
+Gas Leak,15/06/2024,Gas Leak occurred in the designated area.,323
+Chemical Spill,13/08/2020,Chemical Spill occurred in the designated area.,225
+Gas Leak,20/09/2021,Gas Leak occurred in the designated area.,186
+Equipment Failure,26/05/2022,Equipment Failure occurred in the designated area.,96
+Chemical Spill,13/02/2024,Chemical Spill occurred in the designated area.,83
+Vandalism,18/11/2020,Vandalism occurred in the designated area.,384
+Equipment Failure,14/04/2024,Equipment Failure occurred in the designated area.,138
+Power Outage,19/10/2021,Power Outage occurred in the designated area.,378
+Lost Property,10/01/2024,Lost Property occurred in the designated area.,203
+Vandalism,12/09/2020,Vandalism occurred in the designated area.,44
+System Malfunction,31/01/2024,System Malfunction occurred in the designated area.,279
+Theft Reported,25/05/2020,Theft Reported occurred in the designated area.,281
+Cyber Attack Detected,23/05/2024,Cyber Attack Detected occurred in the designated area.,346
+Data Breach,31/01/2023,Data Breach occurred in the designated area.,180
+Hazardous Material Exposure,05/07/2020,Hazardous Material Exposure occurred in the designated area.,372
+Medical Emergency,21/02/2020,Medical Emergency occurred in the designated area.,182
+Suspicious Activity,27/06/2023,Suspicious Activity occurred in the designated area.,76
+Bomb Threat,02/06/2024,Bomb Threat occurred in the designated area.,117
+Gas Leak,13/10/2021,Gas Leak occurred in the designated area.,330
+Data Breach,05/04/2020,Data Breach occurred in the designated area.,211
+Security Breach,12/03/2020,Security Breach occurred in the designated area.,44
+System Malfunction,26/04/2020,System Malfunction occurred in the designated area.,96
+Employee Injury,07/08/2021,Employee Injury occurred in the designated area.,255
+Unauthorized Access,28/05/2020,Unauthorized Access occurred in the designated area.,13
+Gas Leak,30/08/2021,Gas Leak occurred in the designated area.,248
+Data Breach,22/08/2022,Data Breach occurred in the designated area.,340
+Equipment Failure,04/04/2022,Equipment Failure occurred in the designated area.,214
+Bomb Threat,19/01/2020,Bomb Threat occurred in the designated area.,60
+Suspicious Activity,11/10/2024,Suspicious Activity occurred in the designated area.,153
+Employee Injury,22/01/2022,Employee Injury occurred in the designated area.,256
+Bomb Threat,27/10/2024,Bomb Threat occurred in the designated area.,219
+Bomb Threat,18/07/2020,Bomb Threat occurred in the designated area.,35
+Medical Emergency,09/08/2023,Medical Emergency occurred in the designated area.,274
+Power Outage,23/12/2024,Power Outage occurred in the designated area.,291
+Employee Injury,28/04/2020,Employee Injury occurred in the designated area.,151
+Security Breach,16/03/2020,Security Breach occurred in the designated area.,142
+Lost Property,09/11/2024,Lost Property occurred in the designated area.,244
+Medical Emergency,24/05/2023,Medical Emergency occurred in the designated area.,9
+Vandalism,20/03/2021,Vandalism occurred in the designated area.,103
+Bomb Threat,18/06/2021,Bomb Threat occurred in the designated area.,371
+Workplace Harassment,22/08/2020,Workplace Harassment occurred in the designated area.,152
+Bomb Threat,12/06/2023,Bomb Threat occurred in the designated area.,41
+Power Outage,30/08/2021,Power Outage occurred in the designated area.,293
+Power Outage,21/08/2020,Power Outage occurred in the designated area.,274
+Unauthorized Access,14/05/2022,Unauthorized Access occurred in the designated area.,399
+Theft Reported,18/12/2020,Theft Reported occurred in the designated area.,137
+Theft Reported,19/10/2024,Theft Reported occurred in the designated area.,329
+System Malfunction,30/03/2020,System Malfunction occurred in the designated area.,215
+Unauthorized Access,14/07/2020,Unauthorized Access occurred in the designated area.,376
+Workplace Harassment,12/03/2024,Workplace Harassment occurred in the designated area.,295
+Medical Emergency,17/10/2024,Medical Emergency occurred in the designated area.,340
+Hazardous Material Exposure,25/05/2024,Hazardous Material Exposure occurred in the designated area.,129
+Fire Alarm Triggered,30/10/2020,Fire Alarm Triggered occurred in the designated area.,156
+Equipment Failure,27/12/2024,Equipment Failure occurred in the designated area.,369
+Employee Injury,30/05/2021,Employee Injury occurred in the designated area.,53
+System Malfunction,03/12/2023,System Malfunction occurred in the designated area.,239
+Suspicious Activity,01/01/2021,Suspicious Activity occurred in the designated area.,70
+Chemical Spill,20/04/2022,Chemical Spill occurred in the designated area.,264
+System Malfunction,22/11/2023,System Malfunction occurred in the designated area.,19
+Bomb Threat,15/04/2024,Bomb Threat occurred in the designated area.,75
+Data Breach,18/05/2024,Data Breach occurred in the designated area.,206
+Vandalism,26/05/2021,Vandalism occurred in the designated area.,8
+Employee Injury,08/05/2023,Employee Injury occurred in the designated area.,262
+Cyber Attack Detected,04/06/2023,Cyber Attack Detected occurred in the designated area.,198
+Medical Emergency,04/08/2021,Medical Emergency occurred in the designated area.,69
+Data Breach,18/11/2020,Data Breach occurred in the designated area.,94
+Unauthorized Access,05/08/2021,Unauthorized Access occurred in the designated area.,370
+Hazardous Material Exposure,30/11/2024,Hazardous Material Exposure occurred in the designated area.,247
+Equipment Failure,31/01/2021,Equipment Failure occurred in the designated area.,218
+Cyber Attack Detected,25/02/2024,Cyber Attack Detected occurred in the designated area.,316
+Theft Reported,24/09/2020,Theft Reported occurred in the designated area.,221
+Power Outage,07/05/2020,Power Outage occurred in the designated area.,95
+Workplace Harassment,28/07/2021,Workplace Harassment occurred in the designated area.,177
+Security Breach,13/08/2023,Security Breach occurred in the designated area.,68
+System Malfunction,02/08/2024,System Malfunction occurred in the designated area.,101
+Hazardous Material Exposure,23/12/2024,Hazardous Material Exposure occurred in the designated area.,91
+Fire Alarm Triggered,03/11/2022,Fire Alarm Triggered occurred in the designated area.,290
+System Malfunction,19/04/2024,System Malfunction occurred in the designated area.,93
+Cyber Attack Detected,02/03/2021,Cyber Attack Detected occurred in the designated area.,215
+Hazardous Material Exposure,06/06/2023,Hazardous Material Exposure occurred in the designated area.,59
+Gas Leak,27/01/2020,Gas Leak occurred in the designated area.,378
+Hazardous Material Exposure,28/06/2021,Hazardous Material Exposure occurred in the designated area.,58
+Bomb Threat,27/06/2020,Bomb Threat occurred in the designated area.,44
+Data Breach,26/03/2024,Data Breach occurred in the designated area.,169
+Cyber Attack Detected,04/10/2023,Cyber Attack Detected occurred in the designated area.,392
+Unauthorized Access,29/06/2022,Unauthorized Access occurred in the designated area.,137
+Data Breach,21/11/2023,Data Breach occurred in the designated area.,303
+Power Outage,28/05/2021,Power Outage occurred in the designated area.,373
+System Malfunction,19/07/2023,System Malfunction occurred in the designated area.,86
+Suspicious Activity,08/02/2021,Suspicious Activity occurred in the designated area.,90
+Lost Property,18/08/2021,Lost Property occurred in the designated area.,16
+Data Breach,31/12/2021,Data Breach occurred in the designated area.,131
+Workplace Harassment,26/06/2020,Workplace Harassment occurred in the designated area.,149
+Lost Property,12/12/2022,Lost Property occurred in the designated area.,264
+Medical Emergency,08/02/2023,Medical Emergency occurred in the designated area.,288
+Theft Reported,30/09/2024,Theft Reported occurred in the designated area.,73
+Workplace Harassment,10/01/2023,Workplace Harassment occurred in the designated area.,255
+Power Outage,15/06/2023,Power Outage occurred in the designated area.,326
+Theft Reported,26/05/2020,Theft Reported occurred in the designated area.,216
+Bomb Threat,30/06/2021,Bomb Threat occurred in the designated area.,383
+Equipment Failure,06/09/2021,Equipment Failure occurred in the designated area.,286
+Chemical Spill,07/10/2024,Chemical Spill occurred in the designated area.,338
+Intruder Alert,26/04/2024,Intruder Alert occurred in the designated area.,248
+Medical Emergency,30/12/2023,Medical Emergency occurred in the designated area.,54
+Cyber Attack Detected,29/07/2020,Cyber Attack Detected occurred in the designated area.,339
+Equipment Failure,07/02/2023,Equipment Failure occurred in the designated area.,107
+Suspicious Activity,21/10/2024,Suspicious Activity occurred in the designated area.,289
+Power Outage,18/02/2021,Power Outage occurred in the designated area.,81
+Cyber Attack Detected,27/07/2024,Cyber Attack Detected occurred in the designated area.,117
+Bomb Threat,17/03/2024,Bomb Threat occurred in the designated area.,297
+Data Breach,13/02/2020,Data Breach occurred in the designated area.,297
+Unauthorized Access,28/03/2024,Unauthorized Access occurred in the designated area.,375
+Workplace Harassment,12/07/2023,Workplace Harassment occurred in the designated area.,278
+Lost Property,02/01/2023,Lost Property occurred in the designated area.,222
+Equipment Failure,25/11/2020,Equipment Failure occurred in the designated area.,111
+Chemical Spill,09/11/2021,Chemical Spill occurred in the designated area.,25
+Medical Emergency,26/05/2024,Medical Emergency occurred in the designated area.,56
+Security Breach,10/05/2020,Security Breach occurred in the designated area.,235
+Workplace Harassment,29/10/2023,Workplace Harassment occurred in the designated area.,315
+Bomb Threat,22/10/2024,Bomb Threat occurred in the designated area.,103
+Fire Alarm Triggered,29/07/2024,Fire Alarm Triggered occurred in the designated area.,255
+Medical Emergency,16/06/2020,Medical Emergency occurred in the designated area.,138
+Cyber Attack Detected,30/06/2023,Cyber Attack Detected occurred in the designated area.,79
+Power Outage,04/11/2023,Power Outage occurred in the designated area.,159
+Gas Leak,09/01/2021,Gas Leak occurred in the designated area.,178
+Cyber Attack Detected,17/02/2021,Cyber Attack Detected occurred in the designated area.,310
+Fire Alarm Triggered,11/09/2020,Fire Alarm Triggered occurred in the designated area.,185
+Workplace Harassment,07/02/2024,Workplace Harassment occurred in the designated area.,370
+Chemical Spill,12/11/2024,Chemical Spill occurred in the designated area.,110
+Suspicious Activity,28/11/2023,Suspicious Activity occurred in the designated area.,201
+Workplace Harassment,17/06/2023,Workplace Harassment occurred in the designated area.,61
+Fire Alarm Triggered,13/03/2021,Fire Alarm Triggered occurred in the designated area.,6
+Fire Alarm Triggered,25/01/2020,Fire Alarm Triggered occurred in the designated area.,127
+Vandalism,07/03/2020,Vandalism occurred in the designated area.,63
+Workplace Harassment,03/07/2022,Workplace Harassment occurred in the designated area.,85
+Theft Reported,25/11/2022,Theft Reported occurred in the designated area.,264
+Employee Injury,27/09/2021,Employee Injury occurred in the designated area.,365
+Data Breach,08/09/2021,Data Breach occurred in the designated area.,399
+System Malfunction,19/06/2024,System Malfunction occurred in the designated area.,87
+Theft Reported,10/05/2020,Theft Reported occurred in the designated area.,250
+Chemical Spill,13/12/2022,Chemical Spill occurred in the designated area.,275
+System Malfunction,11/01/2020,System Malfunction occurred in the designated area.,30
+Employee Injury,10/09/2020,Employee Injury occurred in the designated area.,309
+Data Breach,08/01/2022,Data Breach occurred in the designated area.,17
+Vandalism,18/07/2020,Vandalism occurred in the designated area.,314
+Cyber Attack Detected,03/12/2024,Cyber Attack Detected occurred in the designated area.,315
+Workplace Harassment,12/12/2021,Workplace Harassment occurred in the designated area.,181
+System Malfunction,14/10/2022,System Malfunction occurred in the designated area.,350
+Equipment Failure,23/10/2024,Equipment Failure occurred in the designated area.,198
+Security Breach,22/05/2023,Security Breach occurred in the designated area.,102
+Power Outage,24/03/2023,Power Outage occurred in the designated area.,315
+Security Breach,17/12/2022,Security Breach occurred in the designated area.,324
+Chemical Spill,08/12/2024,Chemical Spill occurred in the designated area.,15
+Bomb Threat,28/05/2023,Bomb Threat occurred in the designated area.,203
+Data Breach,25/03/2024,Data Breach occurred in the designated area.,105
+Unauthorized Access,05/07/2022,Unauthorized Access occurred in the designated area.,258
+Chemical Spill,19/11/2021,Chemical Spill occurred in the designated area.,383
+Workplace Harassment,22/03/2022,Workplace Harassment occurred in the designated area.,292
+Lost Property,22/10/2022,Lost Property occurred in the designated area.,54
+System Malfunction,10/04/2022,System Malfunction occurred in the designated area.,287
+Employee Injury,17/05/2023,Employee Injury occurred in the designated area.,356
+Hazardous Material Exposure,08/07/2020,Hazardous Material Exposure occurred in the designated area.,100
+Data Breach,28/10/2023,Data Breach occurred in the designated area.,318
+Chemical Spill,16/03/2021,Chemical Spill occurred in the designated area.,66
+Fire Alarm Triggered,15/09/2020,Fire Alarm Triggered occurred in the designated area.,122
+Equipment Failure,16/11/2022,Equipment Failure occurred in the designated area.,234
+Power Outage,03/09/2024,Power Outage occurred in the designated area.,331
+Security Breach,26/02/2024,Security Breach occurred in the designated area.,58
+Workplace Harassment,14/12/2024,Workplace Harassment occurred in the designated area.,280
+Theft Reported,19/01/2024,Theft Reported occurred in the designated area.,163
+Data Breach,21/06/2020,Data Breach occurred in the designated area.,375
+Workplace Harassment,31/10/2020,Workplace Harassment occurred in the designated area.,208
+Bomb Threat,18/03/2022,Bomb Threat occurred in the designated area.,342
+Bomb Threat,17/12/2022,Bomb Threat occurred in the designated area.,155
+Fire Alarm Triggered,12/09/2022,Fire Alarm Triggered occurred in the designated area.,47
+Data Breach,25/06/2020,Data Breach occurred in the designated area.,89
+Employee Injury,01/01/2021,Employee Injury occurred in the designated area.,350
+Fire Alarm Triggered,05/03/2020,Fire Alarm Triggered occurred in the designated area.,153
+Vandalism,13/02/2022,Vandalism occurred in the designated area.,90
+Gas Leak,17/09/2020,Gas Leak occurred in the designated area.,41
+Medical Emergency,27/12/2021,Medical Emergency occurred in the designated area.,206
+Hazardous Material Exposure,08/05/2024,Hazardous Material Exposure occurred in the designated area.,175
