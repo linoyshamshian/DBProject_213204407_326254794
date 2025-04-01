@@ -70,8 +70,8 @@ results for  the command `SELECT COUNT(*) FROM securityPerson;`:
 
 ####  Second tool: using [generatedata](https://generatedata.com/generator). to create csv file 
 #####  Entering a data to shift table
-📜[View `shiftGenerateDat.csv`](DBProject/partA/GenerateData/gen_1.png)
-📜[View `shiftGenerateDat.csv`](DBProject/partA/GenerateData/gen_2.png)
+![image](DBProject/partA/GenerateData/gen_1.png)
+![image](DBProject/partA/GenerateData/gen_2.png)
 results for  the command `SELECT COUNT(*) FROM shift;`:
 <br>
 ![image](DBProject/partA/GenerateData/gen_3.png)
