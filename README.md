@@ -60,14 +60,14 @@ Provide the following SQL scripts:
 ####  First tool: using [mockaro](https://www.mockaroo.com/) to create csv file
 #####  Entering a data to securityPerson table
 📜[View `securityPerson_data.csv`](DBProject/partA/MockData/SecurityPerson.csv)
+- formula of securityPersonID: \d{9}
+- formula of ContactInfo : concat("05", random(10000000, 99999999))
 ![image](DBProject/partA/MockData/mock_1.png)
-
-📜 **[View `apotropusMock_data.csv`](Phase1/mockData/apotropusMOCK_DATA.csv)**
-![image](https://github.com/user-attachments/assets/08e3b07b-c3ab-44c6-917b-f904926f6901)
-![image](https://github.com/user-attachments/assets/6833ecf1-90e6-454d-8396-9dddf415e323)
+![image](DBProject/partA/MockData/mock_2.png)
+![image](DBProject/partA/MockData/mock_3.png)
 results for  the command `SELECT COUNT(*) FROM Apotropus;`:
 <br>
-![image](https://github.com/user-attachments/assets/eaa16659-2fd8-44c0-81cf-c30f62632258)
+![image](DBProject/partA/MockData/mock_4.png)
 
 ####  Second tool: using [generatedata](https://generatedata.com/generator). to create csv file 
 #####  Entering a data to babyGroup table
