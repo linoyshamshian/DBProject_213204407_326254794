@@ -6,7 +6,7 @@
 
 
 ## Table of Contents 
-**[View `drop_tables.sql`](DBProject-partA-MOCK_DATA (1).csv)** 
+**[View `drop_tables.sql`](DBProject/partA/MOCK_DATA (1).csv)** 
 [HHH](#DBProject-partA-MOCK_DATA (1).csv)
 DBProject/partA/MOCK_DATA (1).csv
 - [Phase 1: Design and Build the Database](#phase-1-design-and-build-the-database)  
