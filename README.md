@@ -34,10 +34,10 @@ This database serves as a structured and reliable solution for security organiza
 
 This structured database helps streamline security operations, improving organization, compliance, and response times.
 ###  ERD (Entity-Relationship Diagram)    
-![ERD Diagram](DBProject/partA/ERDAndDSTFiles/erd.png)  
+![ERD Diagram](DBProject/partA/ERDAndDSDFiles/erd.png)  
 
 ###  DSD (Data Structure Diagram)   
-![DSD Diagram](DBProject/partA/ERDAndDSTFiles/dsd.png)  
+![DSD Diagram](DBProject/partA/ERDAndDSDFiles/dsd.png)  
 
 ###  SQL Scripts  
 Provide the following SQL scripts:  
