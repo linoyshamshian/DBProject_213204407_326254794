@@ -91,7 +91,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
    📌 [View `area_data_code`](DBProject/partA/PythonData/area_data_python.py)
   <br>
    📌 [View `area_data.csv`](DBProject/partA/PythonData/area.csv)
-  - **Assigment Data:**
+- **Assigment Data:**
+  <br>
     📌 [View `assigment_data_code`](DBProject/partA/PythonData/assignmentPython.py)
 
 
