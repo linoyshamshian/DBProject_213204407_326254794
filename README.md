@@ -100,6 +100,9 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
  - Flights Data:
     <br>
    📌 [View `flights_code`](DBProject/partA/PythonData/flightPython.py)
+   <br>
+   📌 [View `flights_data.csv`](DBProject/partA/PythonData/flights.csv)
+   
   
 
 
