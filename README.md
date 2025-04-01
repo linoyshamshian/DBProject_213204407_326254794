@@ -6,7 +6,7 @@
 
 
 ## Table of Contents  
-[DBProject/partA/MOCK_DATA (1).csv]
+[HHH](#DBProject-partA-MOCK_DATA (1))
 - [Phase 1: Design and Build the Database](#phase-1-design-and-build-the-database)  
   - [Introduction](#introduction)  
   - [ERD (Entity-Relationship Diagram)](#erd-entity-relationship-diagram)  
