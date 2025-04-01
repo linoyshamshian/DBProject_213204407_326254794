@@ -6,9 +6,7 @@
 
 
 ## Table of Contents 
-**[View `drop_tables.sql`](partA/MOCK_DATA (1).csv)** 
-[HHH](#DBProject-partA-MOCK_DATA (1).csv)
-DBProject/partA/MOCK_DATA (1).csv
+
 - [Phase 1: Design and Build the Database](#phase-1-design-and-build-the-database)  
   - [Introduction](#introduction)  
   - [ERD (Entity-Relationship Diagram)](#erd-entity-relationship-diagram)  
@@ -49,7 +47,7 @@ This structured database helps streamline nursery school operations, improving o
 ###  SQL Scripts  
 Provide the following SQL scripts:  
 - **Create Tables Script** - The SQL script for creating the database tables is available in the repository:  
-
+**[View `l`](partA/MOCK_DATA (1).csv)** 
 📜 **[View `create_tables.sql`](Phase1/scripts/NurserySchoolCreateTable.sql)**  
 
 - **Insert Data Script** - The SQL script for insert data to the database tables is available in the repository:  
