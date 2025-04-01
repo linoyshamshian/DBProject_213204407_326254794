@@ -86,8 +86,9 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ####  Third tool: using python to create csv file
 
 - **Area Data:**
+  <br>
     [View `area_data_code`](DBProject/partA/PythonData/area_data_python.py)
-
+  <br>
     [View `area_data.csv`](DBProject/partA/PythonData/area.csv)
 
 
