@@ -39,10 +39,10 @@ This database serves as a structured and reliable solution for nursery schools t
 This structured database helps streamline nursery school operations, improving organization, safety, and communication among all parties involved.
 
 ###  ERD (Entity-Relationship Diagram)    
-![ERD Diagram](Phase1/ERDAndDSTFiles/ERD.png)  
+![ERD Diagram](DBProject/partA/ERDAndDSTFiles/erd.png)  
 
 ###  DSD (Data Structure Diagram)   
-![DSD Diagram](Phase1/ERDAndDSTFiles/DSD.png)  
+![DSD Diagram](DBProject/partA/ERDAndDSTFiles/dsd.png)  
 
 ###  SQL Scripts  
 Provide the following SQL scripts:  
