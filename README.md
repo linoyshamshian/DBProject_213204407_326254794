@@ -46,7 +46,7 @@ Provide the following SQL scripts:
 
 - **Insert Data Script** - The SQL script for insert data to the database tables is available in the repository:  
 
-📜 **[View `insert_tables.sql`](DBProject/partA/Scripts/SecurityInserts)**  
+📜 **[View `insert_tables.sql`](DBProject/partA/Scripts/SecurityInserts.sql)**  
  
 - **Drop Tables Script** - The SQL script for droping all tables is available in the repository:  
 
@@ -54,7 +54,7 @@ Provide the following SQL scripts:
 
 - **Select All Data Script**  - The SQL script for selectAll tables is available in the repository:  
 
-📜 **[View `selectAll_tables.sql`](DBProject/partA/Scripts/SecuritySelectAll)**  
+📜 **[View `selectAll_tables.sql`](DBProject/partA/Scripts/SecuritySelectAll.sql)**  
   
 ###  Data  
 ####  First tool: using [mockaro](https://www.mockaroo.com/) to create csv file
