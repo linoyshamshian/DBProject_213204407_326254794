@@ -72,7 +72,9 @@ results for  the command `SELECT COUNT(*) FROM securityPerson;`:
 #####  Entering a data to shift table
 ![image](DBProject/partA/GenerateData/gen_1.png)
 ![image](DBProject/partA/GenerateData/gen_2.png)
-<br>
+<br><br>
+
+
 results for  the command `SELECT COUNT(*) FROM shift;`:
 <br>
 ![image](DBProject/partA/GenerateData/gen_3.png)
