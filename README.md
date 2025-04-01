@@ -1,9 +1,7 @@
 # DBProject_213204407_326254794
 
 
-# Security
-
-
+# Security Management Database
 
 ## Table of Contents 
 
@@ -17,27 +15,24 @@
 - [Phase 2: Integration](#phase-2-integration)  
 
 ## Phase 1: Design and Build the Database  
-
 ### Introduction
+The **Security Management Database** is designed to efficiently manage security personnel, secure areas, shifts, and incident records. This system ensures smooth operations by tracking security assignments, required security levels, and emergency incidents while maintaining a high level of organization and accessibility.
 
-The **Nursery School Database** is designed to efficiently manage information related to children, parents, nannies, and nursery groups. This system ensures smooth organization and tracking of essential details such as group assignments, caregiver experience, child-parent relationships, and contact information.
+#### **Purpose of the Database**
+This database serves as a structured and reliable solution for security organizations to:  
+- **Manage security personnel** by tracking their experience, employment details, and security levels.  
+- **Monitor secure areas** by maintaining information about locations and the required security levels.  
+- **Assign security officers to shifts** based on availability and clearance levels.  
+- **Track and record incidents** for reporting and operational improvements.  
+- **Ensure compliance** with security regulations and maintain a history of security personnel activities.  
 
-#### Purpose of the Database
-This database serves as a structured and reliable solution for nursery schools to:  
-- **Organize groups** of children based on age, availability, and special needs.  
-- **Manage caregiver assignments** by linking experienced nannies to specific groups.  
-- **Maintain parent-child relationships**, ensuring smooth communication and accessibility.  
-- **Store contact information**, including addresses, phone numbers, and emails.  
-- **Track essential details** such as children's birthdates, allergies, and caregiver experience.  
+#### **Potential Use Cases**
+- **Security Administrators** can use the database to schedule shifts, allocate personnel to secure areas, and track incidents.  
+- **Security Personnel** can check their assigned shifts, work locations, and report incidents.  
+- **Management & Investigators** can analyze security breaches, review personnel history, and generate reports on security performance.  
+- **Emergency Response Teams** can quickly access real-time data to handle security incidents efficiently.  
 
-#### Potential Use Cases
-- **Nursery School Administrators** can use this database to efficiently allocate children to groups, assign caregivers, and store emergency contacts.  
-- **Parents** can track their child's assigned group, caregiver details, and provide important information about allergies or special needs.  
-- **Nannies** can view their assigned groups and the children under their care.  
-- **Staff and Management** can use the system for record-keeping, scheduling, and communication.  
-
-This structured database helps streamline nursery school operations, improving organization, safety, and communication among all parties involved.
-
+This structured database helps streamline security operations, improving organization, compliance, and response times.
 ###  ERD (Entity-Relationship Diagram)    
 ![ERD Diagram](DBProject/partA/ERDAndDSTFiles/erd.png)  
 
