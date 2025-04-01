@@ -11,7 +11,9 @@
   - [DSD (Data Structure Diagram)](#dsd-data-structure-diagram)  
   - [SQL Scripts](#sql-scripts)  
   - [Data](#data)
-  -   [mockaroo](#First-tool:-using-[mockaro](https://www.mockaroo.com/)-to-create-csv-file)
+  - - [First tool: using Mockaroo](#first-tool-using-mockaroo-to-create-csv-file)  
+    - [Second tool: using Generatedata](#second-tool-using-generatedata-to-create-csv-file)  
+    - [Third tool: using Python](#third-tool-using-python-to-create-csv-file) 
   - [Backup](#backup)  
 - [Phase 2: Integration](#phase-2-integration)  
 
