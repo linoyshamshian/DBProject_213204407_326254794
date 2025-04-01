@@ -60,7 +60,7 @@ Provide the following SQL scripts:
 ####  First tool: using [mockaro](https://www.mockaroo.com/) to create csv file
 #####  Entering a data to securityPerson table
 📜[View `securityPerson_data.csv`](DBProject/partA/MockData/SecurityPerson.csv)
-![image](DBProject/partA/ERDAndDSTFiles/erd.png)
+![image](DBProject/partA/MockData/mock_1.png)
 
 📜 **[View `apotropusMock_data.csv`](Phase1/mockData/apotropusMOCK_DATA.csv)**
 ![image](https://github.com/user-attachments/assets/08e3b07b-c3ab-44c6-917b-f904926f6901)
