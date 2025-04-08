@@ -169,6 +169,20 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ### [Check](#check)
 
+📌 The CHECK command in SQL is used to define constraints on values in a table's columns. It ensures that the data
+    entered into the table meets specific conditions or rules.
+
+- Check 1: We checked that the security level in Area table is in the range between 1 and 5.
+![image](DBProject/partB/Checks/Checks_1.png)
+
+- Check 2: We checked the validity of the cell phone number in the Security Person table:
+   it must start with the digits 05 and must have 10 digits.
+![image](DBProject/partB/Checks/Checks_2.png)
+
+- Check 3: We checked that the takeoff time in Flight table is less than the landing time.
+![image](DBProject/partB/Checks/Checks_3.png)
+
+
   
 
 
