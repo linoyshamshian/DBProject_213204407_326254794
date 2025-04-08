@@ -1,0 +1,38 @@
+//Commit 1
+INSERT INTO SecurityPerson (SecurityPersonID, FullName, ContactInfo, SecurityLevel, EmploymentDate)
+VALUES ('123456789', 'John Doe', '0501111111', 3, '2023-04-01');
+COMMIT;
+select * from SecurityPerson where SecurityPersonID='123456789';
+ROLLBACK;
+select * from SecurityPerson where SecurityPersonID='123456789';
+
+//Commit 2
+UPDATE SecurityPerson
+SET SecurityLevel = 5
+WHERE SecurityPersonID = '123456789';
+COMMIT;
+select SecurityLevel  from SecurityPerson  where SecurityPersonID='123456789';
+
+//Rollback 1
+BEGIN;
+DELETE FROM Area
+WHERE AreaID = 402;
+ROLLBACK;
+SELECT * FROM Area WHERE AreaID = 402;
+
+//Rollback 2
+BEGIN;
+UPDATE Area
+SET AreaName = 'Updated Entrance', SecurityLevelRequired = 2
+WHERE AreaID = 402;
+ROLLBACK;
+SELECT * FROM Area WHERE AreaID = 402;
+
+
+
+
+
+
+
+
+
