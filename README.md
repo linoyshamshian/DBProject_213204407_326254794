@@ -119,3 +119,19 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 
 ## Phase 2: Integration 
+
+#### 1. **Queries**
+   - **Query 1: Finding All Shifts with Security Personnel of a Specific Security Level**  
+   
+
+     📌 **View Query**  
+     ![Query Result Image](DBProject/partB/Queries/query_result.png)
+
+#### 2. **Commit and Rollback**
+   
+#### 3. **Check**
+  
+
+
+
+
