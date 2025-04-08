@@ -127,6 +127,20 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 📌[View Queries Code](DBProject/partB/Queries/Queries)
 - Query 1: שאילתה למציאת כל המשמרות שבהן עובדים מאבטחים ברמה ביטחונית מסוימת
 ![image](DBProject/partB/Queries/Query_1.png)
+<br/>
+- Query 2:  שאילתה למציאת כל הטיסות בהן מאבטחים אחראים על טיסות, ומידע על המאבטח
+![image](DBProject/partB/Queries/Query_2.png)
+<br/>
+- Query 3: השאילתה הזו מחזירה את המידע על מאבטחים שעבדו באזורים עם רמת ביטחון גבוהה 
+                                                         כולל שם המאבטח, שם האזור, ומספר האירועים שהמאבטח היה מעורב בהם באותו האזור
+![image](DBProject/partB/Queries/Query_3.png)
+<br/>
+- Query 4: השאילתה הזו מחפשת את כל המאבטחים שעבדו באזורים שבהם התרחשו יותר מ-3 אירועים,
+                                                  סופרת את מספר האירועים לכל מאבטח בכל אזור, ומחזירה את שם המאבטח, שם האזור ומספר האירועים
+![image](DBProject/partB/Queries/Query_4.png)
+<br/>
+- Query 5: השאילתה סופרת את מספר המשמרות שביצע כל מאבטח בטווח התאריכים ומחזירה את המידע ממוין לפי מספר המשמרות
+![image](DBProject/partB/Queries/Query_5.png)
 
 
 
