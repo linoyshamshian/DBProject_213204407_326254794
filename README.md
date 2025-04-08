@@ -124,8 +124,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ## Phase 2: Integration 
 
 ### [Queries](#queries)
-  - **View Queries Code**
-     (DBProject/partB/Queries/Queries)
+[View Queries Code](DBProject/partB/Queries/Queries)
 
 ### [Commit and Rollback](#commit-and-rollback)
 
