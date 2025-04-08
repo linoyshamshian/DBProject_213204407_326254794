@@ -142,16 +142,16 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 
 ### [Commit and Rollback](#commit-and-rollback)
-<br/>
+<br>
 📌 Commit is a command used to finalize or save all the changes made during a transaction to the database.
-<br/>
+<br>
 - Commit 1: We added a new employee to the Security Person table and it was indeed saved.
 ![image](DBProject/partB/Commit_Rollback/Commit_1.png)
 - Commit 2: We updated the security level of a specific employee in the Security Person table and it was updated.
 ![image](DBProject/partB/Commit_Rollback/Commit_2.png)
-<br/>
+<br>
 📌 Rollback is a command used to undo or cancel all changes made during a transaction if something goes wrong.
-<br/>
+<br>
 
 ### [Check](#check)
 
