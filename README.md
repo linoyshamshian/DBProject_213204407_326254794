@@ -18,7 +18,7 @@
 - [Phase 2: Integration](#phase-2-integration)
    - [Queries](#queries)
   - [Commit and Rollback](#commit-and-rollback)
-  - [Check](#check)
+  - [Checks](#checks)
 
 ## Phase 1: Design and Build the Database  
 ### Introduction
@@ -167,10 +167,12 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ![image](DBProject/partB/Commit_Rollback/RollBack_2.png)
 
 
-### [Check](#check)
+### [Checks](#checks)
 
 📌 The CHECK command in SQL is used to define constraints on values in a table's columns. It ensures that the data
     entered into the table meets specific conditions or rules.
+
+📌[View Checks Code](DBProject/partB/Checks/Checks)
 
 - Check 1: We checked that the security level in Area table is in the range between 1 and 5.
 ![image](DBProject/partB/Checks/Checks_1.png)
