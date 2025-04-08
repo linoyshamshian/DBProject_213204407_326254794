@@ -159,6 +159,12 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 📌 Rollback is a command used to undo or cancel all changes made during a transaction if something goes wrong.
 
+- RallBack 1: We deleted one area from the Area table and then rolled back and it was not deleted.
+![image](DBProject/partB/Commit_Rollback/RollBack_1.png)
+
+- RallBack 2: We updated an area name in the Area table and then rolled back and it was not updated.
+![image](DBProject/partB/Commit_Rollback/RollBack_2.png)
+
 
 ### [Check](#check)
 
