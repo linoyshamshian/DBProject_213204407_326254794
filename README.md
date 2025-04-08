@@ -126,11 +126,11 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ---
 
-## Queries
+# Queries
 
-## Commit and Rollback
+# Commit and Rollback
 
-## Check
+# Check
 
   
 
