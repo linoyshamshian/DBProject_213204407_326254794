@@ -123,9 +123,6 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ## Phase 2: Integration 
 
-#### 1. **[Queries](#queries)**
-#### 2. **[Commit and Rollback](#commit-and-rollback)**
-#### 3. **[Check](#check)**
 
 ---
 
