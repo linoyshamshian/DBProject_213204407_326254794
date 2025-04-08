@@ -124,11 +124,11 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ## Phase 2: Integration 
 
 
-  #Queries
+  # Queries
   
-  #Commit and Rollback
+  # Commit and Rollback
   
-  #Check
+  # Check
 
   
 
