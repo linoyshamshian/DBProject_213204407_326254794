@@ -15,7 +15,10 @@
     - [Second tool: using Generatedata](#second-tool-using-generatedata-to-create-csv-file)  
     - [Third tool: using Python](#third-tool-using-python-to-create-csv-file) 
   - [Backup](#backup)  
-- [Phase 2: Integration](#phase-2-integration)  
+- [Phase 2: Integration](#phase-2-integration)
+   - [Queries](#queries)
+  - [Commit and Rollback](#commit-and-rollback)
+  - [Check](#check)
 
 ## Phase 1: Design and Build the Database  
 ### Introduction
@@ -120,16 +123,10 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ## Phase 2: Integration 
 
-#### 1. **Queries**
-   - **Query 1: Finding All Shifts with Security Personnel of a Specific Security Level**  
-   
+#### 1. **[Queries](#queries)**
+#### 2. **[Commit and Rollback](#commit-and-rollback)**
+#### 3. **[Check](#check)**
 
-     📌 **View Query**  
-     ![Query Result Image](DBProject/partB/Queries/query_result.png)
-
-#### 2. **Commit and Rollback**
-   
-#### 3. **Check**
   
 
 
