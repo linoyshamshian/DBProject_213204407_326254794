@@ -124,7 +124,9 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ## Phase 2: Integration 
 
 ### [Queries](#queries)
-[View Queries Code](DBProject/partB/Queries/Queries)
+📌[View Queries Code](DBProject/partB/Queries/Queries)
+- Query 1: שאילתה למציאת כל המשמרות שבהן עובדים מאבטחים ברמה ביטחונית מסוימת
+
 
 ### [Commit and Rollback](#commit-and-rollback)
 
