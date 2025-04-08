@@ -123,12 +123,11 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ## Phase 2: Integration 
 
+### [Queries](#queries)
 
-  # Queries
-  
-  # Commit and Rollback
-  
-  # Check
+### [Commit and Rollback](#commit-and-rollback)
+
+### [Check](#check)
 
   
 
