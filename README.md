@@ -126,7 +126,6 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ### [Queries](#queries)
 📌[View Queries Code](DBProject/partB/Queries/Queries)
 - Query 1: שאילתה למציאת כל המשמרות שבהן עובדים מאבטחים ברמה ביטחונית מסוימת
-<br/>
 ![image](DBProject/partB/Queries/Query_1.png)
 
 
