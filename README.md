@@ -19,6 +19,7 @@
    - [Queries](#queries)
   - [Commit and Rollback](#commit-and-rollback)
   - [Checks](#checks)
+  - [Backup](#backup)
 
 ## Phase 1: Design and Build the Database  
 ### Introduction
@@ -192,6 +193,13 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 - Check 3: We checked that the takeoff time in Flight table is less than the landing time.
 ![image](DBProject/partB/Checks/Checks_3.png)
+
+
+### [Backup](#backup)
+
+-   backups files are kept with the date and hour of the backup:  
+
+[go to backups](DBProject/partB/Backup)
 
 
   
