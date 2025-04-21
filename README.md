@@ -14,12 +14,12 @@
     - [First tool: using Mockaroo](#first-tool-using-mockaro-to-create-csv-file) 
     - [Second tool: using Generatedata](#second-tool-using-generatedata-to-create-csv-file)  
     - [Third tool: using Python](#third-tool-using-python-to-create-csv-file) 
-  - [Backup](#backup)  
+  - [Backup](#backup_1)  
 - [Phase 2: Integration](#phase-2-integration)
    - [Queries](#queries)
   - [Commit and Rollback](#commit-and-rollback)
   - [Checks](#checks)
-  - [Backup](#backup)
+  - [Backup](#backup_2)
 
 ## Phase 1: Design and Build the Database  
 ### Introduction
@@ -195,7 +195,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ![image](DBProject/partB/Checks/Checks_3.png)
 
 
-### [Backup](#backup)
+### [Backup](#backup_2)
 
 -   backups files are kept with the date and hour of the backup:  
 
