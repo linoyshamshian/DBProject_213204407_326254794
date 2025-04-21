@@ -143,6 +143,15 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 - Query 5: השאילתה סופרת את מספר המשמרות שביצע כל מאבטח בטווח התאריכים ומחזירה את המידע ממוין לפי מספר המשמרות
 ![image](DBProject/partB/Queries/Query_5.png)
 
+- Query 6: השאילתה סופרת את מספר האירועים בכל חודש ושנה
+![image](DBProject/partB/Queries/Query_6.png)
+
+- Query 7: השאילתה מחזירה את שמות המאבטחים שהיו מעורבים באירועים מסוג מסוים
+![image](DBProject/partB/Queries/Query_7.png)
+
+- Query 8: השאילתה סופרת את מספר הטיסות שכל איש אבטחה איבטח
+![image](DBProject/partB/Queries/Query_8.png)
+
 
 
 
