@@ -1,4 +1,4 @@
-select * from Area;
+SELECT * from Area;
 SELECT * FROM Shifts;
 SELECT * FROM Incident;
 SELECT * FROM Flight;
