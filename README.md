@@ -216,7 +216,9 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
    ![image]( DBProject/partC/ERDandDSDfiles/dsdFlight.png)
   
 
-2. **ERD של האגף השני**  
+2. **ERD של האגף השני**
+
+   מתוך ה-DSD שיחזרנו את תרשים ה-ERD באמצעות הינדוס לאחור.
    מתוך ה-DSD שיחזרנו את תרשים ה-ERD באמצעות הינדוס לאחור.
  ![image]( DBProject/partC/ERDandDSDfiles/erdFlight.png)
 4. **ERD משולב**
@@ -230,7 +232,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
    את שלבי האיחוד והשינויים נציג בהמשך בפירוט בעת הצגת קובץ `Integrate.sql`.
 
  ![image]( DBProject/partC/ERDandDSDfiles/combinedErd.png)
-5. **DSD משולב**  
+4. **DSD משולב** 
+
    ייצרנו תרשים מבנה נתונים (DSD) מתוך המערכת החדשה לאחר השינויים, הכולל את כל הישויות והקשרים המעודכנים.
     ![image]( DBProject/partC/ERDandDSDfiles/combinedDsd.png)
     בנוסף, יצרנו את ה-ERD המשותף מתוך התוכנה.
