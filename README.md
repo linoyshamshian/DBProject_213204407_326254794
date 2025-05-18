@@ -21,10 +21,7 @@
   - [Checks](#checks)
   - [Backup_2](#backup_2)
 - [Phase 3: Integration](#phase-3-integration)
-   - [Queries](#queries)
-  - [Commit and Rollback](#commit-and-rollback)
-  - [Checks](#checks)
-  - [Backup_2](#backup_2)
+  
 
 ## Phase 1: Design and Build the Database  
 ### Introduction
@@ -206,8 +203,44 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 [go to backups](DBProject/partB/Backup)
 
+## Phase 3: Integration and Views
 
-  
+### Introduction
+
+בשלב זה ביצענו אינטגרציה בין המערכת שפיתחנו לבין מערכת נוספת של קבוצה אחרת. המטרה הייתה לשלב את בסיסי הנתונים בצורה לוגית ופיזית לכדי בסיס נתונים משותף, תוך כדי שמירה על תקינות הנתונים והקשרים.
+
+### Process Overview
+
+1. **DSD של האגף השני**  
+   קיבלנו קובץ גיבוי של בסיס נתונים מקבוצה אחרת ומתוכו הפקנו את תרשים מבנה הנתונים (DSD).
+
+2. **ERD של האגף השני**  
+   מתוך ה-DSD שיחזרנו את תרשים ה-ERD באמצעות הינדוס לאחור.
+
+3. **ERD משולב**  
+   עיצבנו תרשים ERD משולב המשלב את שני הארגונים בצורה לוגית, לאחר שקיבלנו החלטות עיצוביות כיצד לבצע את השילוב.
+
+4. **DSD משולב**  
+   ייצרנו תרשים מבנה נתונים (DSD) מתוך המערכת החדשה לאחר השינויים, הכולל את כל הישויות והקשרים המעודכנים.
+
+5. **שינויים בבסיס הנתונים (Integrate.sql)**  
+   לא יצרנו מחדש את הטבלאות – השתמשנו בטבלאות הקיימות והשתמשנו בפקודות `ALTER TABLE`, `UPDATE`, ו-`DROP COLUMN` כדי להתאים את המבנה ל־ERD החדש.  
+   לדוגמה:
+   - המרה של המפתח הראשי של Person מ־passportNumber ל־PersonID
+   - עדכון כל הטבלאות התלויות לשימוש ב־PersonID
+   - הסרת שדות מיותרים כמו `passportNumber` ו־`numberPhone`
+   - עדכון סוגי שדות ושמות עמודות (`Name_` ל־`FullName`, `Birthday` ל־`EmploymentDate`)
+
+6. **קובץ Views.sql**  
+   יצירת מבטים (views) בהתאם לדרישות החדשות ולצרכים של שילוב הנתונים.
+
+7. **קובץ גיבוי מעודכן**  
+   ייצאנו קובץ גיבוי חדש בשם `backup3` המכיל את בסיס הנתונים לאחר האינטגרציה.
+
+8. **דוח שלב ג**  
+   קובץ דוח עם הסברים, החלטות ותמונות של כל התרשימים.
+
+
 
 
 
