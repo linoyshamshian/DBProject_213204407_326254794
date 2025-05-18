@@ -15,7 +15,12 @@
     - [Second tool: using Generatedata](#second-tool-using-generatedata-to-create-csv-file)  
     - [Third tool: using Python](#third-tool-using-python-to-create-csv-file) 
   - [Backup_1](#backup_1)  
-- [Phase 2: Integration](#phase-2-integration)
+- [Phase 2: Queries](#phase-2-queries)
+   - [Queries](#queries)
+  - [Commit and Rollback](#commit-and-rollback)
+  - [Checks](#checks)
+  - [Backup_2](#backup_2)
+- [Phase 3: Integration](#phase-3-integration)
    - [Queries](#queries)
   - [Commit and Rollback](#commit-and-rollback)
   - [Checks](#checks)
@@ -122,7 +127,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 
 
-## Phase 2: Integration 
+## Phase 2: Queries 
 
 ### [Queries](#queries)
 📌[View Queries Code](DBProject/partB/Queries/Queries)
