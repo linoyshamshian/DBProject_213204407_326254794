@@ -211,20 +211,23 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ### Process Overview
 
-1. **DSD של האגף השני**  
-   קיבלנו קובץ גיבוי של בסיס נתונים מקבוצה אחרת ומתוכו הפקנו את תרשים מבנה הנתונים (DSD).
+1. **DSD של האגף השני**
+   קיבלנו קובץ גיבוי של בסיס נתונים מקבוצה אחרת ומתוכו הפקנו את תרשים מבנה הנתונים.
    ![image]( DBProject/partC/ERDandDSDfiles/dsdFlight.png)
   
 
-3. **ERD של האגף השני**  
+2. **ERD של האגף השני**  
    מתוך ה-DSD שיחזרנו את תרשים ה-ERD באמצעות הינדוס לאחור.
-
+ ![image]( DBProject/partC/ERDandDSDfiles/erdFlight.png)
 4. **ERD משולב**  
    עיצבנו תרשים ERD משולב המשלב את שני הארגונים בצורה לוגית, לאחר שקיבלנו החלטות עיצוביות כיצד לבצע את השילוב.
    
-
+ ![image]( DBProject/partC/ERDandDSDfiles/combinedErd.png)
 5. **DSD משולב**  
    ייצרנו תרשים מבנה נתונים (DSD) מתוך המערכת החדשה לאחר השינויים, הכולל את כל הישויות והקשרים המעודכנים.
+    ![image]( DBProject/partC/ERDandDSDfiles/combinedDsd.png)
+    בנוסף, יצרנו את ה-ERD המשותף מתוך התוכנה.
+      ![image]( DBProject/partC/ERDandDSDfiles/combinedDsdFromPostgres.png)
 
 6. **שינויים בבסיס הנתונים (Integrate.sql)**  
    לא יצרנו מחדש את הטבלאות – השתמשנו בטבלאות הקיימות והשתמשנו בפקודות `ALTER TABLE`, `UPDATE`, ו-`DROP COLUMN` כדי להתאים את המבנה ל־ERD החדש.  
