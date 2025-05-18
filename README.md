@@ -21,9 +21,10 @@
   - [Checks](#checks)
   - [Backup_2](#backup_2)
 - [Phase 3: Integration](#phase-3-integration)
-- - [ה-DSD של האגף השני](#ה-DSD-של-האגף-השני-1)
-  - [Commit and Rollback](#commit-and-rollback)
-  - [Checks](#checks)
+- - [ה-DSD של האגף השני](#ה-DSD-של-האגף-השני)
+  - [ה-ERD של האגף השני](#ה-ERD-של-האגף-השני)
+  - [ה-ERD המשולב](#ה-ERD-המשולב)
+  - 
   - [Backup_2](#backup_2)
 ## Phase 1: Design and Build the Database  
 ### Introduction
@@ -219,11 +220,11 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
    ![image]( DBProject/partC/ERDandDSDfiles/dsdFlight.png)
   
 
-2. **ה-ERD של האגף השני**
+### **ה-ERD של האגף השני**
 
    מתוך ה-DSD שיחזרנו את תרשים ה-ERD באמצעות הינדוס לאחור.
  ![image]( DBProject/partC/ERDandDSDfiles/erdFlight.png)
-3. **ה-ERD המשולב**
+### **ה-ERD המשולב**
 
    עיצבנו תרשים ERD משולב המשלב את שני הארגונים בצורה לוגית, לאחר שקיבלנו החלטות עיצוביות כיצד לבצע את השילוב.
     בין היתר ביצענו את השינויים הבאים:
@@ -242,7 +243,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
     בנוסף, יצרנו את ה-ERD המשותף מתוך התוכנה.
       ![image]( DBProject/partC/ERDandDSDfiles/combinedDsdFromPostgres.png)
 
-5. **שינויים בבסיס הנתונים (Integrate.sql)**  
+### **שינויים בבסיס הנתונים (Integrate.sql)**  
    לא יצרנו מחדש את הטבלאות – השתמשנו בטבלאות הקיימות והשתמשנו בפקודות `ALTER TABLE`, `UPDATE`, ו-`DROP COLUMN` כדי להתאים את המבנה ל־ERD החדש.  
    
 
@@ -307,13 +308,13 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 - מחיקת טבלת Flight1 – טבלה זו הפכה מיותרת לאחר העברת כל הנתונים.
 - שינוי שם טבלת OUR_FLIGHT ל־FLIGHT – לשם קצר וברור יותר.
 
-6. **קובץ Views.sql**  
+### **קובץ Views.sql**  
    יצירת מבטים (views) בהתאם לדרישות החדשות ולצרכים של שילוב הנתונים.
 
-7. **קובץ גיבוי מעודכן**  
+### **קובץ גיבוי מעודכן**  
    ייצאנו קובץ גיבוי חדש בשם `backup3` המכיל את בסיס הנתונים לאחר האינטגרציה.
 
-8. **דוח שלב ג**  
+### **דוח שלב ג**  
    קובץ דוח עם הסברים, החלטות ותמונות של כל התרשימים.
 
 
