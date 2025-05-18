@@ -260,7 +260,9 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 -  עדכנו את כל הטבלאות המקושרות הנוספות (כמו `Has`, `ServedBy`, `FlownBy`, `Recive`, `Give`, ועוד) כך שישתמשו ב־`PersonID` במקום `passportNumber`, תוך שמירה על תקינות של קשרים זרים.
 -  מחקנו את העמודה `passportNumber` מטבלת `Person`, כך שלא תהיה כפילות.
 -  קבענו שערך `EmploymentDate` יהיה `NULL` עבור נוסעים (שלא נחשבים עובדים בארגון), ועדכנו אותו בהתאם. בנוסף, הסרנו עמודות מיותרות כמו `numberPhone` מהטבלה `FlightAttendant`.
+
 📌 [View `part1`](DBProject/partC/IntegrateSql/part1_Integrate_from_person)
+
 לאחר שסיימנו להמיר את Person ולהתאים את כל הטבלאות לתמוך ב-PersonID כמפתח הראשי, בשלב הבא התמקדנו בהורשת SecurityPerson מ-Person כדי לאחד את המידע ולשפר את מבנה בסיס הנתונים.
 
 הסבר על התהליך של הורשת SecurityPerson מ-Person:
@@ -275,6 +277,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 - מוחקים את עמודות SecurityPersonID הישנות מטבלאות התלויות.
 - מוחקים עמודות מיותרות בטבלת SecurityPerson — כולל FullName, EmploymentDate ו-SecurityPersonID — כי הן כבר בטבלת Person.
  
+ 📌 [View `part2`](DBProject/partC/IntegrateSql/part2_Implement_inheritance)
+
 חלק מההתאמות למבנה החדש, איחדנו את הטבלאות הרבות המקשרות בין עובדים שונים לטיסה לטבלה בשם PersonInFlight, כדי לנהל בצורה גמישה וברורה יותר את כל התפקידים של אנשים בטיסה.
 -מוסיפים לטבלה Has עמודת Role שמייצגת את תפקיד האדם בטיסה, עם ערך ברירת מחדל 'Passenger'.
 - משנים את עמודת AirplaneClass בטבלה Has כך שתוכל לקבל ערך NULL, כלומר תהיה אופציונלית.
@@ -285,6 +289,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 - מוחקים את הטבלאות הישנות ServedBy ו-FlownBy שהפכו מיותרות.
 - משנים את שם הטבלה Has ל-PersonInFlight כדי לשפר את הבהירות והקריאות של הטבלה.
 
+ 📌 [View `part3`](DBProject/partC/IntegrateSql/part3_MergingThreeConnectors)
+ 
 כעת אנחנו רוצות לאחד את טבלאות flight
 - הוספת עמודת FlightId לטבלת OUR_FLIGHT – הוספנו עמודה חדשה שתשמש כמפתח ראשי ייחודי מסוג INTEGER.
 - קביעת ערך התחלתי לעמודת FlightId בהתבסס על טבלת Flight1 – מצאנו את המספר הגבוה ביותר של FlightId בטבלה Flight1 כדי לקבוע את הערך הבא שיוקצה.
@@ -311,6 +317,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 - מחיקת טבלת Flight1 – טבלה זו הפכה מיותרת לאחר העברת כל הנתונים.
 - שינוי שם טבלת OUR_FLIGHT ל־FLIGHT – לשם קצר וברור יותר.
 
+ 📌 [View `part4`](DBProject/partC/IntegrateSql/part4_mergingFlightTables)
+ 
 ### **קובץ Views.sql**  
    יצירת מבטים (views) בהתאם לדרישות החדשות ולצרכים של שילוב הנתונים.
 
