@@ -21,10 +21,13 @@
   - [Checks](#checks)
   - [Backup_2](#backup_2)
 - [Phase 3: Integration](#phase-3-integration)
-- - [ה-DSD של האגף השני](#ה-DSD-של-האגף-השני)
+  - [ה-DSD של האגף השני](#ה-DSD-של-האגף-השני)
   - [ה-ERD של האגף השני](#ה-ERD-של-האגף-השני)
   - [ה-ERD המשולב](#ה-ERD-המשולב)
-  - 
+  - [ה-DSD המשולב](#ה-DSD-המשולב)
+  - [שינויים בבסיס הנתונים](#שינויים-בבסיס-הנתונים)
+  - [גיבוי 3](#גיבוי-3)
+   
   - [Backup_2](#backup_2)
 ## Phase 1: Design and Build the Database  
 ### Introduction
@@ -236,14 +239,14 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
    את שלבי האיחוד והשינויים נציג בהמשך בפירוט בעת הצגת קובץ `Integrate.sql`.
 
  ![image]( DBProject/partC/ERDandDSDfiles/combinedErd.png)
-4. **DSD משולב** 
+### **ה-DSD המשולב** 
 
    ייצרנו תרשים מבנה נתונים (DSD) מתוך המערכת החדשה לאחר השינויים, הכולל את כל הישויות והקשרים המעודכנים.
     ![image]( DBProject/partC/ERDandDSDfiles/combinedDsd.png)
     בנוסף, יצרנו את ה-ERD המשותף מתוך התוכנה.
       ![image]( DBProject/partC/ERDandDSDfiles/combinedDsdFromPostgres.png)
 
-### **שינויים בבסיס הנתונים (Integrate.sql)**  
+### **שינויים בבסיס הנתונים**  
    לא יצרנו מחדש את הטבלאות – השתמשנו בטבלאות הקיימות והשתמשנו בפקודות `ALTER TABLE`, `UPDATE`, ו-`DROP COLUMN` כדי להתאים את המבנה ל־ERD החדש.  
    
 
@@ -257,7 +260,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 -  עדכנו את כל הטבלאות המקושרות הנוספות (כמו `Has`, `ServedBy`, `FlownBy`, `Recive`, `Give`, ועוד) כך שישתמשו ב־`PersonID` במקום `passportNumber`, תוך שמירה על תקינות של קשרים זרים.
 -  מחקנו את העמודה `passportNumber` מטבלת `Person`, כך שלא תהיה כפילות.
 -  קבענו שערך `EmploymentDate` יהיה `NULL` עבור נוסעים (שלא נחשבים עובדים בארגון), ועדכנו אותו בהתאם. בנוסף, הסרנו עמודות מיותרות כמו `numberPhone` מהטבלה `FlightAttendant`.
-
+📌 [View `part1`](DBProject/partC/IntegrateSql/part1_Integrate_from_person)
 לאחר שסיימנו להמיר את Person ולהתאים את כל הטבלאות לתמוך ב-PersonID כמפתח הראשי, בשלב הבא התמקדנו בהורשת SecurityPerson מ-Person כדי לאחד את המידע ולשפר את מבנה בסיס הנתונים.
 
 הסבר על התהליך של הורשת SecurityPerson מ-Person:
@@ -311,7 +314,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ### **קובץ Views.sql**  
    יצירת מבטים (views) בהתאם לדרישות החדשות ולצרכים של שילוב הנתונים.
 
-### **קובץ גיבוי מעודכן**  
+### **גיבוי 3**  
    ייצאנו קובץ גיבוי חדש בשם `backup3` המכיל את בסיס הנתונים לאחר האינטגרציה.
 
 ### **דוח שלב ג**  
