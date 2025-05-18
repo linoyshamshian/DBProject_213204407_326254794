@@ -21,8 +21,10 @@
   - [Checks](#checks)
   - [Backup_2](#backup_2)
 - [Phase 3: Integration](#phase-3-integration)
-  
-
+- - [ה-DSD של האגף השני](#ה-DSD-של-האגף-השני-1)
+  - [Commit and Rollback](#commit-and-rollback)
+  - [Checks](#checks)
+  - [Backup_2](#backup_2)
 ## Phase 1: Design and Build the Database  
 ### Introduction
 The **Security Management Database** is designed to efficiently manage security personnel, secure areas, shifts, and incident records. This system ensures smooth operations by tracking security assignments, required security levels, and emergency incidents while maintaining a high level of organization and accessibility.
@@ -211,7 +213,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ### Process Overview
 
-1. **ה-DSD של האגף השני**
+### **ה-DSD של האגף השני** (1)
 
 קיבלנו קובץ גיבוי של בסיס נתונים מקבוצה אחרת ומתוכו הפקנו את תרשים מבנה הנתונים.
    ![image]( DBProject/partC/ERDandDSDfiles/dsdFlight.png)
@@ -222,6 +224,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
    מתוך ה-DSD שיחזרנו את תרשים ה-ERD באמצעות הינדוס לאחור.
  ![image]( DBProject/partC/ERDandDSDfiles/erdFlight.png)
 3. **ה-ERD המשולב**
+
    עיצבנו תרשים ERD משולב המשלב את שני הארגונים בצורה לוגית, לאחר שקיבלנו החלטות עיצוביות כיצד לבצע את השילוב.
     בין היתר ביצענו את השינויים הבאים:
    - איחדנו שתי טבלאות `Flight` שהופיעו אצל כל קבוצה, תוך שמירה על שדות רלוונטיים מכל אחת וביטול כפילויות.
