@@ -219,7 +219,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 2. **ERD של האגף השני**  
    מתוך ה-DSD שיחזרנו את תרשים ה-ERD באמצעות הינדוס לאחור.
  ![image]( DBProject/partC/ERDandDSDfiles/erdFlight.png)
-4. **ERD משולב**  
+4. **ERD משולב**
+<div dir="rtl">  
    עיצבנו תרשים ERD משולב המשלב את שני הארגונים בצורה לוגית, לאחר שקיבלנו החלטות עיצוביות כיצד לבצע את השילוב.
     בין היתר ביצענו את השינויים הבאים:
    - איחדנו שתי טבלאות `Flight` שהופיעו אצל כל קבוצה, תוך שמירה על שדות רלוונטיים מכל אחת וביטול כפילויות.
@@ -228,6 +229,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
    - הוספנו עמודת "תחילת עבודה" (EmploymentDate) בישות `Person` כדי לייצג את תאריך ההתחלה של מאבטחים, והסרנו את אותה עמודה מ־`SecurityPerson`.
    
    את שלבי האיחוד והשינויים נציג בהמשך בפירוט בעת הצגת קובץ `Integrate.sql`.
+</div>
  ![image]( DBProject/partC/ERDandDSDfiles/combinedErd.png)
 5. **DSD משולב**  
    ייצרנו תרשים מבנה נתונים (DSD) מתוך המערכת החדשה לאחר השינויים, הכולל את כל הישויות והקשרים המעודכנים.
