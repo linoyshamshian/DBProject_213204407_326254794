@@ -1,0 +1,76 @@
+--============== STEP 1: Add PersonID column to SecurityPerson ==============
+ALTER TABLE SecurityPerson ADD COLUMN PersonID INTEGER;
+
+--============== STEP 2: Insert into Person table based on SecurityPerson ==============
+
+
+INSERT INTO Person (FullName, Mail, EmploymentDate)
+SELECT sp.FullName,
+       LOWER(REPLACE(sp.FullName, ' ', '_')) || '@gmail.com',
+       sp.EmploymentDate
+FROM SecurityPerson sp;
+
+--============== STEP 3: Update PersonID in SecurityPerson based on FullName and Mail ==============
+UPDATE SecurityPerson
+SET PersonID = p.PersonID
+FROM Person p
+WHERE p.FullName = SecurityPerson.FullName
+  AND p.Mail = LOWER(REPLACE(SecurityPerson.FullName, ' ', '_')) || '@gmail.com';
+
+--============== STEP 4: Update referencing tables with PersonID ==============
+
+--=== Assigment ===
+ALTER TABLE Assigment ADD COLUMN PersonID INTEGER;
+UPDATE Assigment
+SET PersonID = sp.PersonID
+FROM SecurityPerson sp
+WHERE Assigment.SecurityPersonID = sp.SecurityPersonID;
+
+--=== flight1 ===
+ALTER TABLE flight1 ADD COLUMN PersonID INTEGER;
+UPDATE flight1
+SET PersonID = sp.PersonID
+FROM SecurityPerson sp
+WHERE flight1.SecurityPersonID = sp.SecurityPersonID;
+
+--=== Incident_Has_SecurityPerson ===
+ALTER TABLE Incident_Has_SecurityPerson ADD COLUMN PersonID INTEGER;
+UPDATE Incident_Has_SecurityPerson
+SET PersonID = sp.PersonID
+FROM SecurityPerson sp
+WHERE Incident_Has_SecurityPerson.SecurityPersonID = sp.SecurityPersonID;
+
+--============== STEP 5: Remove existing foreign keys referencing SecurityPersonID ==============
+ALTER TABLE Assigment DROP CONSTRAINT IF EXISTS assigment_securitypersonid_fkey;
+ALTER TABLE flight1 DROP CONSTRAINT IF EXISTS flight_securitypersonid_fkey;
+ALTER TABLE Incident_Has_SecurityPerson DROP CONSTRAINT IF EXISTS incident_has_securityperson_securitypersonid_fkey;
+
+--============== STEP 6: Drop old PK (SecurityPersonID) to allow PersonID to become PK ==============
+ALTER TABLE SecurityPerson DROP CONSTRAINT IF EXISTS securityperson_pkey;
+
+--============== STEP 7: Set PersonID as new primary key in SecurityPerson ==============
+ALTER TABLE SecurityPerson ADD CONSTRAINT securityperson_pkey PRIMARY KEY (PersonID);
+-----------------------------
+ALTER TABLE SecurityPerson ADD CONSTRAINT fk_securityperson_person
+FOREIGN KEY (PersonID) REFERENCES Person(PersonID);
+
+--============== STEP 8: Add foreign keys from related tables to new PK ==============
+ALTER TABLE Assigment ADD CONSTRAINT assigment_personid_fkey FOREIGN KEY (PersonID) REFERENCES Person(PersonID);
+ALTER TABLE flight1 ADD CONSTRAINT flight1_personid_fkey FOREIGN KEY (PersonID) REFERENCES SecurityPerson(PersonID);
+ALTER TABLE Incident_Has_SecurityPerson ADD CONSTRAINT incident_has_securityperson_personid_fkey FOREIGN KEY (PersonID) REFERENCES SecurityPerson(PersonID);
+
+--============== STEP 9: Clean up old SecurityPersonID columns from child tables ==============
+ALTER TABLE Assigment DROP COLUMN SecurityPersonID;
+ALTER TABLE flight1 DROP COLUMN SecurityPersonID;
+ALTER TABLE Incident_Has_SecurityPerson DROP COLUMN SecurityPersonID;
+
+
+--============== STEP 10: Drop redundant columns ==============
+
+-- Drop FullName and EmploymentDate from SecurityPerson since it now inherits from Person
+ALTER TABLE SecurityPerson DROP COLUMN FullName;
+ALTER TABLE SecurityPerson DROP COLUMN EmploymentDate;
+
+-- Drop SecurityPersonID from SecurityPerson since PersonID is now the PK
+ALTER TABLE SecurityPerson DROP COLUMN SecurityPersonID;
+

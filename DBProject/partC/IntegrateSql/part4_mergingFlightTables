@@ -1,0 +1,208 @@
+-- =======================================================================
+-- Step 1: Add the column 'FlightId' to the Flight table 
+-- =======================================================================
+ALTER TABLE OUR_FLIGHT ADD COLUMN FlightId INTEGER;
+
+-- =======================================================================
+-- Step 2: Get the maximum FlightId from Flight1 table to determine the next available FlightId
+-- =======================================================================
+DO $$
+DECLARE
+  start_id INTEGER;
+BEGIN
+  SELECT COALESCE(MAX(FlightId), 0) + 1 INTO start_id FROM Flight1;
+  -- =======================================================================
+  -- Step 3: Create a sequence that starts from the next available FlightId
+  -- =======================================================================
+  EXECUTE format('CREATE SEQUENCE flight_id_seq START WITH %s', start_id);
+END $$;
+
+-- =======================================================================
+-- Step 4: Update the Flight table to set FlightId using the sequence created
+-- =======================================================================
+UPDATE OUR_FLIGHT
+SET FlightId = nextval('flight_id_seq');
+
+-- =======================================================================
+-- Step 5: Add FlightID column to Relationship and PersonInFlight tables
+-- =======================================================================
+ALTER TABLE Relationship ADD COLUMN FlightID INT;
+ALTER TABLE PersonInFlight ADD COLUMN FlightID INT;
+
+-- =======================================================================
+-- Step 6: Update the newly added FlightID column in Relationship and PersonInFlight
+-- using the corresponding FlightId from the Flight table
+-- =======================================================================
+UPDATE Relationship r
+SET FlightID = f.FlightID
+FROM OUR_FLIGHT f
+WHERE r.FlightNumber = f.FlightNumber;
+
+UPDATE PersonInFlight p
+SET FlightID = f.FlightID
+FROM OUR_FLIGHT f
+WHERE p.FlightNumber = f.FlightNumber;
+
+-- =======================================================================
+-- Step 7: Drop the old foreign key constraints 
+-- =======================================================================
+ALTER TABLE Relationship DROP CONSTRAINT IF EXISTS relationship_flightnumber_fkey;
+ALTER TABLE PersonInFlight DROP CONSTRAINT IF EXISTS personinflight_flightnumber_fkey;
+
+-- =======================================================================
+-- Step 8: Drop the old FlightNumber column from Relationship and PersonInFlight
+-- =======================================================================
+ALTER TABLE Relationship DROP COLUMN FlightNumber;
+ALTER TABLE PersonInFlight DROP COLUMN FlightNumber;
+
+-- =======================================================================
+-- Step 9: Set FlightId as the new primary key for the Flight table
+-- =======================================================================
+ALTER TABLE OUR_FLIGHT DROP CONSTRAINT IF EXISTS flight_pkey;
+ALTER TABLE OUR_FLIGHT ADD CONSTRAINT flight_pkey PRIMARY KEY (FlightID);
+
+-- =======================================================================
+-- Step 10: Add the new foreign key constraint for FlightID
+-- =======================================================================
+ALTER TABLE Relationship ADD CONSTRAINT relationship_flightid_fkey FOREIGN KEY (FlightID) REFERENCES OUR_FLIGHT(FlightID);
+ALTER TABLE PersonInFlight ADD CONSTRAINT personinflight_flightid_fkey FOREIGN KEY (FlightID) REFERENCES OUR_FLIGHT(FlightID);
+
+
+-- =======================================================================
+-- Step 11: Add FlightSource and FlightDestination columns to Flight table
+-- =======================================================================
+ALTER TABLE OUR_FLIGHT ADD COLUMN FlightSource VARCHAR(30);
+ALTER TABLE OUR_FLIGHT ADD COLUMN FlightDestination VARCHAR(30);
+
+
+-- =======================================================================
+-- Step 12: Drop *unnecessary* columns from Flight table
+-- =======================================================================
+ALTER TABLE OUR_FLIGHT
+DROP COLUMN IF EXISTS FlightNumber,
+DROP COLUMN IF EXISTS Origin_DestinationType,
+DROP COLUMN IF EXISTS City;
+
+
+-- =======================================================================
+-- Step 13: Update the FlightSource column with values from the 'country' column
+-- =======================================================================
+UPDATE OUR_FLIGHT SET flightsource = country;
+
+-- =======================================================================
+-- Step 14: Drop the 'country' column after updating FlightSource
+-- =======================================================================
+ALTER TABLE OUR_FLIGHT DROP COLUMN country;
+
+-- =======================================================================
+-- Step 15: Add 'personId' column to the Flight table for a foreign key constraint
+-- =======================================================================
+ALTER TABLE OUR_FLIGHT ADD COLUMN personId INTEGER;
+
+-- =======================================================================
+-- Step 16: Add a foreign key constraint for 'personId' referencing the 'securityPerson' table
+-- =======================================================================
+ALTER TABLE OUR_FLIGHT
+ADD CONSTRAINT fk_person
+FOREIGN KEY (personId)
+REFERENCES securityPerson(personId);
+
+-- =======================================================================
+-- Step 17: Add random FlightDestination from a predefined list, ensuring it doesn't match the source
+-- =======================================================================
+WITH destinations AS (
+  SELECT unnest(ARRAY['Tel Aviv', 'New York', 'Paris', 'London', 'Barcelona']) AS city
+),
+random_dest AS (
+  SELECT f.FlightId,
+         (SELECT city FROM destinations
+          WHERE city <> f.flightsource
+          ORDER BY random()
+          LIMIT 1) AS random_city
+  FROM OUR_FLIGHT f
+)
+UPDATE OUR_FLIGHT
+SET flightDestination = random_dest.random_city
+FROM random_dest
+WHERE OUR_FLIGHT.FlightId = random_dest.FlightId;
+
+-- =======================================================================
+-- Step 18: Allow AirlineID to be NULL (remove NOT NULL constraint)
+-- =======================================================================
+ALTER TABLE OUR_FLIGHT ALTER COLUMN AirlineID DROP NOT NULL;
+
+
+-- =======================================================================
+-- Step 19: Insert data from 'Flight1' to 'Flight', copying relevant columns
+-- =======================================================================
+INSERT INTO OUR_FLIGHT (
+  FlightId,
+  Departure,
+  Landing,
+  flightsource,
+  FlightDestination,
+  personId,
+  airlineid
+)
+SELECT
+  FlightId,
+  Departure,
+  Landing,
+  flightsource,
+  FlightDestination,
+  personId,
+  NULL
+FROM Flight1;
+
+
+-- =======================================================================
+-- Step 20: Update the rows where AirlineID is NULL with random values from the AirLine table
+-- =======================================================================
+DO $$
+DECLARE
+    r RECORD;
+    random_airline INT;
+BEGIN
+    -- Loop through each row in Flight where AirlineID is NULL
+    FOR r IN
+        SELECT FlightID
+        FROM OUR_FLIGHT
+        WHERE AirlineID IS NULL
+    LOOP
+        -- Select a random AirlineID from AirLine
+        SELECT AirlineID
+        INTO random_airline
+        FROM AirLine
+        ORDER BY RANDOM()
+        LIMIT 1;
+        
+        -- Update the row in Flight with the random AirlineID
+        UPDATE OUR_FLIGHT
+        SET AirlineID = random_airline
+        WHERE FlightID = r.FlightID;
+    END LOOP;
+END $$;
+
+
+
+-- =======================================================================
+-- Step 21: Insert records for SecurityPerson into the 'Has' table (assign roles)
+-- =======================================================================
+INSERT INTO personInFlight (AirplaneClass, PersonID, FlightId, Role)
+SELECT NULL, PersonID, FlightId, 'SecurityPerson'
+FROM OUR_FLIGHT
+WHERE PersonID IS NOT NULL;
+
+-- =======================================================================
+-- Step 22: Drop the 'PersonID' column from the Flight table
+-- =======================================================================
+ALTER TABLE OUR_FLIGHT DROP COLUMN PersonID;
+
+-- =======================================================================
+-- Step 23: Drop the 'Flight1' table
+-- =======================================================================
+DROP TABLE IF EXISTS Flight1;
+
+
+ALTER TABLE OUR_FLIGHT RENAME TO FLIGHT
+

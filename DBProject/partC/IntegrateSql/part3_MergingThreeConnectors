@@ -1,0 +1,43 @@
+-- =======================================================================
+-- STEP 1: Add a 'Role' column to the 'Has' table
+-- =======================================================================
+ALTER TABLE Has ADD COLUMN Role VARCHAR(20) NOT NULL DEFAULT 'Passenger';
+
+-- =======================================================================
+-- STEP 2: Make the 'AirplaneClass' column nullable in the 'Has' table
+-- =======================================================================
+ALTER TABLE Has ALTER COLUMN AirplaneClass DROP NOT NULL;
+
+-- =======================================================================
+-- STEP 3: Drop the foreign key constraint that currently restricts PersonID to Passengers in the 'Has' table
+-- =======================================================================
+ALTER TABLE Has DROP CONSTRAINT IF EXISTS has_personid_fkey;
+
+-- =======================================================================
+-- STEP 4: Add a new foreign key constraint to the 'Has' table that allows referencing any Person (Passenger, Pilot, etc.)
+-- =======================================================================
+ALTER TABLE Has ADD CONSTRAINT has_personid_fkey FOREIGN KEY (PersonID) REFERENCES Person(PersonID);
+
+-- =======================================================================
+-- STEP 5: Insert records for Flight Attendants into the 'Has' table
+-- =======================================================================INSERT INTO Has (AirplaneClass, PersonID, FlightNumber, Role)
+SELECT NULL, PersonID, FlightNumber, 'FlightAttendant'
+FROM ServedBy;
+
+-- =======================================================================
+-- STEP 6: Insert records for Pilots into the 'Has' table
+-- =======================================================================
+INSERT INTO Has (AirplaneClass, PersonID, FlightNumber, Role)
+SELECT NULL, PersonID, FlightNumber, 'Pilot'
+FROM FlownBy;
+
+-- =======================================================================
+-- STEP 7: Drop the now redundant 'ServedBy' and 'FlownBy' tables
+-- =======================================================================
+DROP TABLE IF EXISTS ServedBy;
+DROP TABLE IF EXISTS FlownBy;
+
+-- =======================================================================
+-- STEP 8: Rename the 'Has' table to 'PersonInFlight' for better clarity
+-- =======================================================================
+ALTER TABLE Has RENAME TO PersonInFlight;
