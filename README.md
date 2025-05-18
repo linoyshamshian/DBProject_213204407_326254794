@@ -242,15 +242,64 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 חילקנו את העבודה לכמה קבצים לפי שלבים ברורים, כאשר השלב הראשון היה להמיר את העמודה `passportNumber` בטבלת Person למפתח הראשי החדש `PersonID` מסוג `SERIAL`.  
 
-השלבים שביצענו:
-- **שלב 1**: הסרנו את כל הקשרים הזרים (foreign keys) שהתבססו על `passportNumber` בטבלאות המקושרות ל- `Person`.
-- **שלב 2**: הסרנו את המפתח הראשי הישן מטבלת `Person`, ועדכנו את העמודה `Birthday` עם ערכים אקראיים (בהתאם לגיל ריאלי לתחילת עבודה) ושינינו את שמה ל-EmploymentDate. בנוסף, שינינו שמות וגדלים של עמודות בהתאם לעיצוב החדש (`Name_` ל־`FullName`, ו־`Mail` ל־VARCHAR(50)).  
-- **שלב 3**: הוספנו עמודת `PersonID` מסוג `SERIAL` כ־Primary Key חדש בטבלת `Person`.
-- **שלב 4**: עדכנו כל אחת מטבלאות הירושה (`Passenger`, `Pilot`, `FlightAttendant`) כך שישתמשו ב־`PersonID` במקום `passportNumber`, כולל הוספת קשרים זרים חדשים והגדרה של `PersonID` כמפתח ראשי.
-- **שלב 5**: עדכנו את כל הטבלאות המקושרות הנוספות (כמו `Has`, `ServedBy`, `FlownBy`, `Recive`, `Give`, ועוד) כך שישתמשו ב־`PersonID` במקום `passportNumber`, תוך שמירה על תקינות של קשרים זרים.
-- **שלב 6**: מחקנו את העמודה `passportNumber` מטבלת `Person`, כך שלא תהיה כפילות.
-- **שלב 7**: קבענו שערך `EmploymentDate` יהיה `NULL` עבור נוסעים (שלא נחשבים עובדים בארגון), ועדכנו אותו בהתאם. בנוסף, הסרנו עמודות מיותרות כמו `numberPhone` מהטבלה `FlightAttendant`.
+הסבר על התהליך של המרת העמודה:
+-  הסרנו את כל הקשרים הזרים (foreign keys) שהתבססו על `passportNumber` בטבלאות המקושרות ל- `Person`.
+-  הסרנו את המפתח הראשי הישן מטבלת `Person`, ועדכנו את העמודה `Birthday` עם ערכים אקראיים (בהתאם לגיל ריאלי לתחילת עבודה) ושינינו את שמה ל-EmploymentDate. בנוסף, שינינו שמות וגדלים של עמודות בהתאם לעיצוב החדש (`Name_` ל־`FullName`, ו־`Mail` ל־VARCHAR(50)).  
+-  הוספנו עמודת `PersonID` מסוג `SERIAL` כ־Primary Key חדש בטבלת `Person`.
+-  עדכנו כל אחת מטבלאות הירושה (`Passenger`, `Pilot`, `FlightAttendant`) כך שישתמשו ב־`PersonID` במקום `passportNumber`, כולל הוספת קשרים זרים חדשים והגדרה של `PersonID` כמפתח ראשי.
+-  עדכנו את כל הטבלאות המקושרות הנוספות (כמו `Has`, `ServedBy`, `FlownBy`, `Recive`, `Give`, ועוד) כך שישתמשו ב־`PersonID` במקום `passportNumber`, תוך שמירה על תקינות של קשרים זרים.
+-  מחקנו את העמודה `passportNumber` מטבלת `Person`, כך שלא תהיה כפילות.
+-  קבענו שערך `EmploymentDate` יהיה `NULL` עבור נוסעים (שלא נחשבים עובדים בארגון), ועדכנו אותו בהתאם. בנוסף, הסרנו עמודות מיותרות כמו `numberPhone` מהטבלה `FlightAttendant`.
 
+לאחר שסיימנו להמיר את Person ולהתאים את כל הטבלאות לתמוך ב-PersonID כמפתח הראשי, בשלב הבא התמקדנו בהורשת SecurityPerson מ-Person כדי לאחד את המידע ולשפר את מבנה בסיס הנתונים.
+
+הסבר על התהליך של הורשת SecurityPerson מ-Person:
+- מוסיפים לעמודת SecurityPerson את העמודה PersonID כדי לקשר ל-Person.
+- מכניסים רשומות חדשות לטבלת Person מהנתונים הקיימים ב-SecurityPerson.
+- מעדכנים את העמודה PersonID ב-SecurityPerson לפי ההתאמה בין השמות והאימיילים בטבלת Person.
+- מוסיפים עמודת PersonID לטבלאות התלויות (כמו Assigment, flight1 ו-Incident_Has_SecurityPerson) ומעדכנים את הערכים לפי SecurityPerson.
+- מסירים את המפתחות הזרים הישנים שמצביעים על SecurityPersonID בטבלאות התלויות.
+- מורידים את המפתח הראשי הישן בטבלת SecurityPerson (SecurityPersonID) כדי לאפשר PersonID להיות המפתח הראשי החדש.
+- מגדירים את PersonID כמפתח ראשי חדש בטבלת SecurityPerson, ומוסיפים מפתח זר שמפנה לטבלת Person.
+- מוסיפים מפתחות זרים חדשים בטבלאות התלויות, שמצביעות על PersonID במקום SecurityPersonID.
+- מוחקים את עמודות SecurityPersonID הישנות מטבלאות התלויות.
+- מוחקים עמודות מיותרות בטבלת SecurityPerson — כולל FullName, EmploymentDate ו-SecurityPersonID — כי הן כבר בטבלת Person.
+ 
+חלק מההתאמות למבנה החדש, איחדנו את הטבלאות הרבות המקשרות בין עובדים שונים לטיסה לטבלה בשם PersonInFlight, כדי לנהל בצורה גמישה וברורה יותר את כל התפקידים של אנשים בטיסה.
+-מוסיפים לטבלה Has עמודת Role שמייצגת את תפקיד האדם בטיסה, עם ערך ברירת מחדל 'Passenger'.
+- משנים את עמודת AirplaneClass בטבלה Has כך שתוכל לקבל ערך NULL, כלומר תהיה אופציונלית.
+- מסירים את המפתח הזר הישן שמגביל את PersonID בטבלה Has רק לנוסעים.
+- מוסיפים מפתח זר חדש לטבלה Has שמאפשר ל-PersonID להפנות לכל סוג של אדם (נוסע, טייס, דייל וכו') מטבלת Person.
+- מעתיקים רשומות של דיילים (FlightAttendants) מטבלת ServedBy לטבלה Has, ומגדירים את התפקיד כ-'FlightAttendant'.
+- מעתיקים רשומות של טייסים (Pilots) מטבלת FlownBy לטבלה Has, ומגדירים את התפקיד כ-'Pilot'.
+- מוחקים את הטבלאות הישנות ServedBy ו-FlownBy שהפכו מיותרות.
+- משנים את שם הטבלה Has ל-PersonInFlight כדי לשפר את הבהירות והקריאות של הטבלה.
+
+כעת אנחנו רוצות לאחד את טבלאות flight
+- הוספת עמודת FlightId לטבלת OUR_FLIGHT – הוספנו עמודה חדשה שתשמש כמפתח ראשי ייחודי מסוג INTEGER.
+- קביעת ערך התחלתי לעמודת FlightId בהתבסס על טבלת Flight1 – מצאנו את המספר הגבוה ביותר של FlightId בטבלה Flight1 כדי לקבוע את הערך הבא שיוקצה.
+- יצירת סדרת מספרים (sequence) עבור FlightId – יצרנו סדרה שמתחילה מהמספר שנמצא בשלב הקודם, כדי לייצר ערכי מפתח חדשים.
+- עדכון כל הרשומות בטבלת OUR_FLIGHT לקבלת ערך FlightId מתוך הסדרה – מילאנו את הערכים החדשים בעמודה.
+- הוספת עמודת FlightID לטבלאות Relationship ו־PersonInFlight – כדי לקשר אותן לטבלת הטיסות החדשה.
+- עדכון עמודת FlightID בטבלאות Relationship ו־PersonInFlight לפי טבלת OUR_FLIGHT – העברת הקשר בין טבלאות בהתבסס על הטבלה הראשית.
+- מחיקת המפתחות הזרים הישנים שנקשרו לעמודת FlightNumber – כדי לפנות מקום למפתחות החדשים.
+- מחיקת עמודת FlightNumber מטבלאות Relationship ו־PersonInFlight – העמודה הישן הוסרה כי היא לא רלוונטית יותר.
+- הגדרת FlightId כמפתח הראשי החדש של טבלת OUR_FLIGHT – במקום FlightNumber שהיה קודם.
+- הוספת מפתחות זרים חדשים בטבלאות Relationship ו־PersonInFlight שמפנים ל־FlightId בטבלת OUR_FLIGHT – כדי לשמור על תקינות הקשרים.
+- הוספת עמודות FlightSource ו־FlightDestination לטבלת OUR_FLIGHT – להרחבת מידע על מקור ויעד הטיסה.
+- מחיקת עמודות **מיותרות** מטבלת OUR_FLIGHT – כמו FlightNumber, Origin_DestinationType ו־City.
+- עדכון עמודת FlightSource עם ערכים מתוך העמודה country – העברת מידע מהעמודה הישנה לעמודה החדשה.
+- מחיקת עמודת country מטבלת OUR_FLIGHT – לאחר העברת הנתונים.
+- הוספת עמודת personId לטבלת OUR_FLIGHT לצורך קשר זר – לקשר לטבלת securityPerson.
+- הגדרת קשר זר בין personId בטבלת OUR_FLIGHT לטבלת securityPerson – לשמירת קשר תקין בין טבלאות.
+- הוספת יעד טיסה אקראי (FlightDestination) מתוך רשימה מוגדרת, כאשר היעד שונה ממקור הטיסה – לצורך השלמת הנתונים.
+- אפשרנו שעמודת AirlineID בטבלת OUR_FLIGHT תהיה אופציונלית (NULL) – הסרנו את ההגבלה על ערך חובה.
+- הכנסת נתונים מטבלת Flight1 לטבלת OUR_FLIGHT – העתקה של הטיסות הקיימות עם השדות הרלוונטיים.
+- עדכון רשומות בטבלת OUR_FLIGHT שבהן AirlineID הוא NULL, עם ערכים אקראיים מטבלת AirLine – למילוי שדות חסרים.
+- הכנסת רשומות של אנשים בטיסות (SecurityPerson) לטבלה PersonInFlight עם תפקידים מתאימים – הוספת נתונים על תפקידים שונים בטיסה.
+- מחיקת עמודת PersonID מטבלת OUR_FLIGHT – לאחר שהמידע הועבר והקשרים עודכנו.
+- מחיקת טבלת Flight1 – טבלה זו הפכה מיותרת לאחר העברת כל הנתונים.
+- שינוי שם טבלת OUR_FLIGHT ל־FLIGHT – לשם קצר וברור יותר.
 
 7. **קובץ Views.sql**  
    יצירת מבטים (views) בהתאם לדרישות החדשות ולצרכים של שילוב הנתונים.
