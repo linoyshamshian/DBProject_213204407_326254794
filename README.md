@@ -203,7 +203,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 [go to backups](DBProject/partB/Backup)
 
-## Phase 3: Integration and Views
+## Phase 3: Integration
 
 ### Introduction
 
@@ -213,7 +213,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 1. **DSD של האגף השני**  
    קיבלנו קובץ גיבוי של בסיס נתונים מקבוצה אחרת ומתוכו הפקנו את תרשים מבנה הנתונים (DSD).
-   ![image](DBProject/partC/ERDandDSDfiles/dsdflight.png)
+   ![image]( DBProject/partC/ERDandDSDfiles/dsdFlight.png)
+  
 
 3. **ERD של האגף השני**  
    מתוך ה-DSD שיחזרנו את תרשים ה-ERD באמצעות הינדוס לאחור.
