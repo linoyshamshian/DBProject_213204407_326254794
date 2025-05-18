@@ -212,11 +212,13 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ### Process Overview
 
 1. **ה-DSD של האגף השני**
+
 קיבלנו קובץ גיבוי של בסיס נתונים מקבוצה אחרת ומתוכו הפקנו את תרשים מבנה הנתונים.
    ![image]( DBProject/partC/ERDandDSDfiles/dsdFlight.png)
   
 
 2. **ה-ERD של האגף השני**
+
    מתוך ה-DSD שיחזרנו את תרשים ה-ERD באמצעות הינדוס לאחור.
  ![image]( DBProject/partC/ERDandDSDfiles/erdFlight.png)
 4. **ה-ERD המשולב**
