@@ -220,7 +220,6 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
    מתוך ה-DSD שיחזרנו את תרשים ה-ERD באמצעות הינדוס לאחור.
  ![image]( DBProject/partC/ERDandDSDfiles/erdFlight.png)
 4. **ERD משולב**
-<div dir="rtl">  
    עיצבנו תרשים ERD משולב המשלב את שני הארגונים בצורה לוגית, לאחר שקיבלנו החלטות עיצוביות כיצד לבצע את השילוב.
     בין היתר ביצענו את השינויים הבאים:
    - איחדנו שתי טבלאות `Flight` שהופיעו אצל כל קבוצה, תוך שמירה על שדות רלוונטיים מכל אחת וביטול כפילויות.
@@ -229,7 +228,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
    - הוספנו עמודת "תחילת עבודה" (EmploymentDate) בישות `Person` כדי לייצג את תאריך ההתחלה של מאבטחים, והסרנו את אותה עמודה מ־`SecurityPerson`.
    
    את שלבי האיחוד והשינויים נציג בהמשך בפירוט בעת הצגת קובץ `Integrate.sql`.
-</div>
+
  ![image]( DBProject/partC/ERDandDSDfiles/combinedErd.png)
 5. **DSD משולב**  
    ייצרנו תרשים מבנה נתונים (DSD) מתוך המערכת החדשה לאחר השינויים, הכולל את כל הישויות והקשרים המעודכנים.
@@ -239,11 +238,19 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 6. **שינויים בבסיס הנתונים (Integrate.sql)**  
    לא יצרנו מחדש את הטבלאות – השתמשנו בטבלאות הקיימות והשתמשנו בפקודות `ALTER TABLE`, `UPDATE`, ו-`DROP COLUMN` כדי להתאים את המבנה ל־ERD החדש.  
-   לדוגמה:
-   - המרה של המפתח הראשי של Person מ־passportNumber ל־PersonID
-   - עדכון כל הטבלאות התלויות לשימוש ב־PersonID
-   - הסרת שדות מיותרים כמו `passportNumber` ו־`numberPhone`
-   - עדכון סוגי שדות ושמות עמודות (`Name_` ל־`FullName`, `Birthday` ל־`EmploymentDate`)
+   
+
+חילקנו את העבודה לכמה קבצים לפי שלבים ברורים, כאשר השלב הראשון היה להמיר את העמודה `passportNumber` בטבלת Person למפתח הראשי החדש `PersonID` מסוג `SERIAL`.  
+
+השלבים שביצענו:
+- **שלב 1**: הסרנו את כל הקשרים הזרים (foreign keys) שהתבססו על `passportNumber` בטבלאות המקושרות ל- `Person`.
+- **שלב 2**: הסרנו את המפתח הראשי הישן מטבלת `Person`, ועדכנו את העמודה `Birthday` עם ערכים אקראיים (בהתאם לגיל ריאלי לתחילת עבודה) ושינינו את שמה ל-EmploymentDate. בנוסף, שינינו שמות וגדלים של עמודות בהתאם לעיצוב החדש (`Name_` ל־`FullName`, ו־`Mail` ל־VARCHAR(50)).  
+- **שלב 3**: הוספנו עמודת `PersonID` מסוג `SERIAL` כ־Primary Key חדש בטבלת `Person`.
+- **שלב 4**: עדכנו כל אחת מטבלאות הירושה (`Passenger`, `Pilot`, `FlightAttendant`) כך שישתמשו ב־`PersonID` במקום `passportNumber`, כולל הוספת קשרים זרים חדשים והגדרה של `PersonID` כמפתח ראשי.
+- **שלב 5**: עדכנו את כל הטבלאות המקושרות הנוספות (כמו `Has`, `ServedBy`, `FlownBy`, `Recive`, `Give`, ועוד) כך שישתמשו ב־`PersonID` במקום `passportNumber`, תוך שמירה על תקינות של קשרים זרים.
+- **שלב 6**: מחקנו את העמודה `passportNumber` מטבלת `Person`, כך שלא תהיה כפילות.
+- **שלב 7**: קבענו שערך `EmploymentDate` יהיה `NULL` עבור נוסעים (שלא נחשבים עובדים בארגון), ועדכנו אותו בהתאם. בנוסף, הסרנו עמודות מיותרות כמו `numberPhone` מהטבלה `FlightAttendant`.
+
 
 7. **קובץ Views.sql**  
    יצירת מבטים (views) בהתאם לדרישות החדשות ולצרכים של שילוב הנתונים.
