@@ -29,7 +29,6 @@
   - [מבטים](#מבטים)
   - [גיבוי 3](#גיבוי-3)
    
-  - [Backup_2](#backup_2)
 ## Phase 1: Design and Build the Database  
 ### Introduction
 The **Security Management Database** is designed to efficiently manage security personnel, secure areas, shifts, and incident records. This system ensures smooth operations by tracking security assignments, required security levels, and emergency incidents while maintaining a high level of organization and accessibility.
@@ -348,6 +347,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 מבט זה מרכז מידע על נוסעים, כולל שמם המלא, מחלקת הטיסה שלהם, מספר הטיסה, יעד ההמראה והנחיתה, וזמן ההמראה.
 
  ![image](DBProject/partC/Views/Images/view_flight.png)
+ 
  🔸 שאילתה 1: שליפת שמות של נוסעים שטסים במחלקה ראשונה.
 
  ![image](DBProject/partC/Views/Images/query_flight_1.png)
