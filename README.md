@@ -340,6 +340,9 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
  ![image](DBProject/partC/Views/Images/query_security_2.png)
  **מבט 2: PassengerFlightInfo**
+
+מבט על מסד הנתונים שקיבלנו מזוג אחר בקבוצה
+
 🔹 תיאור המבט:
 
 מבט זה מרכז מידע על נוסעים, כולל שמם המלא, מחלקת הטיסה שלהם, מספר הטיסה, יעד ההמראה והנחיתה, וזמן ההמראה.
@@ -348,6 +351,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
  🔸 שאילתה 1: שליפת שמות של נוסעים שטסים במחלקה ראשונה.
 
  ![image](DBProject/partC/Views/Images/query_flight_1.png)
+ 
  🔸 שאילתה 2: שליפת כל הטיסות שהיעד שלהן הוא תל אביב.
 
  ![image](DBProject/partC/Views/Images/query_flight_2.png)
