@@ -1,0 +1,57 @@
+-- יצירת מבט המציג את פרטי התקריות כולל סוג, תאריך, תיאור, אזור, איש אבטחה ומשך המעורבות
+VIEW IncidentDetails AS
+SELECT 
+  I.IncidentID,
+  I.IncidentType,
+  I.IncidentDate,
+  I.IncidentDescription,
+  A.AreaName,
+  P.fullname AS SecurityPersonName,
+  IHSP.Duration
+FROM Incident I
+JOIN Area A ON I.AreaID = A.AreaID
+JOIN Incident_Has_SecurityPerson IHSP ON I.IncidentID = IHSP.IncidentID
+JOIN SecurityPerson SP ON IHSP.PersonID = SP.PersonID
+JOIN Person P ON SP.PersonID = P.PersonID;
+
+-- שאילתה המציגה את כל התקריות מסוג ונדליזם 
+SELECT * FROM IncidentDetails
+WHERE IncidentType = 'Vandalism';
+
+-- שאילתה המציגה את כל התקריות שהתרחשו לאחר ה-1 בינואר 2024
+SELECT * FROM IncidentDetails
+WHERE IncidentDate > '2024-01-01';
+
+-- יצירת מבט המציג מידע על נוסעים כולל שם, מחלקה, טיסה, יעד ומקור וזמן המראה
+CREATE VIEW PassengerFlightInfo AS
+SELECT 
+  P.personID,
+  P.fullname AS passengerName,
+  PIF.AirplaneClass,
+  F.FlightID,
+  F.flightDestination,
+  F.flightSource,
+  F.Departure
+FROM Passenger Pa
+JOIN Person P ON Pa.personID = P.personID
+JOIN PersonInFlight PIF ON P.personID = PIF.personID
+JOIN Flight F ON PIF.FlightID = F.FlightID;
+
+-- שאילתה המציגה את שמות הנוסעים שטסים במחלקה ראשונה 
+SELECT passengerName
+FROM PassengerFlightInfo
+WHERE AirplaneClass = 'First Class';
+
+-- שאילתה המציגה מזהי טיסה ויעדים של טיסות שמגיעות לתל אביב בלבד
+SELECT DISTINCT FlightID, flightDestination
+FROM PassengerFlightInfo
+WHERE flightDestination = 'Tel Aviv';
+
+
+
+
+
+
+
+
+
