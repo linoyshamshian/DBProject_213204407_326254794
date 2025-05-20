@@ -324,26 +324,30 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
    **מבט 1: IncidentDetails**
    מבט על מסד הנתונים המקורי.
 🔹 תיאור המבט:
+
 מבט זה מאגד מידע על תקריות (Incidents), כולל סוג התקרית, תיאורה, תאריך התרחשותה, שם האזור בו קרתה, שם איש האבטחה שהיה נוכח ומשך המעורבות שלו בתקרית.
 
  ![image](DBProject/partC/Views/Images/view_security.png)
  שאילתות על המבט:
-🔸 שאילתה 1:
-שליפת כל התקריות מסוג Vandalism (ונדליזם).
+
+🔸 שאילתה 1: שליפת כל התקריות מסוג Vandalism (ונדליזם).
+
  ![image](DBProject/partC/Views/Images/query_security_1.png)
- 🔸 שאילתה 2:
-תיאור:
-שליפת כל התקריות שהתרחשו לאחר 1 בינואר 2024.
+
+ 🔸 שאילתה 2: שליפת כל התקריות שהתרחשו לאחר 1 בינואר 2024.
+
  ![image](DBProject/partC/Views/Images/query_security_2.png)
  **מבט 2: PassengerFlightInfo**
 🔹 תיאור המבט:
+
 מבט זה מרכז מידע על נוסעים, כולל שמם המלא, מחלקת הטיסה שלהם, מספר הטיסה, יעד ההמראה והנחיתה, וזמן ההמראה.
+
  ![image](DBProject/partC/Views/Images/view_flight.png)
- 🔸 שאילתה 1:
-שליפת שמות של נוסעים שטסים במחלקה ראשונה.
+ 🔸 שאילתה 1: שליפת שמות של נוסעים שטסים במחלקה ראשונה.
+
  ![image](DBProject/partC/Views/Images/query_flight_1.png)
- 🔸 שאילתה 2:
-שליפת כל הטיסות שהיעד שלהן הוא תל אביב.
+ 🔸 שאילתה 2: שליפת כל הטיסות שהיעד שלהן הוא תל אביב.
+
  ![image](DBProject/partC/Views/Images/query_flight_2.png)
 
 ### **גיבוי 3**  
