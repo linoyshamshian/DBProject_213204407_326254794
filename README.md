@@ -355,6 +355,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
  🔸 שאילתה 2: שליפת כל הטיסות שהיעד שלהן הוא תל אביב.
 
  ![image](DBProject/partC/Views/Images/query_flight_2.png)
+ 
+ 📌 [View the views](DBProject/partC/Views/Code/views.sql)
 
 ### **גיבוי 3**  
    ייצאנו קובץ גיבוי חדש בשם `backup3` המכיל את בסיס הנתונים לאחר האינטגרציה.
