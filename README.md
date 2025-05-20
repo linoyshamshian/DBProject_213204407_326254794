@@ -322,7 +322,9 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
  
 ### **מבטים**  
    **מבט 1: IncidentDetails**
+
    מבט על מסד הנתונים המקורי.
+
 🔹 תיאור המבט:
 
 מבט זה מאגד מידע על תקריות (Incidents), כולל סוג התקרית, תיאורה, תאריך התרחשותה, שם האזור בו קרתה, שם איש האבטחה שהיה נוכח ומשך המעורבות שלו בתקרית.
