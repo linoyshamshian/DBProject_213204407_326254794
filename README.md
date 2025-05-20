@@ -360,6 +360,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ### **גיבוי 3**  
    ייצאנו קובץ גיבוי חדש בשם `backup3` המכיל את בסיס הנתונים לאחר האינטגרציה.
+
    [go to backup](DBProject/partC/Backup)
 
 
