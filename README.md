@@ -356,7 +356,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
  ![image](DBProject/partC/Views/Images/query_flight_2.png)
  
- 📌 [View the views](DBProject/partC/Views/Code/views.sql)
+ 📌 [View the views](DBProject/partC/Views/Code/views)
 
 ### **גיבוי 3**  
    ייצאנו קובץ גיבוי חדש בשם `backup3` המכיל את בסיס הנתונים לאחר האינטגרציה.
