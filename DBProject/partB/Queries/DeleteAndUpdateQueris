@@ -1,0 +1,62 @@
+--##############DELETE##############
+--מחיקת אנשי אבטחה שלא שובצו לשום משמרת, לא היו בטיסות, ולא השתתפו באירועים
+DELETE FROM SecurityPerson
+WHERE SecurityPersonID NOT IN (
+  SELECT SecurityPersonID FROM Assigment
+)
+AND SecurityPersonID NOT IN (
+  SELECT SecurityPersonID FROM Flight1
+)
+AND SecurityPersonID NOT IN (
+  SELECT SecurityPersonID FROM Incident_Has_SecurityPerson
+);
+
+--מחיקת טיסות שבהן שובץ איש אבטחה עם רמת אבטחה נמוכה מ־2
+DELETE FROM Flight1
+WHERE SecurityPersonID IN (
+  SELECT SecurityPersonID
+  FROM SecurityPerson
+  WHERE SecurityLevel < 2
+);
+
+--מחיקת כל השיבוצים של מאבטחים שהוצבו באותו אזור ביותר ממשמרת אחת
+DELETE FROM Assigment
+WHERE (SecurityPersonID, AreaID) IN (
+  SELECT SecurityPersonID, AreaID
+  FROM (
+    SELECT SecurityPersonID, AreaID, COUNT(DISTINCT ShiftID) AS NumShifts
+    FROM Assigment
+    GROUP BY SecurityPersonID, AreaID
+    HAVING COUNT(DISTINCT ShiftID) > 1
+  ) AS Sub
+);
+
+--##############UPDATE##############
+--העלאת דרגת אבטחה למאבטחים שטיפלו באירועים באזורים ברמת אבטחה גבוהה מ־4
+--(אבל לא לעבור את הדרגה המקסימלית – 5)
+UPDATE SecurityPerson
+SET SecurityLevel = SecurityLevel + 1
+WHERE SecurityLevel < 5
+  AND SecurityPersonID IN (
+    SELECT DISTINCT ihsp.SecurityPersonID
+    FROM Incident_Has_SecurityPerson ihsp
+    JOIN Incident i ON ihsp.IncidentID = i.IncidentID
+    JOIN Area a ON i.AreaID = a.AreaID
+    WHERE a.SecurityLevelRequired > 4
+);
+
+--עדכון אזורים: הוספת "אזור חם" לשם של אזורים שבהם התרחשו יותר מ־3 אירועים
+UPDATE Area
+SET AreaName = AreaName || ' [Hot Zone]'
+WHERE AreaID IN (
+  SELECT AreaID
+  FROM Incident
+  GROUP BY AreaID
+  HAVING COUNT(*) > 3
+);
+
+--עדכון אנשי אבטחה: הוספת ותק לשם של מאבטחים שעובדים יותר מ־5 שנים
+UPDATE SecurityPerson
+SET FullName = FullName || ' (Veteran)'
+WHERE EmploymentDate <= CURRENT_DATE - INTERVAL '5 years';
+
