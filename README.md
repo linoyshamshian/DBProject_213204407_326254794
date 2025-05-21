@@ -136,47 +136,77 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 📌[View Queries Code](DBProject/partB/Queries/Queries)
 
 - Query 1: שאילתה למציאת כל המשמרות שבהן עובדים מאבטחים ברמה ביטחונית מסוימת
+  
 ![image](DBProject/partB/Queries/Query_1.png)
 
 - Query 2:  שאילתה למציאת כל הטיסות בהן מאבטחים אחראים על טיסות, ומידע על המאבטח
+  
 ![image](DBProject/partB/Queries/Query_2.png)
 
 - Query 3: השאילתה הזו מחזירה את המידע על מאבטחים שעבדו באזורים עם רמת ביטחון גבוהה 
                                                          כולל שם המאבטח, שם האזור, ומספר האירועים שהמאבטח היה מעורב בהם באותו האזור
+
 ![image](DBProject/partB/Queries/Query_3.png)
 
 - Query 4: השאילתה הזו מחפשת את כל המאבטחים שעבדו באזורים שבהם התרחשו יותר מ-3 אירועים,
                                                   סופרת את מספר האירועים לכל מאבטח בכל אזור, ומחזירה את שם המאבטח, שם האזור ומספר האירועים
+
 ![image](DBProject/partB/Queries/Query_4.png)
 
 - Query 5: השאילתה סופרת את מספר המשמרות שביצע כל מאבטח בטווח התאריכים ומחזירה את המידע ממוין לפי מספר המשמרות
+  
 ![image](DBProject/partB/Queries/Query_5.png)
 
 - Query 6: השאילתה סופרת את מספר האירועים בכל חודש ושנה
+  
 ![image](DBProject/partB/Queries/Query_6.png)
 
 - Query 7: השאילתה מחזירה את שמות המאבטחים שהיו מעורבים באירועים מסוג מסוים
+  
 ![image](DBProject/partB/Queries/Query_7.png)
 
 - Query 8: השאילתה סופרת את מספר הטיסות שכל איש אבטחה איבטח
+  
 ![image](DBProject/partB/Queries/Query_8.png)
-**delete queries**
+
+**delete and update queries**
+
+📌[View Delete And Update Queries Code](DBProject/partB/Queries/DeleteAndUpdateQueris)
+
+🔹Delete Queries:
   
-  📌[View Delete And Update Queries Code](DBProject/partB/Queries/DeleteAndUpdateQueris)
-  
-  - Query 1:מחיקת אנשי אבטחה שלא שובצו לשום משמרת, לא היו בטיסות, ולא השתתפו באירועים
+  - Query 1: מחיקת אנשי אבטחה שלא שובצו לשום משמרת, לא היו בטיסות, ולא השתתפו באירועים
     
    ![image](DBProject/partB/Queries/delete_1.png)
 
-  - Query 2:מחיקת טיסות שבהן שובץ איש אבטחה עם רמת אבטחה נמוכה מ־2
+  - Query 2: מחיקת טיסות שבהן שובץ איש אבטחה עם רמת אבטחה נמוכה מ־2
     
    ![image](DBProject/partB/Queries/delete_2.png)
 
-  - Query 2:מחיקת כל השיבוצים של מאבטחים שהוצבו באותו אזור ביותר ממשמרת אחת
+  - Query 3: מחיקת כל השיבוצים של מאבטחים שהוצבו באותו אזור ביותר ממשמרת אחת
     
     ![image](DBProject/partB/Queries/delete_3.png)
 
+🔹Update Queries:
 
+ - Query 1: העלאת דרגת אבטחה למאבטחים שטיפלו באירועים באזורים ברמת אבטחה גבוהה מ־4 וקטנה מ-5
+
+   ![image](DBProject/partB/Queries/update_1.png)
+   
+ - Query 2: עדכון אזורים: הוספת "אזור חם" לשם של אזורים שבהם התרחשו יותר מ־3 אירועים
+
+   ![image](DBProject/partB/Queries/update_2.png)
+
+ - Query 3: עדכון אנשי אבטחה: הוספת ותק לשם של מאבטחים שעובדים יותר מ־5 שנים
+
+    ![image](DBProject/partB/Queries/update_3.png)
+
+
+   
+
+
+    
+   ![image](DBProject/partB/Queries/delete_1.png)
 
 ### [Commit and Rollback](#commit-and-rollback)
 
