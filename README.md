@@ -160,7 +160,14 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 - Query 8: השאילתה סופרת את מספר הטיסות שכל איש אבטחה איבטח
 ![image](DBProject/partB/Queries/Query_8.png)
-
+**delete queries**
+  📌[View Queries Code](DBProject/partB/Queries/Queries)
+  - Query 1:מחיקת אנשי אבטחה שלא שובצו לשום משמרת, לא היו בטיסות, ולא השתתפו באירועים
+   ![image](DBProject/partB/Queries/Query_8.png)
+  - Query 2:מחיקת טיסות שבהן שובץ איש אבטחה עם רמת אבטחה נמוכה מ־2
+   ![image](DBProject/partB/Queries/Query_8.png)
+  - Query 2:מחיקת כל השיבוצים של מאבטחים שהוצבו באותו אזור ביותר ממשמרת אחת
+    ![image](DBProject/partB/Queries/Query_8.png)
 
 
 
