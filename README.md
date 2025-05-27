@@ -439,10 +439,10 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 📌 [View the triggers](DBProject/partD/Codes/triggers)
 
 ### [Main](#main)
-🔸 פונקציה 1: הפונקציה `main_function_1` מבצעת שני שלבים עיקריים:
+🔸 הפונקציה main_function_1 מבצעת שני שלבים עיקריים:
 
     -  מחשבת את ממוצע שנות הניסיון של טייסים בחברת התעופה ומעדכנת בהתאם את טבלת השירותים, ומחזירה הודעה עם הממוצע.
-    - מנסה להוסיף דייל טיסה עם שפה חדשה, ומחזירה הודעה על הצלחה או על כישלון בתהליך ההוספה.
+    -  מנסה להוסיף דייל טיסה עם שפה חדשה, ומחזירה הודעה על הצלחה או על כישלון בתהליך ההוספה.
 
 
   כדי להריץ את הפונקציה השתמשנו בקטע הקוד הבא:
@@ -458,7 +458,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ![image](DBProject/partD/Images/main1_failAdd.png)
 
-🔸 פונקציה 2: הפונקציה `main_function_2` מבצעת שני שלבים עיקריים:
+🔸 פונקציה 2: הפונקציה main_function_2 מבצעת שני שלבים עיקריים:
 
     - מוחקת אירוע אבטחה מסוים וכל ההקצאות הקשורות אליו באמצעות קריאה לפרוצדורה delete_incident_and_security_assignments.
 
