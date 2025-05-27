@@ -428,7 +428,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 🔸 פרוצדורה 2: הפרוצדורה מוחקת אירוע מסוים יחד עם כל הקצאות האבטחה הקשורות אליו, לאחר בדיקה שהאירוע קיים במערכת.
 
-📌 [View the functions](DBProject/partD/Codes/procedures)
+📌 [View the procedures](DBProject/partD/Codes/procedures)
 
 ### [Triggers](#triggers)
 ### [Main](#main)
