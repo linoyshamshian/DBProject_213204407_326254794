@@ -480,7 +480,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
   - מביאה את רשימת הטייסים המשויכים לטיסה מסוימת בעזרת הפונקציה get_pilots_for_flight, ומציגה הודעה עם פרטי כל טייס שנמצא.
  
     קוד התכנית:
-- ![image](DBProject/partD/Images/main2.png)
+![image](DBProject/partD/Images/main2.png)
 
 
 
