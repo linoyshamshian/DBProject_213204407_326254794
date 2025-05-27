@@ -422,6 +422,14 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 📌 [View the functions](DBProject/partD/Codes/functions)
 
 ### [Procedures](#procedures)
+
+🔸 פרוצדורה 1: הפרוצדורה מוסיפה דייל טיסה חדש עם שפה מדוברת, או אם הדייל כבר קיים – מוסיפה לו שפה חדשה, תוך בדיקות למניעת כפילויות וודא שהאדם קיים בטבלת `person` לפני הוספתו כדייל.
+
+
+🔸 פרוצדורה 2: הפרוצדורה מוחקת אירוע מסוים יחד עם כל הקצאות האבטחה הקשורות אליו, לאחר בדיקה שהאירוע קיים במערכת.
+
+📌 [View the functions](DBProject/partD/Codes/procedures)
+
 ### [Triggers](#triggers)
 ### [Main](#main)
 
