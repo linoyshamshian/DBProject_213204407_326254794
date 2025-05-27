@@ -1,0 +1,42 @@
+------------------ Trigger 1 ------------------
+
+CREATE OR REPLACE FUNCTION trg_incident_delete_notice()
+RETURNS trigger AS $$
+BEGIN
+    RAISE NOTICE 'Event with incidentid % was deleted.', OLD.incidentid;
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_incident_delete
+AFTER DELETE ON incident
+FOR EACH ROW
+EXECUTE FUNCTION trg_incident_delete_notice();
+
+------------------ Trigger 2 ------------------
+CREATE TABLE flightattendant_insert_log (
+    log_id serial PRIMARY KEY,
+    personid integer,
+    airlineid numeric,
+    rank varchar,
+    inserted_at timestamp DEFAULT now()
+);
+
+CREATE OR REPLACE FUNCTION trg_log_flightattendant_insert()
+RETURNS trigger AS $$
+BEGIN
+    INSERT INTO flightattendant_insert_log(personid, airlineid, rank, inserted_at)
+    VALUES (NEW.personid, NEW.airlineid, NEW.rank, now());
+	RAISE NOTICE 'New flightattendant added to log: personid %, airlineid %, rank %',
+        NEW.personid, NEW.airlineid, NEW.rank;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_flightattendant_insert
+AFTER INSERT ON flightattendant
+FOR EACH ROW
+EXECUTE FUNCTION trg_log_flightattendant_insert();
+
+SELECT * FROM flightattendant_insert_log ORDER BY inserted_at DESC;
+

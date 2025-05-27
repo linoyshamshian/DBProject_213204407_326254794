@@ -1,0 +1,83 @@
+------------------ Main 1 ------------------
+CREATE OR REPLACE FUNCTION main_function_1(
+    p_airlineid numeric,
+    p_personid integer,
+    p_rank varchar,
+    p_language varchar,
+    p_mail varchar,
+    p_employmentdate date,
+    p_fullname varchar
+)
+RETURNS SETOF text
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    avg_experience numeric;
+BEGIN
+    -- מחשב את ממוצע הניסיון ומעדכן שירותים
+    avg_experience := calculate_avg_experience_and_update_service(p_airlineid);
+    RETURN NEXT 'Average experience for airline ' || p_airlineid || ' is ' || avg_experience || ' years.';
+
+    -- ניסיון להוספת דייל עם שפה
+    BEGIN
+        CALL add_flightattendant_with_language(
+            p_personid, 
+            p_airlineid, 
+            p_rank, 
+            p_language,
+            p_mail,
+            p_employmentdate,
+            p_fullname
+        );
+        RETURN NEXT 'Flightattendant added with language ' || p_language || '.';
+    EXCEPTION
+        WHEN OTHERS THEN
+            RETURN NEXT 'Failed to add flightattendant: ' || SQLERRM;
+    END;
+
+    RETURN;
+END;
+$$;
+
+SELECT * FROM main_function_1(
+    123,
+    1615,
+    'Senior',
+    'Spanish',
+    'david.ben@gmail.com',
+    '2022-05-01',
+    'David Ben Gurion'
+);
+
+
+------------------ Main 2 ------------------
+
+CREATE OR REPLACE PROCEDURE main_function_2(p_incidentid integer, p_flightid integer, p_cursor_name refcursor)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    rec RECORD;
+BEGIN
+    CALL delete_incident_and_security_assignments(p_incidentid);
+    RAISE NOTICE 'Incident % deleted.', p_incidentid;
+
+    PERFORM get_pilots_for_flight(p_flightid, p_cursor_name);
+
+    LOOP
+        FETCH p_cursor_name INTO rec;
+        EXIT WHEN NOT FOUND;
+        RAISE NOTICE 'Pilot ID: %, Name: %, Experience: % years', rec.personid, rec.fullname, rec.experienceyears;
+    END LOOP;
+
+    CLOSE p_cursor_name;
+END;
+$$;
+
+
+CALL main_function_2(8,524);
+
+
+
+
+
+
