@@ -448,10 +448,10 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 🔸תכנית 1: הפונקציה main_function_1 מבצעת שני שלבים עיקריים:
 
--  מחשבת את ממוצע שנות הניסיון של טייסים בחברת התעופה ומעדכנת בהתאם את טבלת השירותים, ומחזירה הודעה עם הממוצע.
--  
+    -  מחשבת את ממוצע שנות הניסיון של טייסים בחברת התעופה ומעדכנת בהתאם את טבלת השירותים, ומחזירה הודעה עם הממוצע.
+  
     -  מנסה להוסיף דייל טיסה עם שפה חדשה, ומחזירה הודעה על הצלחה או על כישלון בתהליך ההוספה.
-    -  
+      
 
   כדי להריץ את הפונקציה השתמשנו בקטע הקוד הבא:
   
@@ -467,9 +467,9 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 🔸תכנית 2: הפונקציה main_function_2  מבצעת שני שלבים עיקריים:
 
-    - מוחקת אירוע אבטחה מסוים וכל ההקצאות הקשורות אליו באמצעות קריאה לפרוצדורה delete_incident_and_security_assignments.
-
-    - מביאה את רשימת הטייסים המשויכים לטיסה מסוימת בעזרת הפונקציה get_pilots_for_flight, ומציגה הודעות Notice עם פרטי כל טייס שנמצא.
+  - מוחקת אירוע אבטחה מסוים ואת כל ההקצאות הקשורות אליו באמצעות קריאה לפרוצדורה delete_incident_and_security_assignments.
+- 
+  - מביאה את רשימת הטייסים המשויכים לטיסה מסוימת בעזרת הפונקציה get_pilots_for_flight, ומציגה הודעה עם פרטי כל טייס שנמצא.
 
       כדי להריץ את הפונקציה השתמשנו בקטע הקוד הבא:
 
