@@ -476,10 +476,13 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 🔸תכנית 2: הפונקציה main_function_2  מבצעת שני שלבים עיקריים:
 
   - מוחקת אירוע אבטחה מסוים ואת כל ההקצאות הקשורות אליו באמצעות קריאה לפרוצדורה delete_incident_and_security_assignments.
-- 
+  
   - מביאה את רשימת הטייסים המשויכים לטיסה מסוימת בעזרת הפונקציה get_pilots_for_flight, ומציגה הודעה עם פרטי כל טייס שנמצא.
  
     קוד התכנית:
+- ![image](DBProject/partD/Images/main2.png)
+
+  
 
       כדי להריץ את הפונקציה השתמשנו בקטע הקוד הבא:
 
