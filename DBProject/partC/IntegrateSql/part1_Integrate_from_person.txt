@@ -1,0 +1,164 @@
+-- ================================================
+-- STEP 1: Drop foreign key constraints in child tables
+-- ================================================
+
+-- Drop foreign keys that reference Person(passportNumber)
+ALTER TABLE Has DROP CONSTRAINT IF EXISTS has_passportnumber_fkey;
+ALTER TABLE ServedBy DROP CONSTRAINT IF EXISTS servedby_passportnumber_fkey;
+ALTER TABLE FlownBy DROP CONSTRAINT IF EXISTS flownby_passportnumber_fkey;
+ALTER TABLE FlightAttendant_LanguageSpoken DROP CONSTRAINT IF EXISTS flightattendant_languagespoken_passportnumber_fkey;
+ALTER TABLE Recive DROP CONSTRAINT IF EXISTS recive_passportnumber_fkey;
+ALTER TABLE give DROP CONSTRAINT IF EXISTS give_passportnumber_fkey;
+
+-- Drop foreign keys in direct child tables of Person
+ALTER TABLE Passenger DROP CONSTRAINT IF EXISTS passenger_passportnumber_fkey;
+ALTER TABLE pilot DROP CONSTRAINT IF EXISTS pilot_passportnumber_fkey;
+ALTER TABLE FlightAttendant DROP CONSTRAINT IF EXISTS flightattendant_passportnumber_fkey;
+
+-- ================================================
+-- STEP 2: Drop old primary key of Person and fix some mistakes  
+-- ================================================
+ALTER TABLE Person DROP CONSTRAINT IF EXISTS person_pkey;
+-- Update Birthday with randomized date values
+UPDATE Person
+SET Birthday = make_date(
+    EXTRACT(YEAR FROM Birthday)::INT + (20 + FLOOR(RANDOM() * 31))::INT,  -- Add 20-50 years
+    1 + FLOOR(RANDOM() * 12)::INT,  -- Random month 1-12
+    1 + FLOOR(RANDOM() * 28)::INT   -- Random day 1-28 (safe for all months)
+)
+WHERE Birthday IS NOT NULL;
+
+-- Rename the column to EmploymentDate
+ALTER TABLE Person RENAME COLUMN Birthday TO EmploymentDate;
+
+ALTER TABLE Person ALTER COLUMN Mail TYPE VARCHAR(50);
+ALTER TABLE Person RENAME COLUMN Name_ TO FullName;
+-- ================================================
+-- STEP 3: Add new primary key on Person(PersonID)
+-- ================================================
+ALTER TABLE Person ADD COLUMN PersonID SERIAL;
+ALTER TABLE Person ADD CONSTRAINT person_personid_pkey PRIMARY KEY (PersonID);
+
+-- ================================================
+-- STEP 4: Update each child table to use PersonID instead of passportNumber
+-- ================================================
+
+-- ===== Passenger =====
+ALTER TABLE Passenger ADD COLUMN PersonID INTEGER;
+UPDATE Passenger
+SET PersonID = Person.PersonID
+FROM Person
+WHERE Passenger.passportNumber = Person.passportNumber;
+ALTER TABLE Passenger ADD CONSTRAINT passenger_personid_fkey FOREIGN KEY (PersonID) REFERENCES Person(PersonID);
+ALTER TABLE Passenger ALTER COLUMN PersonID SET NOT NULL;
+ALTER TABLE Passenger DROP COLUMN passportNumber;
+ALTER TABLE Passenger ADD CONSTRAINT passenger_pkey PRIMARY KEY (PersonID);
+
+-- ===== pilot =====
+ALTER TABLE pilot ADD COLUMN PersonID INTEGER;
+UPDATE pilot
+SET PersonID = Person.PersonID
+FROM Person
+WHERE pilot.passportNumber = Person.passportNumber;
+ALTER TABLE pilot ADD CONSTRAINT pilot_personid_fkey FOREIGN KEY (PersonID) REFERENCES Person(PersonID);
+ALTER TABLE pilot ALTER COLUMN PersonID SET NOT NULL;
+ALTER TABLE pilot DROP COLUMN passportNumber;
+ALTER TABLE pilot ADD CONSTRAINT pilot_pkey PRIMARY KEY (PersonID);
+
+-- ===== FlightAttendant =====
+ALTER TABLE FlightAttendant ADD COLUMN PersonID INTEGER;
+UPDATE FlightAttendant
+SET PersonID = Person.PersonID
+FROM Person
+WHERE FlightAttendant.passportNumber = Person.passportNumber;
+ALTER TABLE FlightAttendant ADD CONSTRAINT flightattendant_personid_fkey FOREIGN KEY (PersonID) REFERENCES Person(PersonID);
+ALTER TABLE FlightAttendant ALTER COLUMN PersonID SET NOT NULL;
+ALTER TABLE FlightAttendant DROP COLUMN passportNumber;
+ALTER TABLE FlightAttendant ADD CONSTRAINT flightattendant_pkey PRIMARY KEY (PersonID);
+
+-- ================================================
+-- STEP 5: Update other related tables
+-- ================================================
+
+-- ===== Has =====
+ALTER TABLE Has ADD COLUMN PersonID INTEGER;
+UPDATE Has
+SET PersonID = Person.PersonID
+FROM Person
+WHERE Has.passportNumber = Person.passportNumber;
+ALTER TABLE Has ADD CONSTRAINT has_personid_fkey FOREIGN KEY (PersonID) REFERENCES Passenger(PersonID);
+ALTER TABLE Has ALTER COLUMN PersonID SET NOT NULL;
+ALTER TABLE Has DROP COLUMN passportNumber;
+
+-- ===== ServedBy =====
+ALTER TABLE ServedBy ADD COLUMN PersonID INTEGER;
+UPDATE ServedBy
+SET PersonID = Person.PersonID
+FROM Person
+WHERE ServedBy.passportNumber = Person.passportNumber;
+ALTER TABLE ServedBy ADD CONSTRAINT servedby_personid_fkey FOREIGN KEY (PersonID) REFERENCES FlightAttendant(PersonID);
+ALTER TABLE ServedBy ALTER COLUMN PersonID SET NOT NULL;
+ALTER TABLE ServedBy DROP COLUMN passportNumber;
+
+-- ===== FlownBy =====
+ALTER TABLE FlownBy ADD COLUMN PersonID INTEGER;
+UPDATE FlownBy
+SET PersonID = Person.PersonID
+FROM Person
+WHERE FlownBy.passportNumber = Person.passportNumber;
+ALTER TABLE FlownBy ADD CONSTRAINT flownby_personid_fkey FOREIGN KEY (PersonID) REFERENCES pilot(PersonID);
+ALTER TABLE FlownBy ALTER COLUMN PersonID SET NOT NULL;
+ALTER TABLE FlownBy DROP COLUMN passportNumber;
+
+-- ===== FlightAttendant_LanguageSpoken =====
+ALTER TABLE FlightAttendant_LanguageSpoken ADD COLUMN PersonID INTEGER;
+UPDATE FlightAttendant_LanguageSpoken
+SET PersonID = Person.PersonID
+FROM Person
+WHERE FlightAttendant_LanguageSpoken.passportNumber = Person.passportNumber;
+ALTER TABLE FlightAttendant_LanguageSpoken ADD CONSTRAINT flightattendant_languagespoken_personid_fkey FOREIGN KEY (PersonID) REFERENCES FlightAttendant(PersonID);
+ALTER TABLE FlightAttendant_LanguageSpoken ALTER COLUMN PersonID SET NOT NULL;
+ALTER TABLE FlightAttendant_LanguageSpoken DROP COLUMN passportNumber;
+
+-- add primary key
+ALTER TABLE FlightAttendant_LanguageSpoken 
+ADD CONSTRAINT flightattendant_languagespoken_pkey PRIMARY KEY (PersonID, LanguageSpoken);
+
+-- ===== Recive =====
+ALTER TABLE Recive ADD COLUMN PersonID INTEGER;
+UPDATE Recive
+SET PersonID = Person.PersonID
+FROM Person
+WHERE Recive.passportNumber = Person.passportNumber;
+ALTER TABLE Recive ADD CONSTRAINT recive_personid_fkey FOREIGN KEY (PersonID) REFERENCES Passenger(PersonID);
+ALTER TABLE Recive ALTER COLUMN PersonID SET NOT NULL;
+ALTER TABLE Recive DROP COLUMN passportNumber;
+
+-- ===== give =====
+ALTER TABLE give ADD COLUMN PersonID INTEGER;
+UPDATE give
+SET PersonID = Person.PersonID
+FROM Person
+WHERE give.passportNumber = Person.passportNumber;
+ALTER TABLE give ADD CONSTRAINT give_personid_fkey FOREIGN KEY (PersonID) REFERENCES FlightAttendant(PersonID);
+ALTER TABLE give ALTER COLUMN PersonID SET NOT NULL;
+ALTER TABLE give DROP COLUMN passportNumber;
+
+-- ================================================
+-- STEP 6: Finally, drop the passportNumber column from Person
+-- ================================================
+ALTER TABLE Person DROP COLUMN passportNumber;
+
+-- ================================================
+-- STEP 7: Set EmploymentDate to NULL for all passengers
+-- ================================================
+ALTER TABLE Person ALTER COLUMN EmploymentDate DROP NOT NULL;
+UPDATE Person
+SET EmploymentDate = NULL
+WHERE PersonID IN (
+    SELECT PersonID FROM Passenger
+);
+--as usual- delete something unnecessary
+ALTER TABLE FlightAttendant DROP COLUMN numberPhone;
+
+
