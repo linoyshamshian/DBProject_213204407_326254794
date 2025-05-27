@@ -436,6 +436,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 כדי לראות את הטבלה שנוצרה רשמנו כך:
 
+![image](DBProject/partD/Images/trigger2_run.png)
+
 
 🔸 טריגר 2: הטריגר מופעל לאחר שמוחקת רשומה מטבלת incident, ומפעיל את הפונקציה trg_incident_delete_notice, אשר מציגה הודעת NOTICE עם מספר האירוע (incidentid) שנמחק.
 
@@ -450,7 +452,6 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
   כדי להריץ את הפונקציה השתמשנו בקטע הקוד הבא:
   
-![image](DBProject/partD/Images/trigger2_run.png)
 
 ![image](DBProject/partD/Images/main1_SuccessAdd.png)
 
@@ -477,4 +478,6 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 בהמשך ניסינו למחוק אירוע שלא קיים, מה שגרם לשגיאה מאחר שזה אינו תקין. התוצאה שהתקבלה מוצגת כאן:
 
 ![image](DBProject/partD/Images/main2_failDelete.png)
+
+📌 [View the triggers](DBProject/partD/Codes/main)
 
