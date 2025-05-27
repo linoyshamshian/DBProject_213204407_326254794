@@ -439,7 +439,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ![image](DBProject/partD/Images/trigger2_run.png)
 
 
-🔸 טריגר 2: הטריגר מופעל לאחר שמוחקת רשומה מטבלת incident, ומפעיל את הפונקציה trg_incident_delete_notice, אשר מציגה הודעת NOTICE עם מספר האירוע (incidentid) שנמחק.
+🔸 טריגר 2: הטריגר מופעל לאחר שנמחקת רשומה מטבלת incident, ומפעיל את הפונקציה trg_incident_delete_notice, אשר מציגה הודעת NOTICE עם מספר האירוע (incidentid) שנמחק.
 את התוצאה ניתן לראות בתמונה של ההרצה של התכנית השנייה שנמצאת בהמשך.
 
 📌 [View the triggers](DBProject/partD/Codes/triggers)
@@ -466,7 +466,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ![image](DBProject/partD/Images/main1_SuccessAdd.png)
 
-כפי שניתן לראות, הדייל נוסף בהצלחה עם השפה החדשה.
+כפי שניתן לראות, הדייל נוסף בהצלחה עם השפה החדשה והממוצע חושב בהצלחה.
 
 בהמשך ניסינו להוסיף את אותו הדייל עם אותה השפה שוב, מה שגרם לשגיאה מאחר שזה אינו תקין. התוצאה שהתקבלה מוצגת כאן:
 
@@ -489,11 +489,11 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
       
 ![image](DBProject/partD/Images/main2_sucessDeleteAndTriger.png)
 
-כפי שניתן לראות, האירוע נמחק בהצלחה.
+כפי שניתן לראות, האירוע נמחק בהצלחה ופרטי הטייס הודפסו.
 
 בהמשך ניסינו למחוק אירוע שלא קיים, מה שגרם לשגיאה מאחר שזה אינו תקין. התוצאה שהתקבלה מוצגת כאן:
 
 ![image](DBProject/partD/Images/main2_failDelete.png)
 
-📌 [View the triggers](DBProject/partD/Codes/main)
+📌 [View the main](DBProject/partD/Codes/main)
 
