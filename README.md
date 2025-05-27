@@ -431,6 +431,13 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 📌 [View the procedures](DBProject/partD/Codes/procedures)
 
 ### [Triggers](#triggers)
+
+🔸 טריגר 1: הטריגר `trg_flightattendant_insert` מופעל לאחר הוספה של שורה חדשה בטבלת `flightattendant`, ורושם את פרטי הדייל שנוסף בטבלת הלוג `flightattendant_insert_log`, תוך הצגת הודעה עם פרטי ההוספה.
+
+🔸 טריגר 2: הטריגר `trg_flightattendant_insert` מופעל לאחר הוספה של דייל טיסה לטבלה `flightattendant`, והוא יוצר רשומה בטבלת הלוג `flightattendant_insert_log` הכוללת את פרטי הדייל ותאריך ההוספה, בנוסף מציג הודעה עם המידע שנוסף.
+
+📌 [View the triggers](DBProject/partD/Codes/triggers)
+
 ### [Main](#main)
 
 
