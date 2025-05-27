@@ -458,6 +458,20 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ![image](DBProject/partD/Images/main1_failAdd.png)
 
+🔸 פונקציה 2: הפונקציה `main_function_2` מבצעת שני שלבים עיקריים:
 
+    - מוחקת אירוע אבטחה מסוים וכל ההקצאות הקשורות אליו באמצעות קריאה לפרוצדורה delete_incident_and_security_assignments.
 
+    - מביאה את רשימת הטייסים המשויכים לטיסה מסוימת בעזרת הפונקציה get_pilots_for_flight, ומציגה הודעות Notice עם פרטי כל טייס שנמצא.
+
+      כדי להריץ את הפונקציה השתמשנו בקטע הקוד הבא:
+
+      
+![image](DBProject/partD/Images/main2_sucessDeleteAndTriger.png)
+
+כפי שניתן לראות, האירוע נמחק בהצלחה.
+
+בהמשך ניסינו למחוק אירוע שלא קיים, מה שגרם לשגיאה מאחר שזה אינו תקין. התוצאה שהתקבלה מוצגת כאן:
+
+![image](DBProject/partD/Images/main2_failDelete.png)
 
