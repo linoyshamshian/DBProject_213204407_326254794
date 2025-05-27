@@ -415,9 +415,11 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ## Phase 4: Programming
 ### [Functions](#functions)
 🔸 פונקציה 1: הפונקציה מחשבת את ממוצע שנות הניסיון של הטייסים בחברת תעופה מסוימת ומעדכנת את טבלת השירותים הפעילים עם משוב בהתאם לרמת הניסיון.
+
 🔸 פונקציה 2: הפונקציה מחזירה מצביע לטייסים המשויכים לטיסה מסוימת, כולל פרטים כמו מזהה אדם, שם מלא, שנות ניסיון ומזהה חברת התעופה שלהם.
 
 
+📌 [View the functions](DBProject/partD/Codes/functions)
 
 ### [Procedures](#procedures)
 ### [Triggers](#triggers)
