@@ -434,7 +434,10 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 🔸 טריגר 1: הטריגר `trg_flightattendant_insert` מופעל לאחר הוספה של שורה חדשה בטבלת `flightattendant`, ורושם את פרטי הדייל שנוסף בטבלת הלוג `flightattendant_insert_log`, תוך הצגת הודעה עם פרטי ההוספה.
 
-🔸 טריגר 2: הטריגר `trg_flightattendant_insert` מופעל לאחר הוספה של דייל טיסה לטבלה `flightattendant`, והוא יוצר רשומה בטבלת הלוג `flightattendant_insert_log` הכוללת את פרטי הדייל ותאריך ההוספה, בנוסף מציג הודעה עם המידע שנוסף.
+כדי לראות את הטבלה שנוצרה רשמנו כך:
+
+
+🔸 טריגר 2: הטריגר מופעל לאחר שמוחקת רשומה מטבלת incident, ומפעיל את הפונקציה trg_incident_delete_notice, אשר מציגה הודעת NOTICE עם מספר האירוע (incidentid) שנמחק.
 
 📌 [View the triggers](DBProject/partD/Codes/triggers)
 
@@ -447,7 +450,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
   כדי להריץ את הפונקציה השתמשנו בקטע הקוד הבא:
   
-
+![image](DBProject/partD/Images/trigger2_run.png)
 
 ![image](DBProject/partD/Images/main1_SuccessAdd.png)
 
