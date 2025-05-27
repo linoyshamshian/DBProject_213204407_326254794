@@ -482,9 +482,9 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
     קוד התכנית:
 - ![image](DBProject/partD/Images/main2.png)
 
-  
 
-      כדי להריץ את הפונקציה השתמשנו בקטע הקוד הבא:
+
+  כדי להריץ את הפונקציה השתמשנו בקטע הקוד הבא:
 
       
 ![image](DBProject/partD/Images/main2_sucessDeleteAndTriger.png)
