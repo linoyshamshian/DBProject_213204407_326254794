@@ -31,7 +31,7 @@
 - [Phase 4: Programming](#phase-4-programming)
   - [Functions](#functions)
   - [Procedures](#procedures)
-  - [triggers](#triggers)
+  - [Triggers](#triggers)
   - [Main](#main)
     
 ## Phase 1: Design and Build the Database  
