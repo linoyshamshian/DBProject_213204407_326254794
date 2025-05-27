@@ -1,0 +1,80 @@
+------------------ Procedure 1 ------------------
+
+CREATE OR REPLACE PROCEDURE add_flightattendant_with_language(
+    p_personid integer, 
+    p_airlineid numeric, 
+    p_rank varchar, 
+    p_language varchar,
+    p_mail varchar,
+    p_employmentdate date,
+    p_fullname varchar
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- בדיקה אם האדם כבר קיים בטבלת person
+    IF EXISTS (SELECT 1 FROM person WHERE personid = p_personid) THEN
+        -- אם הוא גם דייל – רק נעדכן שפה
+        IF EXISTS (SELECT 1 FROM flightattendant WHERE personid = p_personid) THEN
+            -- בדיקה אם השפה כבר קיימת לדייל
+            IF EXISTS (
+                SELECT 1 FROM flightattendant_languagespoken
+                WHERE personid = p_personid AND languagespoken = p_language
+            ) THEN
+                RAISE EXCEPTION 'Language % already assigned to flightattendant %.', p_language, p_personid;
+            ELSE
+                INSERT INTO flightattendant_languagespoken(personid, languagespoken)
+                VALUES (p_personid, p_language);
+            END IF;
+            RETURN;  -- סיים, כי הוא כבר קיים גם ב-person וגם כדייל
+        ELSE
+            -- האדם קיים ב-person אבל לא כדייל – זה אסור
+            RAISE EXCEPTION 'Cannot add flightattendant: Person ID % exists in "person" but is not a flightattendant.', p_personid;
+        END IF;
+    END IF;
+
+    -- אם האדם לא קיים כלל – מוסיפים אותו ל-person ואז ל-flightattendant
+    INSERT INTO person(personid, mail, employmentdate, fullname)
+    VALUES (p_personid, p_mail, p_employmentdate, p_fullname);
+
+    INSERT INTO flightattendant(personid, airlineid, rank)
+    VALUES (p_personid, p_airlineid, p_rank);
+
+    -- בדיקה אם השפה כבר קיימת לדייל החדש (סביר שלא, אבל ליתר ביטחון)
+    IF EXISTS (
+        SELECT 1 FROM flightattendant_languagespoken
+        WHERE personid = p_personid AND languagespoken = p_language
+    ) THEN
+        RAISE EXCEPTION 'Language % already assigned to flightattendant %.', p_language, p_personid;
+    ELSE
+        INSERT INTO flightattendant_languagespoken(personid, languagespoken)
+        VALUES (p_personid, p_language);
+    END IF;
+END;
+$$;
+
+
+
+------------------ Procedure 2 ------------------
+
+CREATE OR REPLACE PROCEDURE delete_incident_and_security_assignments(p_incidentid integer)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    -- בדיקה אם האירוע קיים
+    IF NOT EXISTS (SELECT 1 FROM incident WHERE incidentid = p_incidentid) THEN
+        RAISE EXCEPTION 'Incident ID % does not exist.', p_incidentid;
+    END IF;
+
+    -- מחיקת הקצאות אבטחה הקשורות לאירוע
+    DELETE FROM incident_has_securityperson WHERE incidentid = p_incidentid;
+
+    -- מחיקת האירוע עצמו
+    DELETE FROM incident WHERE incidentid = p_incidentid;
+
+    RAISE NOTICE 'Incident % and related security assignments successfully deleted.', p_incidentid;
+
+END;
+$$;
+
+
