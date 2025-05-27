@@ -29,6 +29,11 @@
   - [מבטים](#מבטים)
   - [גיבוי 3](#גיבוי-3)
 - [Phase 4: Programming](#phase-4-programming)
+  - [Functions](#functions)
+  - [Procedures](#procedures)
+  - [triggers](#triggers)
+  - [Main](#main)
+    
 ## Phase 1: Design and Build the Database  
 ### Introduction
 The **Security Management Database** is designed to efficiently manage security personnel, secure areas, shifts, and incident records. This system ensures smooth operations by tracking security assignments, required security levels, and emergency incidents while maintaining a high level of organization and accessibility.
@@ -408,6 +413,10 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
    [go to backup](DBProject/partC/Backup)
 
 ## Phase 4: Programming
+### [Functions](#functions)
+### [Procedures](#procedures)
+### [Triggers](#triggers)
+### [Main](#main)
 
 
 
