@@ -311,7 +311,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 -  מחקנו את העמודה `passportNumber` מטבלת `Person`, כך שלא תהיה כפילות.
 -  קבענו שערך `EmploymentDate` יהיה `NULL` עבור נוסעים (שלא נחשבים עובדים בארגון), ועדכנו אותו בהתאם. בנוסף, הסרנו עמודות מיותרות כמו `numberPhone` מהטבלה `FlightAttendant`.
 
-📌 [View `part1`](DBProject/partC/IntegrateSql/part1_Integrate_from_person)
+📌 [View `part1`](DBProject/partC/IntegrateSql/part1_Integrate_from_person.txt)
 
 לאחר שסיימנו להמיר את Person ולהתאים את כל הטבלאות לתמוך ב-PersonID כמפתח הראשי, בשלב הבא התמקדנו בהורשת SecurityPerson מ-Person כדי לאחד את המידע ולשפר את מבנה בסיס הנתונים.
 
