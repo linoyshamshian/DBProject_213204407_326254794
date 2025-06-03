@@ -1,5 +1,5 @@
 -- יצירת מבט המציג את פרטי התקריות כולל סוג, תאריך, תיאור, אזור, איש אבטחה ומשך המעורבות
-VIEW IncidentDetails AS
+CREATE VIEW IncidentDetails AS
 SELECT 
   I.IncidentID,
   I.IncidentType,
