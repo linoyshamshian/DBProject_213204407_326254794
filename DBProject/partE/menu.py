@@ -1,3 +1,4 @@
+#menu.py
 import customtkinter as ctk
 from connectToPostgres import get_connection
 from data import open_table_screen
@@ -42,10 +43,10 @@ btn_frame = ctk.CTkFrame(root, fg_color="#eaf0ff")
 btn_frame.pack()
 
 buttons = [
-    ("Assignment", lambda: open_table_screen(cursor,"Assigment",conn)),
-    ("Area", lambda: open_table_screen(cursor,"Area",conn)),
-    ("Shifts", lambda: open_table_screen(cursor,"Shifts",conn)),
-    ("Person", lambda: open_table_screen(cursor,"Person",conn)),
+    ("Assignment", lambda: open_table_screen(cursor,"Assigment")),
+    ("Area", lambda: open_table_screen(cursor,"Area")),
+    ("Shifts", lambda: open_table_screen(cursor,"Shifts")),
+    ("Person", lambda: open_table_screen(cursor,"Person")),
     ("Queries & Procedures", lambda: show_message(cursor,"Queries & Procedures")),  # או מסך אחר
 ]
 

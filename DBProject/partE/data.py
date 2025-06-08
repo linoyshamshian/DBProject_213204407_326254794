@@ -1,176 +1,170 @@
 import customtkinter as ctk
-# Make sure psycopg2 is imported where this function is used or passed in
-# import psycopg2
-from CTkMessagebox import CTkMessagebox # Assuming you have CTkMessagebox installed for error messages
+import math
+from insert_form import open_insert_form
 
-def get_table_columns(cursor, table_name):
-    cursor.execute(
-        """
-        SELECT column_name
-        FROM information_schema.columns
-        WHERE table_schema = 'public'
-          AND table_name = %s
-        ORDER BY ordinal_position;
-        """,
-        (table_name.lower(),)
-    )
-    return [row[0] for row in cursor.fetchall()]
+def open_table_screen(cursor, table_name):
+    window = ctk.CTkToplevel()
+    window.title(f"{table_name} Table")
+    window.geometry("1100x750")
+    window.configure(fg_color="#eaf0ff")  # צבע רקע בהיר יותר
 
-def get_primary_key_column(cursor, table_name):
-    """
-    Retrieves the primary key column name for a given table.
-    Needed for consistent ordering across pages.
-    """
+    table_name_lower = table_name.lower()  # שינוי שם המשתנה למניעת התנגשות עם שם הפונקציה
+
+    page_size = 100
+    current_page = [0]
+    data_labels = []
+
+    # משתנה לאחסון שמות העמודות ברמה גבוהה יותר
+    column_names = []
+
+    # כותרת הטבלה
+    title_label = ctk.CTkLabel(window, text=f"📊 Table: {table_name}",  # אייקון שונה
+                               font=("Segoe UI", 28, "bold"), text_color="#2a3f77")
+    title_label.pack(pady=(25, 15))
+
+    # כפתור הוספה
+    insert_btn = ctk.CTkButton(window, text="➕ Add New Record", width=160, height=40,
+                               font=("Segoe UI", 15, "bold"), fg_color="#3cb371", hover_color="#2e8b57",
+                               command=lambda: open_insert_form(cursor, table_name, load_page),
+                               corner_radius=8)
+    insert_btn.pack(pady=(5, 10))
+
+    # ספירת שורות
     try:
-        cursor.execute(
-            """
-            SELECT a.attname
-            FROM pg_index ix
-                     JOIN pg_attribute a ON a.attrelid = ix.indrelid
-                AND a.attnum = ANY (ix.indkey)
-            WHERE ix.indrelid = %s::regclass
-            AND    ix.indisprimary;
-            """,
-            (table_name.lower(),)
-        )
-        pk_col = cursor.fetchone()
-        return pk_col[0] if pk_col else None
-    except Exception as e:
-        print(f"Error fetching primary key for {table_name}: {e}")
-        return None
-
-
-def open_table_screen(cursor, table_name, conn): # conn is not directly used in this version but good to keep if needed later
-    columns = get_table_columns(cursor, table_name)
-    pk_col = get_primary_key_column(cursor, table_name) # Get primary key for consistent ordering
-
-    screen = ctk.CTkToplevel()
-    screen.title(f"{table_name.capitalize()} Data")
-    screen.geometry("1100x700") # Increased size to accommodate pagination
-    screen.configure(fg_color="#f5f9ff")
-
-    title = ctk.CTkLabel(screen, text=f"Table: {table_name.capitalize()}",
-                         font=("Segoe UI", 24, "bold"), text_color="#2a3f77")
-    title.pack(pady=20)
-
-    # --- Pagination Variables ---
-    rows_per_page = 100  # Display 100 rows per page
-    current_page = 0     # Start from the first page (index 0)
-    total_rows = 0       # Will be populated after initial fetch
-
-    data_frame = ctk.CTkScrollableFrame(screen, fg_color="#ffffff", width=1050, height=500)
-    data_frame.pack(padx=20, pady=10, fill="both", expand=True)
-
-    table_data_labels = [] # To store references to row labels for easy clearing
-
-    # --- Pagination Controls ---
-    pagination_frame = ctk.CTkFrame(screen, fg_color="#f5f9ff")
-    pagination_frame.pack(pady=10)
-
-    prev_button = ctk.CTkButton(pagination_frame, text="< Previous", command=lambda: change_page(-1),
-                                font=("Segoe UI", 14), fg_color="#2a3f77", hover_color="#3a4f87", text_color="white",
-                                width=100, height=35)
-    prev_button.pack(side="left", padx=10)
-
-    page_info_label = ctk.CTkLabel(pagination_frame, text="Page 1 of 1", font=("Segoe UI", 14, "bold"),
-                                   text_color="#2a3f77")
-    page_info_label.pack(side="left", padx=10)
-
-    next_button = ctk.CTkButton(pagination_frame, text="Next >", command=lambda: change_page(1),
-                                font=("Segoe UI", 14), fg_color="#2a3f77", hover_color="#3a4f87", text_color="white",
-                                width=100, height=35)
-    next_button.pack(side="left", padx=10)
-
-
-    def update_pagination_buttons():
-        """Updates the state of pagination buttons and page info label."""
-        prev_button.configure(state="normal" if current_page > 0 else "disabled")
-        max_pages = (total_rows + rows_per_page - 1) // rows_per_page # Ceiling division
-        next_button.configure(state="normal" if current_page < max_pages - 1 else "disabled")
-        page_info_label.configure(text=f"Page {current_page + 1} of {max_pages if max_pages > 0 else 1}")
-
-
-    def refresh_table_data():
-        """Refreshes the data displayed in the table for the current page."""
-        nonlocal total_rows # Allows modification of total_rows in the outer scope
-
-        # Clear existing data labels
-        for row_labels in table_data_labels:
-            for label in row_labels:
-                label.destroy()
-        table_data_labels.clear()
-
-        # Add column headers
-        for idx, col_name in enumerate(columns):
-            ctk.CTkLabel(
-                data_frame,
-                text=col_name,
-                width=150,
-                anchor="center",
-                font=("Segoe UI", 14, "bold"),
-                fg_color="#dbe4ff",
-                text_color="#2a3f77",
-                padx=5, pady=8
-            ).grid(row=0, column=idx, padx=2, pady=2, sticky="ew")
-
-        # --- Count total rows for pagination ---
-        cursor.execute(f"SELECT COUNT(*) FROM {table_name.lower()}")
+        cursor.execute(f"SELECT COUNT(*) FROM {table_name_lower}")
         total_rows = cursor.fetchone()[0]
+        total_pages = math.ceil(total_rows / page_size)
+        if total_pages == 0 and total_rows == 0:  # Handle empty table case
+            total_pages = 1  # At least one page even if empty
+    except Exception as e:
+        error_label = ctk.CTkLabel(window, text=f"❌ Error fetching row count: {e}",
+                                   text_color="#a94442", font=("Segoe UI", 14))
+        error_label.pack(pady=20)
+        return
 
-        # --- Fetch data for the current page ---
-        offset = current_page * rows_per_page
-        order_clause = f"ORDER BY {pk_col}" if pk_col else ""
+    # מסגרת התוכן עבור הטבלה הניתנת לגלילה
+    # הגדרת רוחב ספציפי כדי לשלוט בעיצוב הכללי
+    table_container_frame = ctk.CTkScrollableFrame(window, fg_color="#f0f4ff",
+                                                   width=1000, height=500, corner_radius=10)
+    table_container_frame.pack(pady=10, padx=20, fill="x", expand=False)
 
-        # Fallback if no PK is found, order by first column, or no order if no columns
-        if not pk_col:
-            if columns:
-                order_clause = f"ORDER BY {columns[0]}"
-            else:
-                order_clause = ""
+    # יצירת Canvas פנימי לשליטה טובה יותר על הגלילה והעיצוב של הגריד
+    # (Customtkinter's CTkScrollableFrame already handles this well enough usually,
+    # but for very precise grid control, a sub-frame can be helpful. Sticking to current structure.)
 
-        # Execute query with LIMIT and OFFSET
-        cursor.execute(f"SELECT * FROM {table_name.lower()} {order_clause} LIMIT %s OFFSET %s",
-                       (rows_per_page, offset))
-        rows = cursor.fetchall()
+    # מסגרת ניווט
+    nav_frame = ctk.CTkFrame(window, fg_color="#eaf0ff")
+    nav_frame.pack(pady=(15, 20))
 
-        for r_idx, row in enumerate(rows, start=1):
-            row_labels = []
-            for c_idx, value in enumerate(row):
-                label = ctk.CTkLabel(
-                    data_frame,
-                    text=str(value),
-                    width=150,
-                    anchor="center",
-                    font=("Segoe UI", 12),
-                    fg_color="#ffffff",
-                    text_color="black",
-                    padx=5, pady=4
-                )
-                label.grid(row=r_idx, column=c_idx, padx=2, pady=1, sticky="ew")
-                row_labels.append(label)
-            table_data_labels.append(row_labels)
+    # כפתורים ותווית עמוד
+    prev_btn = ctk.CTkButton(nav_frame, text="← Previous", width=140, height=40,
+                             font=("Segoe UI", 15, "bold"), fg_color="#4a69bd", hover_color="#3a519b",
+                             command=lambda: go_page(-1), corner_radius=8)
+    prev_btn.grid(row=0, column=0, padx=15)
 
-        # Scroll to the top of the frame when page changes
-        data_frame.after(100, lambda: data_frame._parent_canvas.yview_moveto(0.0))
-        update_pagination_buttons()
+    page_label = ctk.CTkLabel(nav_frame, text="", font=("Segoe UI", 16, "bold"), text_color="#2a3f77")
+    page_label.grid(row=0, column=1, padx=20)
 
+    next_btn = ctk.CTkButton(nav_frame, text="Next →", width=140, height=40,
+                             font=("Segoe UI", 15, "bold"), fg_color="#4a69bd", hover_color="#3a519b",
+                             command=lambda: go_page(1), corner_radius=8)
+    next_btn.grid(row=0, column=2, padx=15)
 
-    def change_page(direction):
-        """Changes the current page and refreshes the table data."""
-        nonlocal current_page
-        max_pages = (total_rows + rows_per_page - 1) // rows_per_page
+    def load_page():
+        # ניקוי תוויות קיימות
+        for label in data_labels:
+            label.destroy()
+        data_labels.clear()
 
-        new_page = current_page + direction
-        if 0 <= new_page < max_pages:
-            current_page = new_page
-            refresh_table_data()
-        elif new_page < 0: # If trying to go before first page
-            CTkMessagebox(title="Navigation", message="You are already on the first page.", icon="info")
-        elif new_page >= max_pages: # If trying to go beyond last page
-            CTkMessagebox(title="Navigation", message="You are already on the last page.", icon="info")
+        offset = current_page[0] * page_size
+        try:
+            # שלוף נתונים כולל שמות עמודות
+            cursor.execute(f"SELECT * FROM {table_name_lower} OFFSET {offset} LIMIT {page_size}")
+            rows = cursor.fetchall()
+            nonlocal column_names  # נצהיר שזה המשתנה החיצוני
+            column_names = [desc[0] for desc in cursor.description]
 
+            # הגדרת רוחב עמודות דינמי
+            # ניתן להתאים את זה יותר - כרגע זה רוחב קבוע לכל העמודות
+            col_width_factor = 1.0 / len(column_names) if len(column_names) > 0 else 0.1
 
-    # Initial display of data
-    refresh_table_data()
+            # --- כותרות הטבלה (שורת הכותרות) ---
+            for col_index, col_name in enumerate(column_names):
+                header_label = ctk.CTkLabel(table_container_frame, text=col_name.replace('_', ' ').title(),  # כותרת יפה
+                                            font=("Segoe UI", 13, "bold"),
+                                            text_color="#1f3b73",
+                                            fg_color="#dbe4ff",  # צבע רקע לכותרות
+                                            height=35,
+                                            corner_radius=5)
+                # שימוש ב-grid עם sticky "ew" כדי למתוח את התוויות ברוחב
+                table_container_frame.grid_columnconfigure(col_index, weight=1)
+                header_label.grid(row=0, column=col_index, sticky="ew", padx=2, pady=2)
+                data_labels.append(header_label)
 
-    screen.mainloop()
+            # --- שורות הנתונים ---
+            row_colors = ["#ffffff", "#f5f8ff"]  # צבעים לסירוגין
+
+            if not rows and current_page[0] == 0:  # If table is empty and on first page
+                empty_label = ctk.CTkLabel(table_container_frame, text="No data available in this table.",
+                                           font=("Segoe UI", 14), text_color="#666666", pady=50)
+                empty_label.grid(row=1, column=0, columnspan=len(column_names), sticky="nsew")
+                data_labels.append(empty_label)
+
+            for row_index, row in enumerate(rows, start=1):
+                bg_color = row_colors[row_index % 2]  # בחירת צבע לסירוגין
+                for col_index, value in enumerate(row):
+                    # נבטיח שהטקסט לא יהיה None
+                    display_value = str(value) if value is not None else ""
+
+                    data_label = ctk.CTkLabel(table_container_frame, text=display_value,
+                                              font=("Segoe UI", 11),
+                                              text_color="#333333",
+                                              fg_color=bg_color,  # צבע רקע לשורה
+                                              height=30,
+                                              corner_radius=3)
+                    data_label.grid(row=row_index, column=col_index, sticky="ew", padx=2, pady=1)
+                    data_labels.append(data_label)
+
+            # עדכון כפתורים ותווית עמוד
+            prev_btn.configure(state="normal" if current_page[0] > 0 else "disabled")
+            next_btn.configure(state="normal" if current_page[0] < total_pages - 1 else "disabled")
+            page_label.configure(text=f"Page {current_page[0] + 1} of {total_pages}")
+
+            # וודא שהגלילה חוזרת לראש העמוד עם טעינת עמוד חדש
+            table_container_frame._parent_canvas.yview_moveto(0)
+
+        except Exception as e:
+            error_message = f"❌ Error loading data: {e}"
+            # אם יש שגיאה אחרי שכבר נכנסנו ללופ, ננקה את הנתונים הקיימים
+            for label in data_labels:
+                label.destroy()
+            data_labels.clear()
+
+            error_label_in_frame = ctk.CTkLabel(table_container_frame, text=error_message,
+                                                text_color="#a94442", font=("Segoe UI", 14),
+                                                pady=50)
+            # אם יש עמודות, נמרכז את הודעת השגיאה על פני כל העמודות
+            if column_names:
+                error_label_in_frame.grid(row=1, column=0, columnspan=len(column_names), sticky="nsew")
+            else:  # אם אין עמודות, פשוט נשים אותה במקום הראשון
+                error_label_in_frame.grid(row=1, column=0, sticky="nsew")
+            data_labels.append(error_label_in_frame)  # הוסף לרשימה כדי שיימחק בניקוי הבא
+
+            # השבת את כפתורי הניווט במקרה של שגיאה
+            prev_btn.configure(state="disabled")
+            next_btn.configure(state="disabled")
+            page_label.configure(text="Error loading page")
+
+    def go_page(delta):
+        new_page = current_page[0] + delta
+        if 0 <= new_page < total_pages:
+            current_page[0] = new_page
+            load_page()
+        elif new_page < 0:
+            # This case is usually handled by button state, but good for explicit message
+            pass
+        elif new_page >= total_pages:
+            # This case is usually handled by button state, but good for explicit message
+            pass
+
+    load_page()  # טעינה ראשונית של העמוד הראשון
