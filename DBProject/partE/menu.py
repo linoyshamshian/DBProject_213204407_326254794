@@ -2,6 +2,7 @@
 import customtkinter as ctk
 from connectToPostgres import get_connection
 from data import open_table_screen
+from queries_procedures_screen import open_queries_procedures_screen
 
 
 ctk.set_appearance_mode("light")
@@ -43,12 +44,14 @@ btn_frame = ctk.CTkFrame(root, fg_color="#eaf0ff")
 btn_frame.pack()
 
 buttons = [
-    ("Assignment", lambda: open_table_screen(cursor,"Assigment")),
-    ("Area", lambda: open_table_screen(cursor,"Area")),
-    ("Shifts", lambda: open_table_screen(cursor,"Shifts")),
-    ("Person", lambda: open_table_screen(cursor,"Person")),
-    ("Queries & Procedures", lambda: show_message(cursor,"Queries & Procedures")),  # או מסך אחר
+    ("Assignment", lambda: open_table_screen(cursor,"Assigment","assigmentid")),
+    ("Area", lambda: open_table_screen(cursor,"Area","areaid")),
+    ("Shifts", lambda: open_table_screen(cursor,"Shifts","shiftid")),
+    ("Person", lambda: open_table_screen(cursor,"Person","personid")),
+    ("Queries & Procedures", lambda: open_queries_procedures_screen(cursor)),  # או מסך אחר
 ]
+
+
 
 
 for i in range(4):
@@ -83,3 +86,4 @@ last_btn = ctk.CTkButton(
 last_btn.pack(pady=10)
 
 root.mainloop()
+

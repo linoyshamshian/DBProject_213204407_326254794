@@ -1,8 +1,11 @@
 import customtkinter as ctk
 import math
 from insert_form import open_insert_form
+from update_form import open_update_form
+from delete_record import delete_record
 
-def open_table_screen(cursor, table_name):
+
+def open_table_screen(cursor, table_name,pk_col):
     window = ctk.CTkToplevel()
     window.title(f"{table_name} Table")
     window.geometry("1100x750")
@@ -110,20 +113,90 @@ def open_table_screen(cursor, table_name):
                 empty_label.grid(row=1, column=0, columnspan=len(column_names), sticky="nsew")
                 data_labels.append(empty_label)
 
-            for row_index, row in enumerate(rows, start=1):
-                bg_color = row_colors[row_index % 2]  # בחירת צבע לסירוגין
-                for col_index, value in enumerate(row):
-                    # נבטיח שהטקסט לא יהיה None
-                    display_value = str(value) if value is not None else ""
+            # for row_index, row in enumerate(rows, start=1):
+            #     bg_color = row_colors[row_index % 2]  # בחירת צבע לסירוגין
+            #     for col_index, value in enumerate(row):
+            #         # נבטיח שהטקסט לא יהיה None
+            #         display_value = str(value) if value is not None else ""
+            #
+            #         data_label = ctk.CTkLabel(table_container_frame, text=display_value,
+            #                                   font=("Segoe UI", 11),
+            #                                   text_color="#333333",
+            #                                   fg_color=bg_color,  # צבע רקע לשורה
+            #                                   height=30,
+            #                                   corner_radius=3)
+            #         data_label.grid(row=row_index, column=col_index, sticky="ew", padx=2, pady=1)
+            #         data_labels.append(data_label)
 
+            for row_index, row in enumerate(rows, start=1):
+                bg_color = row_colors[row_index % 2]
+                for col_index, value in enumerate(row):
+                    display_value = str(value) if value is not None else ""
                     data_label = ctk.CTkLabel(table_container_frame, text=display_value,
                                               font=("Segoe UI", 11),
                                               text_color="#333333",
-                                              fg_color=bg_color,  # צבע רקע לשורה
+                                              fg_color=bg_color,
                                               height=30,
                                               corner_radius=3)
                     data_label.grid(row=row_index, column=col_index, sticky="ew", padx=2, pady=1)
                     data_labels.append(data_label)
+                # כפתור Edit
+                edit_btn = ctk.CTkButton(
+                    table_container_frame,
+                    text="Edit",
+                    width=70,
+                    height=30,
+                    fg_color="#ffb347",
+                    hover_color="#ffa500",
+                    font=("Segoe UI", 11, "bold"),
+                    command=lambda r=row: open_update_form(cursor, table_name, column_names, r, load_page, pk_col)
+                )
+                edit_btn.grid(row=row_index, column=len(column_names), padx=4, pady=1)
+                data_labels.append(edit_btn)
+                # כפתור Delete
+                delete_btn = ctk.CTkButton(
+                    table_container_frame,
+                    text="Delete",
+                    width=70,
+                    height=30,
+                    fg_color="#e57373",
+                    hover_color="#c62828",
+                    font=("Segoe UI", 11, "bold"),
+                    command=lambda r=row: delete_record(cursor, table_name, pk_col, r[column_names.index(pk_col)],
+                                                        load_page)
+                )
+                delete_btn.grid(row=row_index, column=len(column_names) + 1, padx=4, pady=1)
+                data_labels.append(delete_btn)
+
+            # for row_index, row in enumerate(rows, start=1):
+            #     bg_color = row_colors[row_index % 2]
+            #     for col_index, value in enumerate(row):
+            #         display_value = str(value) if value is not None else ""
+            #         data_label = ctk.CTkLabel(table_container_frame, text=display_value,
+            #                                   font=("Segoe UI", 11),
+            #                                   text_color="#333333",
+            #                                   fg_color=bg_color,  # צבע רקע לשורה
+            #                                   height=30,
+            #                                   corner_radius=3)
+            #         data_label.grid(row=row_index, column=col_index, sticky="ew", padx=2, pady=1)
+            #
+            #         data_labels.append(data_label)
+            #
+            #
+            #     # כפתור Edit בסוף כל שורה
+            #     edit_btn = ctk.CTkButton(
+            #         table_container_frame,
+            #         text="Edit",
+            #         width=70,
+            #         height=30,
+            #         fg_color="#ffb347",
+            #         hover_color="#ffa500",
+            #         font=("Segoe UI", 11, "bold"),
+            #         # command=lambda r=row: open_update_form(cursor, table_name, column_names, r, load_page)
+            #         command = lambda r=row: open_update_form( cursor, table_name, column_names, r, load_page, pk_col)
+            #     )
+            #     edit_btn.grid(row=row_index, column=len(column_names), padx=4, pady=1)
+            #     data_labels.append(edit_btn)
 
             # עדכון כפתורים ותווית עמוד
             prev_btn.configure(state="normal" if current_page[0] > 0 else "disabled")
