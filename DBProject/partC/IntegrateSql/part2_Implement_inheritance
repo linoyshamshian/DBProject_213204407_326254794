@@ -64,6 +64,9 @@ ALTER TABLE Assigment DROP COLUMN SecurityPersonID;
 ALTER TABLE flight1 DROP COLUMN SecurityPersonID;
 ALTER TABLE Incident_Has_SecurityPerson DROP COLUMN SecurityPersonID;
 
+--ADD PK TO Incident_Has_SecurityPerson
+ALTER TABLE Incident_Has_SecurityPerson
+ADD CONSTRAINT incident_has_securityperson_pkey PRIMARY KEY (IncidentID, PersonID);
 
 --============== STEP 10: Drop redundant columns ==============
 
