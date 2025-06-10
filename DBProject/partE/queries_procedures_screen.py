@@ -347,3 +347,13 @@ def open_add_flightattendant_form(cursor):
                                fg_color="#4CAF50", hover_color="#45a049",
                                corner_radius=10)
     submit_btn.pack(pady=20)
+
+
+
+
+
+
+
+
+
+
