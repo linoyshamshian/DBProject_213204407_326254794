@@ -12,7 +12,18 @@ LANGUAGE plpgsql
 AS $$
 BEGIN
     -- בדיקה אם האדם כבר קיים בטבלת person
-    IF EXISTS (SELECT 1 FROM person WHERE personid = p_personid) THEN
+   IF EXISTS (SELECT 1 FROM person WHERE personid = p_personid) THEN
+    -- בדיקה אם שאר הפרטים תואמים
+    IF NOT EXISTS (
+        SELECT 1 FROM person 
+        WHERE personid = p_personid
+          AND mail = p_mail
+          AND employmentdate = p_employmentdate
+          AND fullname = p_fullname
+    ) THEN
+        RAISE EXCEPTION 'Person ID % already exists with different details.', p_personid;
+    END IF;
+
         -- אם הוא גם דייל – רק נעדכן שפה
         IF EXISTS (SELECT 1 FROM flightattendant WHERE personid = p_personid) THEN
             -- בדיקה אם השפה כבר קיימת לדייל

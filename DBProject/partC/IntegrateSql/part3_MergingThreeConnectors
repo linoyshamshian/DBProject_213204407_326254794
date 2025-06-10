@@ -41,3 +41,10 @@ DROP TABLE IF EXISTS FlownBy;
 -- STEP 8: Rename the 'Has' table to 'PersonInFlight' for better clarity
 -- =======================================================================
 ALTER TABLE Has RENAME TO PersonInFlight;
+
+-- =======================================================================
+-- STEP 9: ADD PRIMARY KEY
+-- =======================================================================
+ALTER TABLE PersonInFlight
+ADD CONSTRAINT personinflight_pkey PRIMARY KEY (PersonID, FlightNumber);
+

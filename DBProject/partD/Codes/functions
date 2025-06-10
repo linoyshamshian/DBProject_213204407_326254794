@@ -5,7 +5,7 @@ DECLARE
     avg_exp numeric(5,2);
     rec RECORD;
 BEGIN
-    -- חישוב ממוצע שנות ניסיון לטייסים בחברה ספציפית
+    -- חישוב ממוצע שנות ניסיון של טייסים בחברת התעופה הנתונה
     SELECT AVG(experienceyears) INTO avg_exp
     FROM pilot
     WHERE airlineid = p_airlineid;
@@ -14,17 +14,27 @@ BEGIN
         RAISE EXCEPTION 'No pilots found for airlineid: %', p_airlineid;
     END IF;
 
-    -- עדכון טבלת שירות עבור מספר שירותים בהתבסס על ממוצע שנות ניסיון
-    FOR rec IN SELECT numservice FROM service WHERE status = 'Active'
+    -- עדכון פידבק בשירותים הקשורים לטייסים מהחברה הנתונה בלבד
+    FOR rec IN 
+        SELECT DISTINCT s.numservice
+        FROM service s
+        JOIN give g ON s.numservice = g.numservice
+        JOIN pilot p ON g.personid = p.personid
+        WHERE s.status = 'Active' AND p.airlineid = p_airlineid
     LOOP
         IF avg_exp > 5 THEN
-            UPDATE service SET feadback = 'Experienced pilots available' WHERE numservice = rec.numservice;
+            UPDATE service 
+            SET feadback = 'Experienced pilots available' 
+            WHERE numservice = rec.numservice;
         ELSE
-            UPDATE service SET feadback = 'Pilot experience low' WHERE numservice = rec.numservice;
+            UPDATE service 
+            SET feadback = 'Pilot experience low' 
+            WHERE numservice = rec.numservice;
         END IF;
     END LOOP;
 
     RETURN avg_exp;
+
 EXCEPTION
     WHEN OTHERS THEN
         RAISE NOTICE 'Error calculating average experience: %', SQLERRM;
