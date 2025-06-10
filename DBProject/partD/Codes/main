@@ -74,7 +74,9 @@ END;
 $$;
 
 
-CALL main_function_2(8,524);
+BEGIN;
+CALL main_function_2(8, 524, 'my_cursor');
+COMMIT;
 
 
 
