@@ -278,6 +278,75 @@ def show_custom_input_dialog(prompt_text, title="Input Required"):
     return result_value
 
 
+# def open_add_flightattendant_form(cursor):
+#     form_window = ctk.CTkToplevel()
+#     form_window.title("Add Flight Attendant")
+#     form_window.geometry("500x550")
+#     form_window.grab_set()
+#     form_window.configure(fg_color="#eaf0ff")
+#
+#     title_label = ctk.CTkLabel(form_window, text="✈️ Add New Flight Attendant",
+#                                font=("Segoe UI", 24, "bold"), text_color="#2a3f77")
+#     title_label.pack(pady=(25, 15))
+#
+#     input_frame = ctk.CTkFrame(form_window, fg_color="transparent")
+#     input_frame.pack(pady=(0, 20), padx=20, fill="x", expand=False)
+#
+#     input_frame.grid_columnconfigure(0, weight=2)
+#     input_frame.grid_columnconfigure(1, weight=3)
+#
+#     fields_data = [
+#         ("Person ID", "p_personid", ctk.CTkEntry),
+#         ("Full Name", "p_fullname", ctk.CTkEntry),
+#         ("Mail", "p_mail", ctk.CTkEntry),
+#         (" Employment Date (YYYY-MM-DD)", "p_employmentdate", ctk.CTkEntry),
+#         ("Airline ID", "p_airlineid", ctk.CTkEntry),
+#         ("Rank", "p_rank", ctk.CTkEntry),
+#         ("Language", "p_language", ctk.CTkEntry),
+#     ]
+#
+#     entries = {}
+#
+#     for i, (label_text, var_name, entry_widget) in enumerate(fields_data):
+#         label = ctk.CTkLabel(input_frame, text=label_text + ":", font=("Segoe UI", 13), text_color="#333333")
+#         label.grid(row=i, column=0, sticky="w", padx=10, pady=8)
+#
+#         entry = entry_widget(input_frame, width=250, height=35, corner_radius=8,
+#                              fg_color="#ffffff", text_color="#333333",
+#                              border_color="#a8b9e0", border_width=1)
+#         entry.grid(row=i, column=1, sticky="ew", padx=(0, 10), pady=8)
+#         entries[var_name] = entry
+#
+#     def submit_data():
+#         try:
+#             p_personid = int(entries["p_personid"].get())
+#             p_fullname = entries["p_fullname"].get()
+#             p_mail = entries["p_mail"].get()
+#             p_employmentdate = entries["p_employmentdate"].get()
+#             p_airlineid = float(entries["p_airlineid"].get())
+#             p_rank = entries["p_rank"].get()
+#             p_language = entries["p_language"].get()
+#
+#             cursor.execute("""
+#                 CALL add_flightattendant_with_language(%s, %s, %s, %s, %s, %s, %s)
+#             """, (p_personid, p_fullname, p_mail, p_employmentdate, p_airlineid, p_rank, p_language))
+#             cursor.connection.commit()
+#
+#             messagebox.showinfo("Success", f"Flight Attendant '{p_fullname}' added successfully.")
+#             form_window.destroy()
+#
+#         except ValueError:
+#             messagebox.showerror("Input Error", "Please ensure Person ID and Airline ID are valid numbers and Date is in YYYY-MM-DD format.")
+#         except Exception as e:
+#             cursor.connection.rollback()
+#             messagebox.showerror("Database Error", str(e))
+#
+#     submit_btn = ctk.CTkButton(form_window, text="✅ Submit", command=submit_data,
+#                                width=180, height=45,
+#                                font=("Segoe UI", 16, "bold"),
+#                                fg_color="#4CAF50", hover_color="#45a049",
+#                                corner_radius=10)
+#     submit_btn.pack(pady=20)
 def open_add_flightattendant_form(cursor):
     form_window = ctk.CTkToplevel()
     form_window.title("Add Flight Attendant")
@@ -299,7 +368,7 @@ def open_add_flightattendant_form(cursor):
         ("Person ID", "p_personid", ctk.CTkEntry),
         ("Full Name", "p_fullname", ctk.CTkEntry),
         ("Mail", "p_mail", ctk.CTkEntry),
-        (" Employment Date (YYYY-MM-DD)", "p_employmentdate", ctk.CTkEntry),
+        ("Employment Date (YYYY-MM-DD)", "p_employmentdate", ctk.CTkEntry),
         ("Airline ID", "p_airlineid", ctk.CTkEntry),
         ("Rank", "p_rank", ctk.CTkEntry),
         ("Language", "p_language", ctk.CTkEntry),
@@ -327,9 +396,12 @@ def open_add_flightattendant_form(cursor):
             p_rank = entries["p_rank"].get()
             p_language = entries["p_language"].get()
 
+            # --- CORRECTED ORDER HERE ---
             cursor.execute("""
                 CALL add_flightattendant_with_language(%s, %s, %s, %s, %s, %s, %s)
-            """, (p_personid, p_fullname, p_mail, p_employmentdate, p_airlineid, p_rank, p_language))
+            """, (p_personid, p_airlineid, p_rank, p_language, p_mail, p_employmentdate, p_fullname))
+            # --- END CORRECTED ORDER ---
+
             cursor.connection.commit()
 
             messagebox.showinfo("Success", f"Flight Attendant '{p_fullname}' added successfully.")

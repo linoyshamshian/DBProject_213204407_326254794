@@ -6,9 +6,9 @@ def get_connection():
         connection = psycopg2.connect(
             host="localhost",  # כתובת השרת
             port=5432,  # מספר פורט
-            database="Integrated",  # שם מסד הנתונים
-            user="linoy",  # שם משתמש
-            password="0566"  # סיסמה
+            database="FinalIntegrated",  # שם מסד הנתונים
+            user="chen",  # שם משתמש
+            password="2711"  # סיסמה
         )
         return connection
     except Exception as e:
