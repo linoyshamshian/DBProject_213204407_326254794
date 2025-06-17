@@ -526,10 +526,6 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 * בסיס נתונים: **PostgreSQL**
 * ניהול גרסאות: **Git**
   
-בהחלט! הנה ההוראות שלך עטופות בתוך div עם כיוון כתיבה מימין לשמאל (RTL), מוכן להעתקה ל־README:
-
-```markdown
-
 
 ## הוראות הפעלה
 
@@ -560,10 +556,6 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 בהצלחה!  
 צוות הפיתוח
-
-
-```
-העתיקי והדביקי – כל הטקסט יוצג מימין לשמאל, מסודר וברור.
 
 
 ## מסכי המערכת
