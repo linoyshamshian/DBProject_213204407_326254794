@@ -501,3 +501,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ### Backup_4
 [go to backup](DBProject/partD/Backup)
 
+AirSystem – ממשק גרפי לעבודה מול בסיס נתונים PostgreSQL
+שלב ה' – יצירת ממשק גרפי
+הקדמה
+בפרויקט זה פיתחנו אפליקציה גרפית (GUI) בשפת Python ובשימוש בספריית CustomTkinter, המאפשרת עבודה נוחה מול בסיס הנתונים שלנו (PostgreSQL).
+האפליקציה כוללת מסכי ניהול נתונים, הפעלת שאילתות, פונקציות ופרוצדורות, וממשק משתמש נעים וידידותי.
