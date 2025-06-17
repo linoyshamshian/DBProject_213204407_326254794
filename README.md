@@ -34,7 +34,24 @@
   - [Triggers](#triggers)
   - [Main](#main)
   - [Backup_4](#backup_4)
-    
+
+ 
+
+- [הקדמה](#📝-הקדמה)
+- [כלים וטכנולוגיות בהם השתמשנו](#🛠️-כלים-וטכנולוגיות-בהם-השתמשנו)
+- [מסכי המערכת](#🖥️-מסכי-המערכת)
+- [פירוט הקבצים במערכת](#פירוט-הקבצים-במערכת)
+  - [connectToPostgres.py](#📄-connecttopostgres)
+  - [menu.py](#📄-menupy)
+  - [data.py](#📄-datapy)
+  - [update_form.py](#📄-update_formpy)
+  - [delete_record.py](#📄-delete_recordpy)
+  - [insert_form.py](#📄-insert_formpy)
+  - [insert_person_form.py](#📄-insert_person_formpy)
+  - [open_queries_procedures_screen.py](#📄-open_queries_procedures_screenpy)
+  - [entrancePage.py](#📄-entrancepagepy)
+- [תמונות מסך](#🖼️-תמונות-מסך)
+
 ## Phase 1: Design and Build the Database  
 ### Introduction
 The **Security Management Database** is designed to efficiently manage security personnel, secure areas, shifts, and incident records. This system ensures smooth operations by tracking security assignments, required security levels, and emergency incidents while maintaining a high level of organization and accessibility.
@@ -574,6 +591,70 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 **היכן נמצא הקוד?**  
 [לצפייה בקוד המלא לחץ כאן](DBProject/partE/update_form.py)
 
+<h3 align="right">📄 delete_record.py</h3>
+
+קובץ זה אחראי על מחיקת רשומה מהטבלה שנבחרה, כולל מחיקה רקורסיבית של כל הרשומות התלויות בה בטבלאות אחרות (באמצעות קשרי foreign key).
+
+**מה עושה הקובץ?**  
+הקובץ מזהה את כל הטבלאות והעמודות שמפנות לרשומה הנמחקת (באמצעות foreign key), ומוחק תחילה את כל הרשומות התלויות בהן, ורק לאחר מכן מוחק את הרשומה הראשית.  
+המחיקה מתבצעת בצורה בטוחה, כולל טיפול בשגיאות, הצגת סיכום מחיקות למשתמש, וביצוע פעולת commit/rollback בהתאם לצורך.
+
+**היכן נמצא הקוד?**  
+[לצפייה בקוד המלא לחץ כאן](DBProject/partE/delete_record.py)
+<h3 align="right">📄 insert_form.py</h3>
+
+קובץ זה אחראי על הצגת טופס הוספה דינמי לרשומה חדשה בטבלה שנבחרה.
+
+**מה עושה הקובץ?**  
+הקובץ יוצר חלון גרפי (באמצעות customtkinter) שמציג טופס מותאם אישית לכל טבלה, בהתאם למבנה העמודות שלה, כולל טיפול בשדות חובה, סוגי נתונים שונים, ושדות מפתח ראשי (כולל תמיכה ב־auto increment).  
+המשתמש מזין ערכים, והקובץ מבצע ולידציה, בונה שאילתת INSERT מתאימה, ומוסיף את הרשומה החדשה למסד הנתונים.  
+לאחר ההוספה, הטבלה מתרעננת אוטומטית והמשתמש מקבל הודעת הצלחה או שגיאה בהתאם.
+
+**היכן נמצא הקוד?**  
+[לצפייה בקוד המלא לחץ כאן](DBProject/partE/insert_form.py)
+<h3 align="right">📄 insert_person_form.py</h3>
+
+קובץ זה אחראי על הצגת טופס הוספה דינמי לרשומה חדשה בטבלת Person, כולל בחירת תפקיד (נוסע, דייל, טייס, איש ביטחון) והוספת הנתונים הרלוונטיים לטבלאות המשנה.
+
+**מה עושה הקובץ?**  
+הקובץ יוצר חלון גרפי (באמצעות customtkinter) שמציג טופס מותאם אישית לכל עמודות טבלת Person, כולל שדות חובה, סוגי נתונים שונים, ושדות מפתח ראשי (כולל תמיכה ב־auto increment).  
+בנוסף, המשתמש בוחר את תפקיד האדם (role) וממלא שדות נוספים בהתאם לתפקיד שנבחר.  
+הקובץ מבצע ולידציה לנתונים, מוסיף את הרשומה לטבלת Person, ולאחר מכן מוסיף את הנתונים לטבלת התפקיד המתאימה (passenger, pilot, flightattendant, securityperson).  
+לאחר ההוספה, הטבלה מתרעננת אוטומטית והמשתמש מקבל הודעת הצלחה או שגיאה בהתאם.
+
+**היכן נמצא הקוד?**  
+[לצפייה בקוד המלא לחץ כאן](DBProject/partE/insert_person_form.py)
+
+
+<h3 align="right">📄 open_queries_procedures_screen.py</h3>
+
+קובץ זה אחראי על הצגת מסך ייעודי להרצת שאילתות, פרוצדורות ופונקציות מול מסד הנתונים, והצגת התוצאות בצורה גרפית ונוחה.
+
+**מה עושה הקובץ?**  
+הקובץ יוצר חלון גרפי (באמצעות customtkinter) עם כפתורים להרצת שאילתות SQL, פרוצדורות, ופונקציות שנכתבו בשלבים הקודמים של הפרויקט.  
+כל כפתור מפעיל פעולה מתאימה:  
+- שאילתות מורצות ומוצגות בטבלה דינמית.
+- פרוצדורות ופונקציות מבוצעות מול המסד, כולל קבלת קלט מהמשתמש והצגת תוצאות/הודעות הצלחה או שגיאה.
+הקובץ כולל גם תיבת תוצאות עם גלילה, הסברים על כל פעולה, וטיפול מלא בשגיאות.
+
+**היכן נמצא הקוד?**  
+[לצפייה בקוד המלא לחץ כאן](DBProject/partE/open_queries_procedures_screen.py)
+
+<h3 align="right">📄 entrancePage.py</h3>
+
+קובץ זה מייצג את מסך הכניסה (Login) של המערכת, כחלק מדרישות הפרויקט.
+
+**מה עושה הקובץ?**  
+הקובץ יוצר חלון גרפי (באמצעות customtkinter) עם שדות להזנת שם משתמש וסיסמה, וכפתור התחברות.  
+בפועל, לא מתבצעת בדיקת הרשאות אמיתית מול מסד הנתונים, אלא בדיקה בסיסית (hardcoded) – שם משתמש וסיסמה ("admin" / "1234").  
+בכניסה מוצלחת, המסך הראשי של המערכת נפתח.
+
+**הערה:**  
+טכנית, איננו מריצות את הקובץ הזה בפועל, מכיוון שאין צורך אמיתי במסך כניסה במערכת שלנו.  
+הוספנו אותו כדי לעמוד בדרישת הפרויקט למסך כניסה בלבד.
+
+**היכן נמצא הקוד?**  
+[לצפייה בקוד המלא לחץ כאן](DBProject/partE/entrancePage.py)
 
 ---
 
