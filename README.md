@@ -527,8 +527,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 * ניהול גרסאות: **Git**
   
 
-## הוראות הפעלה
-
+<h1 align="right"> הוראות הפעלה</h1>
 <h2 align="right">דרישות מוקדמות</h2>
 <ol dir="rtl">
   <li>יש לוודא ש-Python 3.8 ומעלה מותקן במחשב.</li>
@@ -539,7 +538,6 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ## הפעלת המערכת
 
-<h3 align="right">הפעלת המערכת</h3>
 <ol dir="rtl" start="5">
   <li>יש להיכנס לתיקיית הפרויקט:<br>
       <code>cd DBProject/partE</code>
