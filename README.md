@@ -544,9 +544,6 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
   <li>יש להפעיל את קובץ התפריט הראשי:<br>
       <code>python menu.py</code>
   </li>
-  <li>במידה וקיים קובץ <code>login.py</code>, ניתן להריץ אותו (אופציונלי):<br>
-      <code>python login.py</code>
-  </li>
 </ol>
 
 
