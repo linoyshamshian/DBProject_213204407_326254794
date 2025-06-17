@@ -530,15 +530,12 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ## הוראות הפעלה
 
 <h2 align="right">דרישות מוקדמות</h2>
-<div dir="rtl">
-
-
-1. יש לוודא ש-Python 3.8 ומעלה מותקן במחשב.
-2. יש להתקין את הספריות הדרושות:  pip install customtkinter psycopg2-binary
-
-3. יש לוודא ששרת PostgreSQL פועל, ושמסד הנתונים FinalIntegrated קיים.
-4. יש לוודא שפרטי ההתחברות בקובץ connectToPostgres.py נכונים.
-</div>
+<ol dir="rtl">
+  <li>יש לוודא ש-Python 3.8 ומעלה מותקן במחשב.</li>
+  <li>יש להתקין את הספריות הדרושות:<br>pip install customtkinter psycopg2-binary</li>
+  <li>יש לוודא ששרת PostgreSQL פועל, ושמסד הנתונים FinalIntegrated קיים.</li>
+  <li>יש לוודא שפרטי ההתחברות בקובץ connectToPostgres.py נכונים.</li>
+</ol>
 
 ## הפעלת המערכת
 
