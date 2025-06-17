@@ -656,6 +656,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ## תמונות מסך
 
 * תמונות מסך לדוגמה נמצאות בתיקיית images
+[לצפייה בתקיית התמונות לחץ כאן](DBProject/partE/Images
+)
 
 ---
 
