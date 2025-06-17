@@ -501,8 +501,28 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ### Backup_4
 [go to backup](DBProject/partD/Backup)
 
-AirSystem – ממשק גרפי לעבודה מול בסיס נתונים PostgreSQL
-שלב ה' – יצירת ממשק גרפי
-הקדמה
-בפרויקט זה פיתחנו אפליקציה גרפית (GUI) בשפת Python ובשימוש בספריית CustomTkinter, המאפשרת עבודה נוחה מול בסיס הנתונים שלנו (PostgreSQL).
-האפליקציה כוללת מסכי ניהול נתונים, הפעלת שאילתות, פונקציות ופרוצדורות, וממשק משתמש נעים וידידותי.
+connectToPostgres.py
+קובץ זה אחראי על יצירת חיבור למסד הנתונים PostgreSQL של המערכת.
+
+הקובץ כולל פונקציה אחת עיקרית, get_connection(), שמנסה להתחבר למסד הנתונים לפי פרטי ההתחברות (שרת, פורט, שם מסד, משתמש וסיסמה).
+במקרה של הצלחה, הפונקציה מחזירה אובייקט חיבור (connection) פעיל; במקרה של כישלון, תודפס הודעת שגיאה והפונקציה תחזיר None.
+
+python
+import psycopg2
+
+def get_connection():
+    try:
+        connection = psycopg2.connect(
+            host="localhost",  # כתובת השרת
+            port=5432,         # מספר פורט
+            database="FinalIntegrated",  # שם מסד הנתונים
+            user="chen",       # שם משתמש
+            password="2711"    # סיסמה
+        )
+        return connection
+    except Exception as e:
+        print("Database connection error:", e)
+        return None
+
+
+
