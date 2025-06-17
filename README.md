@@ -526,6 +526,11 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 * בסיס נתונים: **PostgreSQL**
 * ניהול גרסאות: **Git**
   
+בהחלט! הנה ההוראות שלך עטופות בתוך div עם כיוון כתיבה מימין לשמאל (RTL), מוכן להעתקה ל־README:
+
+```markdown
+
+
 ## הוראות הפעלה
 
 ## דרישות מוקדמות
@@ -540,13 +545,14 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ## הפעלת המערכת
 
 5. יש להיכנס לתיקיית הפרויקט:
-  cd DBProject/partE
-6. יש להפעיל את קובץ התפריט הראשי:
+   cd DBProject/partE
 
-python menu.py
+6. יש להפעיל את קובץ התפריט הראשי:
+   python menu.py
 
 7. במידה וקיים קובץ login.py, ניתן להריץ אותו (אופציונלי):
-python login.py
+   python login.py
+
 ## הערות
 
 8. במידה ומתקבלת שגיאת התחברות, יש לבדוק את פרטי ההתחברות בקובץ connectToPostgres.py.
@@ -554,6 +560,10 @@ python login.py
 
 בהצלחה!  
 צוות הפיתוח
+
+
+```
+העתיקי והדביקי – כל הטקסט יוצג מימין לשמאל, מסודר וברור.
 
 
 ## מסכי המערכת
