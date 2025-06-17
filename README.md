@@ -660,7 +660,9 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ### מסך עמוד התפריט
 
-<img src="DBProject/partE/Images/menu.png" alt="מסך עמוד התפריט" width="300" />
+<p align="right">
+  <img src="Images/menu.png" alt="מסך עמוד התפריט" width="300"/>
+</p>
 
 ### מסך טבלת בן אדם (Person)
 ![מסך טבלת בן אדם](Images/add_person.png)
