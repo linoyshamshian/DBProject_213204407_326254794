@@ -528,8 +528,10 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
   
 
 ## הוראות הפעלה
+
+<h2 align="right">דרישות מוקדמות</h2>
 <div dir="rtl">
-## דרישות מוקדמות
+
 
 1. יש לוודא ש-Python 3.8 ומעלה מותקן במחשב.
 2. יש להתקין את הספריות הדרושות:
