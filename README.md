@@ -746,8 +746,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 </p>
 
 
-[לצפייה בתקיית התמונות לחץ כאן](DBProject/partE/Images
-)
+[לצפייה בתקיית התמונות לחץ כאן](DBProject/partE/Images)
 
 ---
 
