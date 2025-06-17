@@ -37,27 +37,15 @@
 
  
 
-# שלב ה' - יצירת ממשק גרפי לעבודה מול בסיס הנתונים
-
-## Table of Contents
-
+# 
+- [שלב ה' - יצירת ממשק גרפי לעבודה מול בסיס הנתונים](#שלב ה' - יצירת ממשק גרפי לעבודה מול בסיס הנתונים)
 - [הקדמה](#הקדמה)
 - [כלים וטכנולוגיות בהם השתמשנו](#כלים-וטכנולוגיות-בהם-השתמשנו)
 - [מסכי המערכת](#מסכי-המערכת)
 - [פירוט הקבצים במערכת](#פירוט-הקבצים-במערכת)
-  - [connectToPostgres.py](#connecttopostgrespy)
-  - [menu.py](#menupy)
-  - [data.py](#datapy)
-  - [update_form.py](#update_formpy)
-  - [delete_record.py](#delete_recordpy)
-  - [insert_form.py](#insert_formpy)
-  - [insert_person_form.py](#insert_person_formpy)
-  - [open_queries_procedures_screen.py](#open_queries_procedures_screenpy)
-  - [entrancePage.py](#entrancepagepy)
 - [תמונות מסך](#תמונות-מסך)
 
-## הקדמה
-(המשך המסמך...)
+
 
 
 ## Phase 1: Design and Build the Database  
@@ -527,7 +515,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 [go to backup](DBProject/partD/Backup)
 # שלב ה' - יצירת ממשק גרפי לעבודה מול בסיס הנתונים
 
-## 📝 הקדמה
+## 📝 הקדמה (#הקדמה)
 בשלב זה פותח ממשק גרפי (GUI) המאפשר עבודה נוחה מול בסיס הנתונים *FinalIntegrated*.  
 הממשק פותח בשפת *Python* תוך שימוש בספריית **tkinter** ליצירת המסכים ובספריית **psycopg2** לצורך התחברות לבסיס הנתונים מסוג *PostgreSQL*.
 
