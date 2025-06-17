@@ -656,6 +656,41 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 ## תמונות מסך
 
 * תמונות מסך לדוגמה נמצאות בתיקיית images
+## תמונות מסך
+
+### מסך עמוד התפריט
+![מסך עמוד התפריט](DBProject/partE/Images/menu.png)
+
+### מסך טבלת בן אדם (Person)
+![מסך טבלת בן אדם](Images/add_person.png)
+
+### מסך הוספת שורה לאדם תוך בחירה בסוג האדם
+![מסך הוספת שורה לאדם](Images/add_person_example.png)
+
+### דוגמה להרצה של הוספת אדם (הצלחה)
+![דוגמה להוספת אדם - הצלחה](Images/add_person_success.png)
+
+### מסך עריכה של בן אדם
+![מסך עריכה של בן אדם](Images/update_person.png)
+
+### דוגמה למסך עריכה (לפני השמירה)
+![דוגמה למסך עריכה](Images/update_person_example.png)
+
+### דוגמה למסך מחיקה (מחיקת אדם)
+![דוגמה למסך מחיקה](Images/delete_person.png)
+
+### מסך שאילתות, פרוצדורות ופונקציות
+![מסך שאילתות, פרוצדורות ופונקציות](Images/queries_procedures.png)
+
+### דוגמה להרצת שאילתה
+![דוגמה להרצת שאילתה](Images/query_example.png)
+
+### דוגמה להרצת פרוצדורה
+![דוגמה להרצת פרוצדורה](Images/procedure_example.png)
+
+### דוגמה להרצת פונקציה
+![דוגמה להרצת פונקציה](Images/function_example.png)
+
 [לצפייה בתקיית התמונות לחץ כאן](DBProject/partE/Images
 )
 
