@@ -526,8 +526,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 * בסיס נתונים: **PostgreSQL**
 * ניהול גרסאות: **Git**
   
-
-<h1 align="right"> הוראות הפעלה</h1>
+## הוראות הפעלה
 <h2 align="right">דרישות מוקדמות</h2>
 <ol dir="rtl">
   <li>יש לוודא ש-Python 3.8 ומעלה מותקן במחשב.</li>
