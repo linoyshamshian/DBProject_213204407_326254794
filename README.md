@@ -537,6 +537,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 3. יש לוודא ששרת PostgreSQL פועל, ושמסד הנתונים FinalIntegrated קיים.
 4. יש לוודא שפרטי ההתחברות בקובץ connectToPostgres.py נכונים.
+</div>
 
 ## הפעלת המערכת
 
@@ -556,7 +557,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 בהצלחה!  
 צוות הפיתוח
-</div>
+
 
 ## מסכי המערכת
 
