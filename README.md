@@ -528,7 +528,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
   
 
 ## הוראות הפעלה
-
+<div dir="rtl">
 ## דרישות מוקדמות
 
 1. יש לוודא ש-Python 3.8 ומעלה מותקן במחשב.
@@ -556,7 +556,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 בהצלחה!  
 צוות הפיתוח
-
+</div>
 
 ## מסכי המערכת
 
