@@ -655,122 +655,100 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ## תמונות מסך
 
----
+* תמונות מסך לדוגמה נמצאות בתיקיית images
 
 ### מסך עמוד התפריט
-> מסך ראשי ממנו ניתן לנווט לכל חלקי המערכת.
 <p align="right">
-  <img src="DBProject/partE/Images/menu.png" alt="מסך עמוד התפריט" width="300"/>
+<img src="DBProject/partE/Images/menu.png" alt="מסך עמוד התפריט" width="300"/>
 </p>
-
----
 
 ### מסך טבלת בן אדם (Person)
-> הצגת כלל האנשים במערכת, כולל אפשרות לעריכה, מחיקה והוספה.
 <p align="right">
-  <img src="DBProject/partE/Images/person.png" alt="מסך טבלת בן אדם" width="300"/>
+<img src="DBProject/partE/Images/person.png" alt="מסך טבלת בן אדם" width="300"/>
 </p>
-
----
 
 ### מסך הוספת שורה לאדם תוך בחירה בסוג האדם
-> הוספת אדם חדש ובחירת סוגו (נוסע, דייל, טייס, איש ביטחון).
 <p align="right">
-  <img src="DBProject/partE/Images/add_person.png" alt="מסך הוספת שורה לאדם" width="300"/>
+<img src="DBProject/partE/Images/add_person.png" alt="מסך הוספת שורה לאדם" width="300"/>
 </p>
 
----
 
-### מסך הרצת דוגמה של הוספת אדם
-> דוגמה למילוי טופס והוספה מוצלחת של אדם.
+### מסך הרצת דוגמא של הוספת אדם
 <p align="right">
-  <img src="DBProject/partE/Images/add_person_example.png" alt="מסך הוספת שורה לאדם" width="300"/>
-  <img src="DBProject/partE/Images/add_person_example_con.png" alt="מסך הוספת שורה לאדם" width="300"/>
+<img src="DBProject/partE/Images/add_person_example.png" alt="מסך הוספת שורה לאדם" width="300"/>
 </p>
-
----
+<p align="right">
+<img src="DBProject/partE/Images/add_person_example_con.png" alt="מסך הוספת שורה לאדם" width="300"/>
+</p>
 
 ### דוגמה להרצה של הוספת אדם (הצלחה)
 <p align="right">
-  <img src="DBProject/partE/Images/add_person_success.png" alt="דוגמה להוספת אדם - הצלחה" width="300"/>
+<img src="DBProject/partE/Images/add_person_success.png" alt="דוגמה להוספת אדם - הצלחה" width="300"/>
 </p>
-
----
 
 ### מסך עריכה של בן אדם
-> עדכון פרטי אדם קיים במערכת.
 <p align="right">
-  <img src="DBProject/partE/Images/edit_person.png" alt="מסך עריכה של בן אדם" width="300"/>
+<img src="DBProject/partE/Images/edit_person.png" alt="מסך עריכה של בן אדם" width="300"/>
 </p>
 
----
 
 ### דוגמה למסך מחיקה (מחיקת אדם)
-> דוגמה למחיקת אדם מהמערכת.
 <p align="right">
-  <img src="DBProject/partE/Images/delete_person_success.png" alt="דוגמה למסך מחיקה" width="300"/>
+<img src="DBProject/partE/Images/delete_person_success.png" alt="דוגמה למסך מחיקה" width="300"/>
 </p>
+
 
 ---
 
 ### מסך שאילתות, פרוצדורות ופונקציות
-> מסך להרצת שאילתות, פרוצדורות ופונקציות על בסיס הנתונים.
 <p align="right">
-  <img src="DBProject/partE/Images/queries_and_procedures.png" alt="מסך שאילתות, פרוצדורות ופונקציות" width="300"/>
+<img src="DBProject/partE/Images/queries_and_procedures.png" alt="מסך שאילתות, פרוצדורות ופונקציות" width="300"/>
 </p>
-
----
 
 ### דוגמה להרצת שאילתה 1
 <p align="right">
-  <img src="DBProject/partE/Images/query1.png" alt="דוגמה להרצת שאילתה" width="300"/>
+<img src="DBProject/partE/Images/query1.png" alt="דוגמה להרצת שאילתה" width="300"/>
 </p>
 
----
 
 ### דוגמה להרצת שאילתה 2
 <p align="right">
-  <img src="DBProject/partE/Images/query2.png" alt="דוגמה להרצת שאילתה" width="300"/>
+<img src="DBProject/partE/Images/query2.png" alt="דוגמה להרצת שאילתה" width="300"/>
 </p>
 
----
+
 
 ### מסך פרוצדורה
 <p align="right">
-  <img src="DBProject/partE/Images/procedure.png" alt="דוגמה להרצת פרוצדורה" width="300"/>
+<img src="DBProject/partE/Images/procedure.png" alt="דוגמה להרצת פרוצדורה" width="300"/>
 </p>
-
----
 
 ### דוגמה להרצת פרוצדורה
 <p align="right">
-  <img src="DBProject/partE/Images/procedure_example.png" alt="דוגמה להרצת פרוצדורה" width="300"/>
+<img src="DBProject/partE/Images/procedure_example.png" alt="דוגמה להרצת פרוצדורה" width="300"/>
 </p>
-
----
 
 ### דוגמה להרצת פרוצדורה (הצלחה)
+
 <p align="right">
-  <img src="DBProject/partE/Images/procedure_success.png" alt="דוגמה להרצת פרוצדורה" width="300"/>
+<img src="DBProject/partE/Images/procedure_success.png" alt="דוגמה להרצת פרוצדורה" width="300"/>
 </p>
 
----
 
-### מסך פונקציה 
+### מסך פונקציה
 <p align="right">
-  <img src="DBProject/partE/Images/function.png" alt="דוגמה להרצת פונקציה" width="300"/>
+<img src="DBProject/partE/Images/function.png" alt="דוגמה להרצת פונקציה" width="300"/>
 </p>
-
----
 
 ### דוגמה להרצת פונקציה
 <p align="right">
-  <img src="DBProject/partE/Images/function_example.png" alt="דוגמה להרצת פונקציה" width="300"/>
+<img src="DBProject/partE/Images/function_example.png" alt="דוגמה להרצת פונקציה" width="300"/>
 </p>
 
+
+[לצפייה בתקיית התמונות לחץ כאן](DBProject/partE/Images
+)
+
 ---
-
-[לצפייה בתקיית התמונות לחץ כאן](DBProject/partE/Images)
-
 
 
