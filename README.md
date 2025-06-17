@@ -539,14 +539,19 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ## הפעלת המערכת
 
-5. יש להיכנס לתיקיית הפרויקט:
-   cd DBProject/partE
+<h3 align="right">הפעלת המערכת</h3>
+<ol dir="rtl" start="5">
+  <li>יש להיכנס לתיקיית הפרויקט:<br>
+      <code>cd DBProject/partE</code>
+  </li>
+  <li>יש להפעיל את קובץ התפריט הראשי:<br>
+      <code>python menu.py</code>
+  </li>
+  <li>במידה וקיים קובץ <code>login.py</code>, ניתן להריץ אותו (אופציונלי):<br>
+      <code>python login.py</code>
+  </li>
+</ol>
 
-6. יש להפעיל את קובץ התפריט הראשי:
-   python menu.py
-
-7. במידה וקיים קובץ login.py, ניתן להריץ אותו (אופציונלי):
-   python login.py
 
 ## הערות
 
