@@ -4,15 +4,14 @@ from tkinter import messagebox
 from insert_person_form import open_person_insert_form
 import psycopg2
 
-
+# פונקציה לפתיחת טופס הוספת רשומה חדשה
 def open_insert_form(cursor, table_name, refresh_callback):
-    # בדיקה אם זו טבלת Person
+    # בדיקה אם מדובר בטבלת Person - פתח טופס מיוחד
     if table_name.lower() == "person":
         open_person_insert_form(cursor, refresh_callback)
         return
-    """
-    פותח טופס הוספת רשומה חדשה לטבלה
-    """
+
+    # יצירת חלון חדש להזנת פרטים
     form_window = ctk.CTkToplevel()
     form_window.title(f"Add New Record - {table_name}")
     form_window.geometry("500x600")
@@ -54,14 +53,14 @@ def open_insert_form(cursor, table_name, refresh_callback):
         form_window.destroy()
         return
 
-    # כותרת
+    # כותרת הטופס
     title_label = ctk.CTkLabel(form_window,
                                text=f"➕ Add New {table_name} Record",
                                font=("Segoe UI", 22, "bold"),
                                text_color="#2a3f77")
     title_label.pack(pady=(20, 30))
 
-    # מסגרת לטופס עם גלילה
+    # יצירת אזור גלילה לטופס במידת הצורך
     form_frame = ctk.CTkScrollableFrame(form_window,
                                         fg_color="#f0f4ff",
                                         width=450,
@@ -69,20 +68,20 @@ def open_insert_form(cursor, table_name, refresh_callback):
                                         corner_radius=10)
     form_frame.pack(pady=10, padx=25, fill="both", expand=True)
 
-    # מילון לאחסון השדות
+    # מילון לשמירת שדות הטופס
     entry_widgets = {}
 
-    # יצירת שדות הטופס
+    # יצירת שדות בהתאם לסוגי העמודות בטבלה
     for i, (col_name, data_type, is_nullable, col_default, is_primary_key) in enumerate(columns_info):
         # בדיקה אם זה מפתח ראשי עם AUTO INCREMENT
         is_auto_increment = col_default and (
-                    'nextval' in str(col_default) or 'auto_increment' in str(col_default).lower())
+                    'nextval' in str(col_default))
 
-        # אם זה מפתח ראשי עם AUTO INCREMENT, דלג עליו
+        # אם מדובר ב־PK עם auto increment – אין צורך להזין
         if is_primary_key and is_auto_increment:
             continue
 
-        # אם זה מפתח ראשי ללא AUTO INCREMENT, הוסף הערה
+        # אם מדובר ב־PK שצריך למלא – נוסיף הערה
         pk_note = ""
         if is_primary_key and not is_auto_increment:
             pk_note = " (Primary Key)"
@@ -98,7 +97,7 @@ def open_insert_form(cursor, table_name, refresh_callback):
                                    text_color="#2a3f77" if not is_primary_key else "#d9534f")
         field_label.grid(row=i * 2, column=0, sticky="w", padx=10, pady=(15, 5))
 
-        # יצירת שדה קלט מתאים לסוג הנתון
+        # קלט מותאם לסוג הנתון
         if 'text' in data_type.lower() or 'varchar' in data_type.lower() or 'char' in data_type.lower():
             # שדה טקסט רגיל או אזור טקסט
             if 'text' in data_type.lower():
@@ -119,6 +118,14 @@ def open_insert_form(cursor, table_name, refresh_callback):
                                         height=35,
                                         corner_radius=8,
                                         placeholder_text="Enter number...")
+
+        elif 'timestamp' in data_type.lower() or 'datetime' in data_type.lower():
+            # שדה תאריך ושעה
+            entry_widget = ctk.CTkEntry(form_frame,
+                                        font=("Segoe UI", 12),
+                                        height=35,
+                                        corner_radius=8,
+                                        placeholder_text="YYYY-MM-DD HH:MM:SS")
 
         elif 'date' in data_type.lower():
             # שדה תאריך
@@ -152,7 +159,7 @@ def open_insert_form(cursor, table_name, refresh_callback):
         entry_widget.grid(row=i * 2 + 1, column=0, sticky="ew", padx=10, pady=(0, 10))
         form_frame.grid_columnconfigure(0, weight=1)
 
-        # שמור את הווידג'ט עם מידע נוסף
+        # שמירה במילון עם מידע נוסף
         entry_widgets[col_name] = {
             'widget': entry_widget,
             'data_type': data_type,
@@ -170,15 +177,15 @@ def open_insert_form(cursor, table_name, refresh_callback):
                                       justify="left")
     instructions_label.grid(row=len(columns_info) * 2, column=0, sticky="w", padx=10, pady=(20, 10))
 
-    # מסגרת כפתורים
+    # מסגרת כפתורים בתחתית הטופס
     button_frame = ctk.CTkFrame(form_window, fg_color="#eaf0ff")
     button_frame.pack(pady=20)
 
+    # פונקציית שליחה
     def submit_form():
-        """שליחת הטופס והוספת הרשומה"""
+        #הוספת הרשומה ושליחת הטופס
         try:
             # איסוף נתונים מהטופס
-            values = {}
             columns = []
             placeholders = []
             insert_values = []
@@ -199,7 +206,7 @@ def open_insert_form(cursor, table_name, refresh_callback):
                 else:
                     value = widget.get().strip()
 
-                # בדיקת תקינות - מפתח ראשי ללא AUTO INCREMENT הוא חובה
+                # ולידציה לשדות חובה
                 if not value and (
                         (is_nullable == 'NO' and not has_default) or (is_primary_key and not is_auto_increment)):
                     field_display_name = col_name.replace('_', ' ').title()
@@ -211,7 +218,7 @@ def open_insert_form(cursor, table_name, refresh_callback):
                                              f"Field '{field_display_name}' is required!")
                     return
 
-                # אם יש ערך, הוסף לשאילתה
+                # הוספת הערך לשאילתה
                 if value or (isinstance(widget, ctk.CTkCheckBox) and not value):
                     columns.append(col_name)
                     placeholders.append("%s")
@@ -261,11 +268,11 @@ def open_insert_form(cursor, table_name, refresh_callback):
         except Exception as e:
             messagebox.showerror("Error", f"An unexpected error occurred:\n{e}")
 
+    # פונקציית ביטול
     def cancel_form():
-        """ביטול הטופס"""
         form_window.destroy()
 
-    # כפתורי שליחה וביטול
+    # כפתור הוספה
     submit_btn = ctk.CTkButton(button_frame,
                                text="✅ Add Record",
                                command=submit_form,
@@ -277,6 +284,7 @@ def open_insert_form(cursor, table_name, refresh_callback):
                                corner_radius=8)
     submit_btn.grid(row=0, column=0, padx=10)
 
+    # כפתור ביטול
     cancel_btn = ctk.CTkButton(button_frame,
                                text="❌ Cancel",
                                command=cancel_form,
@@ -288,6 +296,6 @@ def open_insert_form(cursor, table_name, refresh_callback):
                                corner_radius=8)
     cancel_btn.grid(row=0, column=1, padx=10)
 
-    # מרכז את החלון
+    # מיקוד בחלון החדש
     form_window.transient(form_window.master)
     form_window.focus()

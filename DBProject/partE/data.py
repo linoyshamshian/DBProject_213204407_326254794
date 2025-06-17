@@ -4,20 +4,21 @@ from insert_form import open_insert_form
 from update_form import open_update_form
 from delete_record import delete_record
 
-
+# פונקציה לפתיחת מסך טבלה עבור טבלת SQL מסוימת
 def open_table_screen(cursor, table_name,pk_col):
+    # יצירת חלון חדש
     window = ctk.CTkToplevel()
     window.title(f"{table_name} Table")
     window.geometry("1100x750")
-    window.configure(fg_color="#eaf0ff")  # צבע רקע בהיר יותר
+    window.configure(fg_color="#eaf0ff")
 
-    table_name_lower = table_name.lower()  # שינוי שם המשתנה למניעת התנגשות עם שם הפונקציה
+    table_name_lower = table_name.lower()  # לוודא ששמות הטבלאות תואמים למסד הנתונים
 
-    page_size = 100
-    current_page = [0]
-    data_labels = []
+    page_size = 50 # מספר שורות לעמוד
+    current_page = [0] # עוקב אחרי העמוד הנוכחי
+    data_labels = []  # רשימת תוויות שמוצגות (כדי לנקות בעת מעבר עמוד)
 
-    # משתנה לאחסון שמות העמודות ברמה גבוהה יותר
+    # משתנה לאחסון שמות העמודות
     column_names = []
 
     # כותרת הטבלה
@@ -27,111 +28,104 @@ def open_table_screen(cursor, table_name,pk_col):
 
     # כפתור הוספה
     insert_btn = ctk.CTkButton(window, text="➕ Add New Record", width=160, height=40,
-                               font=("Segoe UI", 15, "bold"), fg_color="#3cb371", hover_color="#2e8b57",
+                               font=("Segoe UI", 15, "bold"), fg_color="#000080", hover_color="#272757",
                                command=lambda: open_insert_form(cursor, table_name, load_page),
                                corner_radius=8)
     insert_btn.pack(pady=(5, 10))
 
-    # ספירת שורות
+    # ספירת סך השורות בטבלה כדי לחשב כמה עמודים יש
     try:
-        cursor.execute(f"SELECT COUNT(*) FROM {table_name_lower}")
-        total_rows = cursor.fetchone()[0]
+        cursor.execute(f"SELECT COUNT(*) FROM {table_name_lower}") #שאילתת SQL לספירת כל השורות בטבלה
+        total_rows = cursor.fetchone()[0] #מביא את הנתונים ולא את האוביקט
         total_pages = math.ceil(total_rows / page_size)
-        if total_pages == 0 and total_rows == 0:  # Handle empty table case
-            total_pages = 1  # At least one page even if empty
+        if total_pages == 0 and total_rows == 0:
+            total_pages = 1  # מוודא שתמיד יהיה לפחות עמוד 1
     except Exception as e:
         error_label = ctk.CTkLabel(window, text=f"❌ Error fetching row count: {e}",
                                    text_color="#a94442", font=("Segoe UI", 14))
         error_label.pack(pady=20)
         return
 
-    # מסגרת התוכן עבור הטבלה הניתנת לגלילה
-    # הגדרת רוחב ספציפי כדי לשלוט בעיצוב הכללי
+    # יצירת מסגרת לגלילה – תכיל את הטבלה
     table_container_frame = ctk.CTkScrollableFrame(window, fg_color="#f0f4ff",
                                                    width=1000, height=500, corner_radius=10)
     table_container_frame.pack(pady=10, padx=20, fill="x", expand=False)
 
-    # יצירת Canvas פנימי לשליטה טובה יותר על הגלילה והעיצוב של הגריד
-    # (Customtkinter's CTkScrollableFrame already handles this well enough usually,
-    # but for very precise grid control, a sub-frame can be helpful. Sticking to current structure.)
-
-    # מסגרת ניווט
+    # מסגרת לניווט בין עמודים
     nav_frame = ctk.CTkFrame(window, fg_color="#eaf0ff")
     nav_frame.pack(pady=(15, 20))
 
-    # כפתורים ותווית עמוד
+    # כפתור עמוד קודם
     prev_btn = ctk.CTkButton(nav_frame, text="← Previous", width=140, height=40,
                              font=("Segoe UI", 15, "bold"), fg_color="#4a69bd", hover_color="#3a519b",
                              command=lambda: go_page(-1), corner_radius=8)
     prev_btn.grid(row=0, column=0, padx=15)
 
+    # תווית מציינת את מספר העמוד
     page_label = ctk.CTkLabel(nav_frame, text="", font=("Segoe UI", 16, "bold"), text_color="#2a3f77")
     page_label.grid(row=0, column=1, padx=20)
 
+    # כפתור עמוד הבא
     next_btn = ctk.CTkButton(nav_frame, text="Next →", width=140, height=40,
                              font=("Segoe UI", 15, "bold"), fg_color="#4a69bd", hover_color="#3a519b",
                              command=lambda: go_page(1), corner_radius=8)
     next_btn.grid(row=0, column=2, padx=15)
 
+    # טוען את הנתונים של העמוד הנוכחי מהטבלה
     def load_page():
-        # ניקוי תוויות קיימות
+        # נקה תוויות ישנות מהטבלה
         for label in data_labels:
             label.destroy()
         data_labels.clear()
 
+        # חישוב מאיפה להתחיל לשלוף נתונים עבור הדף הנוכחי של הטבלה
         offset = current_page[0] * page_size
+
         try:
-            # שלוף נתונים כולל שמות עמודות
-            cursor.execute(f"SELECT * FROM {table_name_lower} OFFSET {offset} LIMIT {page_size}")
+            # שליפת שורות כולל שמות עמודות
+            cursor.execute(f"SELECT * FROM {table_name_lower} "
+                           f"ORDER BY {pk_col} OFFSET {offset} LIMIT {page_size}")
+
+            #החזרת כל השורות שנשלפו מהשאילתה כמערך (list) של טאפלים (tuples)
             rows = cursor.fetchall()
-            nonlocal column_names  # נצהיר שזה המשתנה החיצוני
+            # שימוש במשתנה החיצוני
+            nonlocal column_names
+            #השורה הזאת בונה רשימה של שמות העמודות שהשאילתה החזירה
             column_names = [desc[0] for desc in cursor.description]
 
             # הגדרת רוחב עמודות דינמי
-            # ניתן להתאים את זה יותר - כרגע זה רוחב קבוע לכל העמודות
             col_width_factor = 1.0 / len(column_names) if len(column_names) > 0 else 0.1
 
-            # --- כותרות הטבלה (שורת הכותרות) ---
+            # שורת כותרות הטבלה
             for col_index, col_name in enumerate(column_names):
-                header_label = ctk.CTkLabel(table_container_frame, text=col_name.replace('_', ' ').title(),  # כותרת יפה
+                header_label = ctk.CTkLabel(table_container_frame, text=col_name.replace('_', ' ').title(),
                                             font=("Segoe UI", 13, "bold"),
                                             text_color="#1f3b73",
-                                            fg_color="#dbe4ff",  # צבע רקע לכותרות
+                                            fg_color="#dbe4ff",
                                             height=35,
                                             corner_radius=5)
-                # שימוש ב-grid עם sticky "ew" כדי למתוח את התוויות ברוחב
                 table_container_frame.grid_columnconfigure(col_index, weight=1)
                 header_label.grid(row=0, column=col_index, sticky="ew", padx=2, pady=2)
                 data_labels.append(header_label)
 
-            # --- שורות הנתונים ---
+            # שורות עם הנתונים בפועל
             row_colors = ["#ffffff", "#f5f8ff"]  # צבעים לסירוגין
 
-            if not rows and current_page[0] == 0:  # If table is empty and on first page
+            # אם אין שורות (הטבלה ריקה) ואנחנו בעמוד הראשון בלבד, מציגים הודעה מתאימה למשתמש
+            if not rows and current_page[0] == 0:
                 empty_label = ctk.CTkLabel(table_container_frame, text="No data available in this table.",
                                            font=("Segoe UI", 14), text_color="#666666", pady=50)
                 empty_label.grid(row=1, column=0, columnspan=len(column_names), sticky="nsew")
                 data_labels.append(empty_label)
 
-            # for row_index, row in enumerate(rows, start=1):
-            #     bg_color = row_colors[row_index % 2]  # בחירת צבע לסירוגין
-            #     for col_index, value in enumerate(row):
-            #         # נבטיח שהטקסט לא יהיה None
-            #         display_value = str(value) if value is not None else ""
-            #
-            #         data_label = ctk.CTkLabel(table_container_frame, text=display_value,
-            #                                   font=("Segoe UI", 11),
-            #                                   text_color="#333333",
-            #                                   fg_color=bg_color,  # צבע רקע לשורה
-            #                                   height=30,
-            #                                   corner_radius=3)
-            #         data_label.grid(row=row_index, column=col_index, sticky="ew", padx=2, pady=1)
-            #         data_labels.append(data_label)
 
             for row_index, row in enumerate(rows, start=1):
+                # הגדרת צבע רקע לסירוגין לשורות הטבלה (לשפר קריאות)
                 bg_color = row_colors[row_index % 2]
+                # לולאה על כל עמודה בשורה הנוכחית להצגת הערך המתאים
                 for col_index, value in enumerate(row):
                     display_value = str(value) if value is not None else ""
+                    # יצירת תווית להצגת הערך בטבלה עם עיצוב מתאים
                     data_label = ctk.CTkLabel(table_container_frame, text=display_value,
                                               font=("Segoe UI", 11),
                                               text_color="#333333",
@@ -140,27 +134,28 @@ def open_table_screen(cursor, table_name,pk_col):
                                               corner_radius=3)
                     data_label.grid(row=row_index, column=col_index, sticky="ew", padx=2, pady=1)
                     data_labels.append(data_label)
-                # כפתור Edit
+                # יצירת כפתור 'עריכה' לכל שורה עם קריאה לפונקציה לפתיחת טופס עריכה
                 edit_btn = ctk.CTkButton(
                     table_container_frame,
                     text="Edit",
                     width=70,
                     height=30,
-                    fg_color="#ffb347",
-                    hover_color="#ffa500",
+                    fg_color="#678DC6",
+                    hover_color="#3E577D",
                     font=("Segoe UI", 11, "bold"),
                     command=lambda r=row: open_update_form(cursor, table_name, column_names, r, load_page, pk_col)
                 )
                 edit_btn.grid(row=row_index, column=len(column_names), padx=4, pady=1)
                 data_labels.append(edit_btn)
-                # כפתור Delete
+
+                # כפתור מחיקה לכל שורה
                 delete_btn = ctk.CTkButton(
                     table_container_frame,
                     text="Delete",
                     width=70,
                     height=30,
-                    fg_color="#e57373",
-                    hover_color="#c62828",
+                    fg_color="#898989",
+                    hover_color="#353839",
                     font=("Segoe UI", 11, "bold"),
                     command=lambda r=row: delete_record(cursor, table_name, pk_col, r[column_names.index(pk_col)],
                                                         load_page)
@@ -168,47 +163,17 @@ def open_table_screen(cursor, table_name,pk_col):
                 delete_btn.grid(row=row_index, column=len(column_names) + 1, padx=4, pady=1)
                 data_labels.append(delete_btn)
 
-            # for row_index, row in enumerate(rows, start=1):
-            #     bg_color = row_colors[row_index % 2]
-            #     for col_index, value in enumerate(row):
-            #         display_value = str(value) if value is not None else ""
-            #         data_label = ctk.CTkLabel(table_container_frame, text=display_value,
-            #                                   font=("Segoe UI", 11),
-            #                                   text_color="#333333",
-            #                                   fg_color=bg_color,  # צבע רקע לשורה
-            #                                   height=30,
-            #                                   corner_radius=3)
-            #         data_label.grid(row=row_index, column=col_index, sticky="ew", padx=2, pady=1)
-            #
-            #         data_labels.append(data_label)
-            #
-            #
-            #     # כפתור Edit בסוף כל שורה
-            #     edit_btn = ctk.CTkButton(
-            #         table_container_frame,
-            #         text="Edit",
-            #         width=70,
-            #         height=30,
-            #         fg_color="#ffb347",
-            #         hover_color="#ffa500",
-            #         font=("Segoe UI", 11, "bold"),
-            #         # command=lambda r=row: open_update_form(cursor, table_name, column_names, r, load_page)
-            #         command = lambda r=row: open_update_form( cursor, table_name, column_names, r, load_page, pk_col)
-            #     )
-            #     edit_btn.grid(row=row_index, column=len(column_names), padx=4, pady=1)
-            #     data_labels.append(edit_btn)
-
-            # עדכון כפתורים ותווית עמוד
+            # עדכון מצב כפתורי ניווט ותווית עמוד
             prev_btn.configure(state="normal" if current_page[0] > 0 else "disabled")
             next_btn.configure(state="normal" if current_page[0] < total_pages - 1 else "disabled")
             page_label.configure(text=f"Page {current_page[0] + 1} of {total_pages}")
 
-            # וודא שהגלילה חוזרת לראש העמוד עם טעינת עמוד חדש
+            # חזרה לראש הגלילה
             table_container_frame._parent_canvas.yview_moveto(0)
 
         except Exception as e:
+            # טיפול בשגיאה בזמן טעינת נתונים
             error_message = f"❌ Error loading data: {e}"
-            # אם יש שגיאה אחרי שכבר נכנסנו ללופ, ננקה את הנתונים הקיימים
             for label in data_labels:
                 label.destroy()
             data_labels.clear()
@@ -223,21 +188,20 @@ def open_table_screen(cursor, table_name,pk_col):
                 error_label_in_frame.grid(row=1, column=0, sticky="nsew")
             data_labels.append(error_label_in_frame)  # הוסף לרשימה כדי שיימחק בניקוי הבא
 
-            # השבת את כפתורי הניווט במקרה של שגיאה
+            # השבתת כפתורי ניווט
             prev_btn.configure(state="disabled")
             next_btn.configure(state="disabled")
             page_label.configure(text="Error loading page")
 
+    # מעבר בין עמודים
     def go_page(delta):
         new_page = current_page[0] + delta
         if 0 <= new_page < total_pages:
             current_page[0] = new_page
             load_page()
         elif new_page < 0:
-            # This case is usually handled by button state, but good for explicit message
             pass
         elif new_page >= total_pages:
-            # This case is usually handled by button state, but good for explicit message
             pass
 
     load_page()  # טעינה ראשונית של העמוד הראשון

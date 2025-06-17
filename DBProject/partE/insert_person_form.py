@@ -5,9 +5,7 @@ import psycopg2
 
 
 def open_person_insert_form(cursor, refresh_callback):
-    """
-    פותח טופס הוספת רשומה חדשה לטבלת Person עם בחירת תפקיד
-    """
+    # פותח טופס הוספת רשומה חדשה לטבלת Person עם בחירת תפקיד
     form_window = ctk.CTkToplevel()
     form_window.title("Add New Person")
     form_window.geometry("600x750")
@@ -70,7 +68,7 @@ def open_person_insert_form(cursor, refresh_callback):
     for col_name, data_type, is_nullable, col_default, is_primary_key in person_columns_info:
         # בדיקה אם זה מפתח ראשי עם AUTO INCREMENT
         is_auto_increment = col_default and (
-                    'nextval' in str(col_default) or 'auto_increment' in str(col_default).lower())
+                    'nextval' in str(col_default))
 
         # אם זה מפתח ראשי עם AUTO INCREMENT, דלג עליו
         if is_primary_key and is_auto_increment:
@@ -98,22 +96,42 @@ def open_person_insert_form(cursor, refresh_callback):
                                         font=("Segoe UI", 12),
                                         height=35,
                                         corner_radius=8)
+
         elif 'int' in data_type.lower() or 'numeric' in data_type.lower() or 'decimal' in data_type.lower():
             entry_widget = ctk.CTkEntry(form_frame,
                                         font=("Segoe UI", 12),
                                         height=35,
                                         corner_radius=8,
                                         placeholder_text="Enter number...")
+
+        elif 'timestamp' in data_type.lower() or 'datetime' in data_type.lower():
+            # שדה תאריך ושעה
+            entry_widget = ctk.CTkEntry(form_frame,
+                                        font=("Segoe UI", 12),
+                                        height=35,
+                                        corner_radius=8,
+                                        placeholder_text="YYYY-MM-DD HH:MM:SS")
+
         elif 'date' in data_type.lower():
             entry_widget = ctk.CTkEntry(form_frame,
                                         font=("Segoe UI", 12),
                                         height=35,
                                         corner_radius=8,
                                         placeholder_text="YYYY-MM-DD")
+
+        elif 'time' in data_type.lower():
+            # שדה זמן
+            entry_widget = ctk.CTkEntry(form_frame,
+                                        font=("Segoe UI", 12),
+                                        height=35,
+                                        corner_radius=8,
+                                        placeholder_text="HH:MM:SS")
+
         elif 'bool' in data_type.lower():
             entry_widget = ctk.CTkCheckBox(form_frame,
                                            text="Yes/True",
                                            font=("Segoe UI", 12))
+
         else:
             entry_widget = ctk.CTkEntry(form_frame,
                                         font=("Segoe UI", 12),
@@ -163,6 +181,7 @@ def open_person_insert_form(cursor, refresh_callback):
     role_frame.grid(row=current_row, column=0, sticky="ew", padx=10, pady=10)
     current_row += 1
 
+    #יצירת radio button
     for i, (role_value, role_text) in enumerate(roles):
         radio_btn = ctk.CTkRadioButton(role_frame,
                                        text=role_text,
@@ -184,13 +203,13 @@ def open_person_insert_form(cursor, refresh_callback):
     role_entry_widgets = {}
 
     def clear_role_fields():
-        """ניקוי שדות תפקיד קיימים"""
+        # ניקוי שדות תפקיד קיימים
         for widget in role_fields_frame.winfo_children():
             widget.destroy()
         role_entry_widgets.clear()
 
     def create_role_field(field_name, field_label, field_type="text", placeholder="", row_num=0):
-        """יצירת שדה עבור תפקיד ספציפי"""
+        # יצירת שדה עבור תפקיד ספציפי
         label = ctk.CTkLabel(role_fields_frame,
                              text=f"{field_label}:",
                              font=("Segoe UI", 13, "bold"),
@@ -217,7 +236,7 @@ def open_person_insert_form(cursor, refresh_callback):
         }
 
     def update_role_fields():
-        """עדכון שדות לפי התפקיד הנבחר"""
+        # עדכון שדות לפי התפקיד הנבחר
         clear_role_fields()
         selected_role = role_var.get()
 
@@ -279,7 +298,6 @@ def open_person_insert_form(cursor, refresh_callback):
     def submit_form():
         try:
             # איסוף נתונים מהטופס של Person
-            person_values = {}
             person_columns = []
             person_placeholders = []
             person_insert_values = []
@@ -331,6 +349,18 @@ def open_person_insert_form(cursor, refresh_callback):
             selected_role = role_var.get()
             role_data = {}
 
+            # בדיקה: אם לא נוסע, EmploymentDate חייב להיות מלא
+            employment_widget = person_entry_widgets.get("EmploymentDate") or person_entry_widgets.get("employmentdate")
+
+            if selected_role != "passenger":
+                # שליפת הערך מהשדה (בדוק אם זה Entry או סוג אחר)
+                if employment_widget:
+                    widget = employment_widget['widget']
+                    employment_value = widget.get().strip() if widget.get() else ""
+                    if not employment_value:
+                        messagebox.showerror("Validation Error", "Employment Date is required for non-passenger roles!")
+                        return
+
             if selected_role in ["securityperson", "pilot", "flightattendant"]:
                 for field_name, field_info in role_entry_widgets.items():
                     widget = field_info['widget']
@@ -359,7 +389,7 @@ def open_person_insert_form(cursor, refresh_callback):
                 person_placeholders_str = ", ".join(person_placeholders)
                 person_query = f"INSERT INTO person ({person_columns_str}) VALUES ({person_placeholders_str}) RETURNING personid"
                 cursor.execute(person_query, person_insert_values)
-                personid = cursor.fetchone()[0]  # <-- כאן אתה מקבל את ה-id שנוצר[2][5][7]
+                personid = cursor.fetchone()[0]
 
                 # הכנס לטבלת התפקיד המתאימה
                 if selected_role == "securityperson":
