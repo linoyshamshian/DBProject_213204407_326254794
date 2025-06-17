@@ -544,7 +544,8 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 <div dir="rtl">
 
-### 📄 menu.py
+<h3 align="right">📄 menu.py</h3>
+
 
 קובץ זה מהווה את המסך הראשי של המערכת ודרכו מתבצע הניווט לכל חלקי האפליקציה.
 
