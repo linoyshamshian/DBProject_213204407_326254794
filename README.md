@@ -500,29 +500,15 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ### Backup_4
 [go to backup](DBProject/partD/Backup)
+# שלב ה' - יצירת ממשק גרפי לעבודה מול בסיס הנתונים
 
-connectToPostgres.py
-קובץ זה אחראי על יצירת חיבור למסד הנתונים PostgreSQL של המערכת.
+## 📝 הקדמה
+בשלב זה פותח ממשק גרפי (GUI) המאפשר עבודה נוחה מול בסיס הנתונים *FinalIntegrated*.  
+הממשק פותח בשפת *Python* תוך שימוש בספריית **tkinter** ליצירת המסכים ובספריית **psycopg2** לצורך התחברות לבסיס הנתונים מסוג *PostgreSQL*.
 
-הקובץ כולל פונקציה אחת עיקרית, get_connection(), שמנסה להתחבר למסד הנתונים לפי פרטי ההתחברות (שרת, פורט, שם מסד, משתמש וסיסמה).
-במקרה של הצלחה, הפונקציה מחזירה אובייקט חיבור (connection) פעיל; במקרה של כישלון, תודפס הודעת שגיאה והפונקציה תחזיר None.
-
-python
-import psycopg2
-
-def get_connection():
-    try:
-        connection = psycopg2.connect(
-            host="localhost",  # כתובת השרת
-            port=5432,         # מספר פורט
-            database="FinalIntegrated",  # שם מסד הנתונים
-            user="chen",       # שם משתמש
-            password="2711"    # סיסמה
-        )
-        return connection
-    except Exception as e:
-        print("Database connection error:", e)
-        return None
-
-
-
+## 🛠️ כלים וטכנולוגיות בהם השתמשנו
+* שפת תכנות: **Python**
+* ספריית GUI: **tkinter**
+* חיבור לבסיס נתונים: **psycopg2**
+* בסיס נתונים: **PostgreSQL**
+* ניהול גרסאות: **Git**
