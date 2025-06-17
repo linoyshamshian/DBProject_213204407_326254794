@@ -514,7 +514,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 [go to backup](DBProject/partD/Backup)
 # שלב ה' - יצירת ממשק גרפי לעבודה מול בסיס הנתונים
 
-## הקדמה (#הקדמה)
+## הקדמה 
 בשלב זה פותח ממשק גרפי (GUI) המאפשר עבודה נוחה מול בסיס הנתונים *FinalIntegrated*.  
 הממשק פותח בשפת *Python* תוך שימוש בספריית **tkinter** ליצירת המסכים ובספריית **psycopg2** לצורך התחברות לבסיס הנתונים מסוג *PostgreSQL*.
 
@@ -524,7 +524,7 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 * חיבור לבסיס נתונים: **psycopg2**
 * בסיס נתונים: **PostgreSQL**
 * ניהול גרסאות: **Git**
-* 
+  
 
 
 
