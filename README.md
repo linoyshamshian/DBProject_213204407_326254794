@@ -37,20 +37,28 @@
 
  
 
-- [הקדמה](#📝-הקדמה)
-- [כלים וטכנולוגיות בהם השתמשנו](#🛠️-כלים-וטכנולוגיות-בהם-השתמשנו)
-- [מסכי המערכת](#🖥️-מסכי-המערכת)
+# שלב ה' - יצירת ממשק גרפי לעבודה מול בסיס הנתונים
+
+## Table of Contents
+
+- [הקדמה](#הקדמה)
+- [כלים וטכנולוגיות בהם השתמשנו](#כלים-וטכנולוגיות-בהם-השתמשנו)
+- [מסכי המערכת](#מסכי-המערכת)
 - [פירוט הקבצים במערכת](#פירוט-הקבצים-במערכת)
-  - [connectToPostgres.py](#📄-connecttopostgres)
-  - [menu.py](#📄-menupy)
-  - [data.py](#📄-datapy)
-  - [update_form.py](#📄-update_formpy)
-  - [delete_record.py](#📄-delete_recordpy)
-  - [insert_form.py](#📄-insert_formpy)
-  - [insert_person_form.py](#📄-insert_person_formpy)
-  - [open_queries_procedures_screen.py](#📄-open_queries_procedures_screenpy)
-  - [entrancePage.py](#📄-entrancepagepy)
-- [תמונות מסך](#🖼️-תמונות-מסך)
+  - [connectToPostgres.py](#connecttopostgrespy)
+  - [menu.py](#menupy)
+  - [data.py](#datapy)
+  - [update_form.py](#update_formpy)
+  - [delete_record.py](#delete_recordpy)
+  - [insert_form.py](#insert_formpy)
+  - [insert_person_form.py](#insert_person_formpy)
+  - [open_queries_procedures_screen.py](#open_queries_procedures_screenpy)
+  - [entrancePage.py](#entrancepagepy)
+- [תמונות מסך](#תמונות-מסך)
+
+## הקדמה
+(המשך המסמך...)
+
 
 ## Phase 1: Design and Build the Database  
 ### Introduction
