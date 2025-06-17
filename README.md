@@ -697,8 +697,11 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 ### דוגמה למסך מחיקה (מחיקת אדם)
 <p align="right">
-  <img src="DBProject/partE/Images/delete_person.png" alt="דוגמה למסך מחיקה" width="300"/>
+  <img src="DBProject/partE/Images/delete_person_success.png" alt="דוגמה למסך מחיקה" width="300"/>
 </p>
+
+
+---
 
 ### מסך שאילתות, פרוצדורות ופונקציות
 <p align="right">
