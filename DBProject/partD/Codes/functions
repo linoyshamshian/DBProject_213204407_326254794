@@ -20,7 +20,7 @@ BEGIN
         FROM service s
         JOIN give g ON s.numservice = g.numservice
         JOIN pilot p ON g.personid = p.personid
-        WHERE s.status = 'Active' AND p.airlineid = p_airlineid
+        WHERE s.status = 'Pending' AND p.airlineid = p_airlineid
     LOOP
         IF avg_exp > 5 THEN
             UPDATE service 
