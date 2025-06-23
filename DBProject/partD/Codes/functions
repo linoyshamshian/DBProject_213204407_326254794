@@ -1,4 +1,5 @@
 ------------------ Function 1 ------------------
+--הפונקציה מחשבת את ממוצע שנות הניסיון של הטייסים בחברת תעופה מסוימת ומעדכנת את טבלת השירותים הפעילים עם משוב בהתאם לרמת הניסיון
 CREATE OR REPLACE FUNCTION calculate_avg_experience_and_update_service(p_airlineid numeric)
 RETURNS numeric AS $$
 DECLARE
@@ -45,7 +46,7 @@ $$ LANGUAGE plpgsql;
 
 
 ------------------ Function 2 ------------------
-
+-- הפונקציה מחזירה מצביע לטייסים המשויכים לטיסה מסוימת 
 CREATE OR REPLACE FUNCTION get_pilots_for_flight(p_flightid integer, p_cursor_name refcursor)
 RETURNS refcursor AS $$
 BEGIN
