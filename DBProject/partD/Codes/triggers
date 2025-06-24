@@ -40,3 +40,35 @@ EXECUTE FUNCTION trg_log_flightattendant_insert();
 
 SELECT * FROM flightattendant_insert_log ORDER BY inserted_at DESC;
 
+
+------------------ Trigger 3 ------------------
+-- הטריגר מונע הוספת שירות אם לאדם כבר יש 100 או יותר
+CREATE TRIGGER trg_flightattendant_insert
+AFTER INSERT ON flightattendant
+FOR EACH ROW
+EXECUTE FUNCTION trg_log_flightattendant_insert();
+
+SELECT * FROM flightattendant_insert_log ORDER BY inserted_at DESC;
+
+CREATE OR REPLACE FUNCTION limit_service()
+RETURNS trigger as $$
+DECLARE
+count_service integer;
+begin
+select count(*) into count_service from give
+where personid=NEW.personid;
+IF count_service >= 1 then 
+	RAISE EXCEPTION 'Person % already has 100 or more services. Cannot add more.', NEW.personid;
+END if;
+return new;
+end;
+$$ LANGUAGE plpgsql;
+
+create trigger trg_limit
+before insert on give 
+FOR EACH ROW
+EXECUTE FUNCTION limit_service();
+
+--הרצה לבדיקה 
+Insert into give(numservice, personid) values(100,456);
+
