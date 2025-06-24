@@ -458,6 +458,11 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 
 📌 [View the triggers](DBProject/partD/Codes/triggers)
 
+
+🔸 טריגר 3:  הטריגר מונע הוספת שירות לטבלת give אם לאדם כבר יש 100 או יותר.
+
+📌 [View the triggers](DBProject/partD/Codes/triggers)
+
 ### [Main](#main)
 
 🔸תכנית 1: הפונקציה main_function_1 מבצעת שני שלבים עיקריים:
