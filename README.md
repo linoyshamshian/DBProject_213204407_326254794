@@ -456,8 +456,6 @@ results for  the command `SELECT COUNT(*) FROM shift;`:
 🔸 טריגר 2: הטריגר מופעל לאחר שנמחקת רשומה מטבלת incident, ומפעיל את הפונקציה trg_incident_delete_notice, אשר מציגה הודעת NOTICE עם מספר האירוע (incidentid) שנמחק.
 את התוצאה ניתן לראות בתמונה של ההרצה של התכנית השנייה שנמצאת בהמשך.
 
-📌 [View the triggers](DBProject/partD/Codes/triggers)
-
 
 🔸 טריגר 3:  הטריגר מונע הוספת שירות לטבלת give אם לאדם כבר יש 100 או יותר.
 
